@@ -3,16 +3,61 @@
 <head>
 
   <meta charset="UTF-8">
-  <meta name="theme-color" content="#f8f1e8">
+  <meta name="theme-color" content="#f3f5ef">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Undangan Pernikahan Fajar &amp; Nurnashriana</title>
 
+  <!-- =========================================================
+       THUMBNAIL SAAT LINK DIBAGIKAN (WhatsApp, Telegram, dll.)
+       GANTI "USERNAME" dan "NAMA-REPO" dengan alamat GitHub Pages Anda.
+       Contoh hasil: https://fajarwira.github.io/undangan/cover.jpg
+       Alamat harus lengkap (https://...), tidak boleh relatif.
+  ========================================================= -->
+  <meta name="description" content="Undangan Pernikahan Fajar Wira Perdana &amp; Nurnashriana Jufri — Minggu, 8 November 2026, Hotel Zahra Syariah, Kendari.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Undangan Pernikahan Fajar &amp; Nurnashriana">
+  <meta property="og:title" content="Undangan Pernikahan Fajar &amp; Nurnashriana">
+  <meta property="og:description" content="Minggu, 8 November 2026 • Ballroom Khaira, Hotel Zahra Syariah, Kendari">
+  <meta property="og:url" content="https://USERNAME.github.io/NAMA-REPO/">
+  <meta property="og:image" content="https://USERNAME.github.io/NAMA-REPO/cover.jpg">
+  <meta property="og:image:alt" content="Fajar &amp; Nurnashriana">
+  <meta property="og:locale" content="id_ID">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Undangan Pernikahan Fajar &amp; Nurnashriana">
+  <meta name="twitter:description" content="Minggu, 8 November 2026 • Ballroom Khaira, Hotel Zahra Syariah, Kendari">
+  <meta name="twitter:image" content="https://USERNAME.github.io/NAMA-REPO/cover.jpg">
+
+  <!-- FONT: Playfair Display (judul), Montserrat (teks), Amiri (Arab) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
   <style>
+
+    /* =========================================
+       TEMA: SAGE & GOLD
+       Ubah warna cukup di bagian variabel ini.
+    ========================================= */
+    :root {
+      --bg: #f3f5ef;          /* latar halaman */
+      --paper: #fbfcf8;       /* latar kartu/undangan */
+      --soft: #e9eee4;        /* latar lembut */
+      --ink: #2e3a31;         /* teks utama */
+      --muted: #5b6a5f;       /* teks sekunder */
+      --accent: #5d7262;      /* hijau sage (tombol) */
+      --accent-dark: #475a4c; /* hijau sage gelap */
+      --gold: #b08d57;        /* emas */
+      --gold-light: #d9c08a;  /* emas terang */
+      --line: #d3dacb;        /* garis */
+      --shadow: rgba(40, 56, 44, 0.12);
+
+      --font-judul: "Playfair Display", Georgia, "Times New Roman", serif;
+      --font-teks: "Montserrat", "Segoe UI", Arial, sans-serif;
+      --font-arab: "Amiri", "Traditional Arabic", serif;
+    }
 
     * { box-sizing: border-box; }
 
@@ -21,16 +66,16 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      background: #f7f2e9;
-      color: #3d3428;
+      font-family: var(--font-judul);
+      background: var(--bg);
+      color: var(--ink);
     }
 
     .container {
       width: 100%;
       max-width: 600px;
       margin: auto;
-      background: #fffdf8;
+      background: var(--paper);
       min-height: 100vh;
       overflow: hidden;
       box-shadow: 0 0 30px rgba(0,0,0,0.08);
@@ -52,42 +97,59 @@
       align-items: center;
       padding: 30px 18px;
       background:
-        linear-gradient(rgba(255,253,248,0.70), rgba(247,242,233,0.78)),
+        linear-gradient(rgba(251,252,248,0.72), rgba(233,238,228,0.82)),
         url("cover.jpg") center center / cover no-repeat;
       text-align: center;
     }
 
-    .ornament { font-size: 30px; margin-bottom: 18px; }
+    .ornament { font-size: 30px; margin-bottom: 18px; color: var(--gold); }
 
     .cover-small {
-      font-family: Arial, sans-serif;
+      font-family: var(--font-teks);
       font-size: 12px;
-      letter-spacing: 3px;
+      font-weight: 500;
+      letter-spacing: 4px;
       text-transform: uppercase;
+      color: var(--accent-dark);
       margin-bottom: 25px;
     }
 
     .cover h1 {
       width: 100%;
       margin: 4px 0;
+      font-family: var(--font-judul);
       font-size: clamp(28px, 8vw, 42px);
-      font-weight: normal;
-      line-height: 1.15;
+      font-weight: 500;
+      line-height: 1.2;
       white-space: normal;
+      color: var(--ink);
     }
 
     .cover-nickname {
       display: block;
       margin-top: 2px;
-      font-family: Arial, sans-serif;
+      font-family: var(--font-teks);
       font-size: 13px;
       letter-spacing: 1px;
-      color: #746653;
+      color: var(--muted);
     }
 
-    .and { font-size: 28px; margin: 15px 0; font-style: italic; }
+    .and {
+      font-family: var(--font-judul);
+      font-size: 28px;
+      margin: 15px 0;
+      font-style: italic;
+      color: var(--gold);
+    }
 
-    .cover-date { margin-top: 25px; font-size: 16px; letter-spacing: 3px; }
+    .cover-date {
+      margin-top: 25px;
+      font-family: var(--font-teks);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      color: var(--ink);
+    }
 
 
     /* ============== TAMU DI COVER ============== */
@@ -99,16 +161,15 @@
       margin-top: 35px;
       padding: 26px 18px 24px;
       text-align: center;
-      border: 1px solid rgba(183,154,104,0.75);
+      border: 1px solid rgba(176,141,87,0.8);
       border-radius: 6px;
-      background: rgba(255,253,248,0.55);
+      background: rgba(251,252,248,0.62);
       box-shadow:
-        0 0 0 4px rgba(255,253,248,0.45),
-        0 0 0 5px rgba(183,154,104,0.45),
-        0 10px 28px rgba(68,49,28,0.12);
+        0 0 0 4px rgba(251,252,248,0.5),
+        0 0 0 5px rgba(176,141,87,0.45),
+        0 10px 28px var(--shadow);
     }
 
-    /* Hiasan sudut emas */
     .guest-cover::before,
     .guest-cover::after {
       content: "❖";
@@ -118,28 +179,29 @@
       padding: 0 10px;
       font-size: 13px;
       line-height: 1;
-      color: #b79a68;
-      background: #f8f1e8;
+      color: var(--gold);
+      background: #eef2e9;
     }
     .guest-cover::before { top: -8px; }
     .guest-cover::after { bottom: -8px; }
 
     .guest-label {
       display: block;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 13px;
+      font-family: var(--font-teks);
+      font-size: 11px;
+      font-weight: 500;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: #7a6a52;
+      color: var(--muted);
     }
 
     .guest-honor {
       display: block;
-      margin-top: 4px;
-      font-family: "Cormorant Garamond", Georgia, serif;
+      margin-top: 5px;
+      font-family: var(--font-judul);
       font-style: italic;
       font-size: 15px;
-      color: #8a775a;
+      color: var(--muted);
     }
 
     .guest-line {
@@ -147,39 +209,41 @@
       width: 90px;
       height: 1px;
       margin: 14px auto 12px;
-      background: linear-gradient(to right, transparent, #b79a68, transparent);
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
     }
 
     .guest-cover-name {
       display: block;
       margin: 0;
-      font-family: "Great Vibes", "Brush Script MT", cursive;
-      font-size: clamp(34px, 10vw, 46px);
-      font-weight: normal;
-      line-height: 1.25;
+      font-family: var(--font-judul);
+      font-style: italic;
+      font-size: clamp(26px, 7.5vw, 34px);
+      font-weight: 600;
+      line-height: 1.3;
       word-break: break-word;
-      color: #8d7653;
-      background: linear-gradient(135deg, #7a5c2e 0%, #c9a867 35%, #f1dca0 50%, #b08a45 70%, #7a5c2e 100%);
+      color: #8a6b35;
+      background: linear-gradient(135deg, #7d5f2c 0%, #b08d57 40%, #d9b977 52%, #9a763a 75%, #7d5f2c 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 1px 1px rgba(68,49,28,0.18));
     }
 
 
-    /* ============== TOMBOL BUKA ============== */
+    /* ============== TOMBOL ============== */
 
     .open-button {
       margin-top: 25px;
       padding: 14px 30px;
       border: none;
       border-radius: 30px;
-      background: #8d7653;
-      color: white;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-teks);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
       cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.14);
     }
 
     .open-button:active { transform: scale(0.97); }
@@ -187,42 +251,52 @@
 
     /* ================ JUDUL ================ */
 
-    .section-title { font-size: 28px; font-weight: normal; margin-bottom: 25px; }
+    .section-title {
+      font-family: var(--font-judul);
+      font-size: 28px;
+      font-weight: 500;
+      margin-bottom: 25px;
+      color: var(--accent-dark);
+    }
 
-    .divider { width: 70px; height: 1px; background: #b49a70; margin: 20px auto 30px; }
+    .divider {
+      width: 70px;
+      height: 1px;
+      background: var(--gold);
+      margin: 20px auto 30px;
+    }
 
 
     /* ================ PEMBUKA ================ */
 
-    .arabic { font-size: 23px; line-height: 1.8; margin-bottom: 20px; }
+    .arabic {
+      font-family: var(--font-arab);
+      font-size: 28px;
+      line-height: 1.9;
+      margin-bottom: 20px;
+      color: var(--accent-dark);
+    }
 
     .intro {
-      font-family: Arial, sans-serif;
+      font-family: var(--font-teks);
       font-size: 14px;
+      font-weight: 400;
       line-height: 1.9;
-      color: #62594d;
+      color: var(--muted);
     }
 
     .guest-name {
       margin: 25px 0;
-      font-family: Arial, sans-serif;
+      font-family: var(--font-teks);
       font-size: 14px;
       line-height: 1.8;
+      color: var(--ink);
     }
 
-
-    /* ================= FOTO ================= */
-
-    .couple-photo {
-      display: block;
-      width: 100%;
-      height: auto;
-      max-height: none;
-      object-fit: contain;
-      margin: 20px auto;
-      border-radius: 18px;
-      border: 1px solid #ded1bd;
-      box-shadow: 0 8px 24px rgba(0,0,0,.10);
+    .guest-name strong {
+      font-family: var(--font-judul);
+      font-size: 20px;
+      font-weight: 600;
     }
 
 
@@ -232,30 +306,34 @@
       padding-top: 60px;
       padding-bottom: 60px;
       background:
-        linear-gradient(rgba(255,253,248,0.78), rgba(247,242,233,0.84)),
+        linear-gradient(rgba(251,252,248,0.80), rgba(233,238,228,0.86)),
         url("couple.jpg") center center / cover no-repeat;
     }
 
     .couple .person-name,
     .couple .parents,
     .couple .section-title {
-      text-shadow: 0 1px 6px rgba(255,253,248,0.9);
+      text-shadow: 0 1px 6px rgba(251,252,248,0.9);
     }
-
-    .couple .parents { color: #4a4035; }
 
     .person { margin: 30px 0; }
 
-    .person-name { font-size: 25px; line-height: 1.4; margin-bottom: 12px; }
-
-    .parents {
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-      line-height: 1.8;
-      color: #665d50;
+    .person-name {
+      font-family: var(--font-judul);
+      font-size: 25px;
+      font-weight: 500;
+      line-height: 1.4;
+      margin-bottom: 12px;
     }
 
-    .heart { font-size: 25px; margin: 25px 0; }
+    .parents {
+      font-family: var(--font-teks);
+      font-size: 13px;
+      line-height: 1.9;
+      color: #46544a;
+    }
+
+    .heart { font-size: 25px; margin: 25px 0; color: var(--gold); }
 
 
     /* ================= ACARA ================= */
@@ -263,27 +341,38 @@
     .event {
       margin: 25px 0;
       padding: 28px 20px;
-      border: 1px solid #e1d5c3;
+      border: 1px solid var(--line);
       border-radius: 14px;
-      background: #fffdf9;
+      background: var(--paper);
     }
 
-    .event-title { font-size: 23px; margin-bottom: 15px; }
+    .event-title {
+      font-family: var(--font-judul);
+      font-size: 23px;
+      font-weight: 500;
+      margin-bottom: 15px;
+      color: var(--accent-dark);
+    }
 
-    .event-date { font-size: 17px; margin: 8px 0; }
+    .event-date {
+      font-family: var(--font-judul);
+      font-size: 17px;
+      margin: 8px 0;
+    }
 
     .event-time {
-      font-family: Arial, sans-serif;
+      font-family: var(--font-teks);
       font-size: 14px;
-      color: #665d50;
+      font-weight: 500;
+      color: var(--muted);
       margin-bottom: 18px;
     }
 
     .event-location {
-      font-family: Arial, sans-serif;
+      font-family: var(--font-teks);
       font-size: 13px;
-      line-height: 1.7;
-      color: #665d50;
+      line-height: 1.8;
+      color: var(--muted);
     }
 
 
@@ -293,12 +382,14 @@
       display: inline-block;
       margin-top: 20px;
       padding: 13px 25px;
-      background: #8d7653;
-      color: white;
+      background: var(--accent);
+      color: #fff;
       text-decoration: none;
       border-radius: 25px;
-      font-family: Arial, sans-serif;
-      font-size: 13px;
+      font-family: var(--font-teks);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1px;
     }
 
 
@@ -311,41 +402,51 @@
       margin-top: 25px;
     }
 
-    .count-box { padding: 12px 5px; border-radius: 10px; background: #f2eadc; }
+    .count-box { padding: 12px 5px; border-radius: 10px; background: var(--soft); }
 
-    .count-number { display: block; font-size: 22px; font-weight: bold; }
+    .count-number {
+      display: block;
+      font-family: var(--font-judul);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
 
     .count-label {
       display: block;
       margin-top: 5px;
-      font-family: Arial, sans-serif;
+      font-family: var(--font-teks);
       font-size: 10px;
+      letter-spacing: 1px;
       text-transform: uppercase;
+      color: var(--muted);
     }
 
 
     /* ================= RSVP ================= */
 
-    .rsvp-box { margin-top: 30px; padding: 25px 20px; border-radius: 15px; background: #f8f3ea; }
+    .rsvp-box { margin-top: 30px; padding: 25px 20px; border-radius: 15px; background: var(--soft); }
 
     .form-group { margin-bottom: 18px; text-align: left; }
 
     label {
       display: block;
       margin-bottom: 7px;
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-      font-weight: bold;
+      font-family: var(--font-teks);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
     input, select, textarea {
       width: 100%;
       padding: 12px;
-      border: 1px solid #d8cbb8;
+      border: 1px solid var(--line);
       border-radius: 8px;
-      font-family: Arial, sans-serif;
+      font-family: var(--font-teks);
       font-size: 14px;
-      background: white;
+      background: #fff;
+      color: var(--ink);
     }
 
     textarea { min-height: 90px; resize: vertical; }
@@ -355,9 +456,12 @@
       padding: 14px;
       border: none;
       border-radius: 25px;
-      background: #8d7653;
-      color: white;
-      font-size: 14px;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-teks);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
       cursor: pointer;
     }
 
@@ -365,44 +469,62 @@
       margin-top: 15px;
       padding: 12px;
       border-radius: 8px;
-      font-family: Arial, sans-serif;
+      font-family: var(--font-teks);
       font-size: 13px;
+      line-height: 1.6;
       display: none;
     }
 
 
     /* ============== WEDDING GIFT ============== */
 
-    .gift-section { background: #fffdf8; padding-top: 55px; padding-bottom: 55px; }
+    .gift-section { background: var(--paper); padding-top: 55px; padding-bottom: 55px; }
 
     .gift-intro {
-      font-family: Arial, sans-serif;
+      font-family: var(--font-teks);
       font-size: 13px;
-      line-height: 1.8;
-      color: #62594d;
+      line-height: 1.9;
+      color: var(--muted);
     }
 
     .gift-card {
       margin: 25px 0;
       padding: 30px 20px;
-      border: 1px solid #dfd0ba;
+      border: 1px solid var(--line);
       border-radius: 18px;
-      background: #f8f3ea;
+      background: var(--soft);
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
 
     .gift-icon { font-size: 38px; margin-bottom: 12px; }
 
-    .gift-title { font-size: 20px; margin-bottom: 18px; }
+    .gift-title {
+      font-family: var(--font-judul);
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 18px;
+      color: var(--accent-dark);
+    }
 
-    .gift-bank { font-family: Arial, sans-serif; font-size: 13px; letter-spacing: 2px; margin-bottom: 8px; }
+    .gift-bank {
+      font-family: var(--font-teks);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
 
-    .gift-name { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; margin-bottom: 12px; }
+    .gift-name {
+      font-family: var(--font-teks);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
 
     .gift-number {
-      font-family: Arial, sans-serif;
-      font-size: 21px;
-      font-weight: bold;
+      font-family: var(--font-judul);
+      font-size: 24px;
+      font-weight: 600;
       letter-spacing: 2px;
       margin-bottom: 20px;
     }
@@ -411,10 +533,12 @@
       border: none;
       border-radius: 25px;
       padding: 12px 20px;
-      background: #8d7653;
-      color: white;
-      font-family: Arial, sans-serif;
-      font-size: 13px;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-teks);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
       cursor: pointer;
     }
 
@@ -425,19 +549,44 @@
       margin-top: 15px;
       padding: 10px;
       border-radius: 8px;
-      background: #eee5d5;
-      font-family: Arial, sans-serif;
+      background: var(--soft);
+      font-family: var(--font-teks);
       font-size: 13px;
     }
 
 
     /* ================ PENUTUP ================ */
 
-    .closing { background: #f5efe5; }
+    .closing { background: var(--soft); }
 
-    .closing-text { font-family: Arial, sans-serif; font-size: 13px; line-height: 1.9; }
+    .closing-text {
+      font-family: var(--font-teks);
+      font-size: 13px;
+      line-height: 2;
+      color: var(--muted);
+    }
 
-    .footer-names { margin-top: 30px; font-size: 25px; line-height: 1.5; }
+    .footer-names {
+      margin-top: 30px;
+      font-family: var(--font-judul);
+      font-style: italic;
+      font-size: 25px;
+      line-height: 1.5;
+      color: var(--accent-dark);
+    }
+
+
+    /* ============== TOMBOL MUSIK ============== */
+
+    #musicToggle {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      z-index: 999;
+      display: none;
+      margin: 0;
+      padding: 11px 16px;
+    }
 
 
     /* ============== RESPONSIVE HP ============== */
@@ -445,26 +594,20 @@
     @media (max-width: 450px) {
       .cover { padding-left: 10px; padding-right: 10px; }
       .cover h1 { font-size: 27px; white-space: normal; }
-      .cover-small { font-size: 10px; letter-spacing: 2px; }
+      .cover-small { font-size: 10px; letter-spacing: 3px; }
       .person-name { font-size: 22px; }
       section { padding: 45px 20px; }
     }
 
     @media (max-width: 360px) {
       .cover h1 { font-size: 24px; }
-      .cover-date { font-size: 14px; }
+      .cover-date { font-size: 13px; }
     }
 
 
     /* =========================================
        ANIMASI LEMBAR HALAMAN (PAGE TURN)
-       Gaya dasar .fold-page = kondisi akhir,
-       jadi tidak ada loncatan saat animasi selesai.
     ========================================= */
-
-    :root {
-      --page-shadow: rgba(68, 49, 28, 0.18);
-    }
 
     section.fold-page {
       position: relative;
@@ -472,12 +615,11 @@
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
       box-shadow:
-        0 3px 5px rgba(68, 49, 28, 0.05),
-        0 12px 25px rgba(68, 49, 28, 0.09),
-        0 24px 45px rgba(68, 49, 28, 0.06);
+        0 3px 5px rgba(40, 56, 44, 0.05),
+        0 12px 25px rgba(40, 56, 44, 0.08),
+        0 24px 45px rgba(40, 56, 44, 0.05);
     }
 
-    /* Garis emas tipis seperti tepi kertas */
     section.fold-page::before {
       content: "";
       position: absolute;
@@ -488,8 +630,8 @@
       pointer-events: none;
       background: linear-gradient(
         to right,
-        rgba(183, 154, 104, 0.35),
-        rgba(255, 253, 248, 0.7),
+        rgba(176, 141, 87, 0.35),
+        rgba(251, 252, 248, 0.7),
         transparent
       );
       opacity: 0.7;
@@ -503,31 +645,28 @@
       0% {
         opacity: 0;
         transform: perspective(1400px) rotateY(-12deg) translateY(24px);
-        box-shadow: 12px 8px 20px rgba(45, 32, 18, 0.20);
+        box-shadow: 12px 8px 20px rgba(30, 44, 34, 0.20);
       }
       45% {
         opacity: 1;
         transform: perspective(1400px) rotateY(3deg) translateY(2px);
-        box-shadow: 5px 5px 15px rgba(45, 32, 18, 0.14);
+        box-shadow: 5px 5px 15px rgba(30, 44, 34, 0.14);
       }
       100% {
         opacity: 1;
         transform: perspective(1400px) rotateY(0deg) translateY(0);
         box-shadow:
-          0 3px 5px rgba(68, 49, 28, 0.05),
-          0 12px 25px rgba(68, 49, 28, 0.09),
-          0 24px 45px rgba(68, 49, 28, 0.06);
+          0 3px 5px rgba(40, 56, 44, 0.05),
+          0 12px 25px rgba(40, 56, 44, 0.08),
+          0 24px 45px rgba(40, 56, 44, 0.05);
       }
     }
 
-    /* HP: gerakan lebih ringan */
     @media (max-width: 600px) {
       section.fold-page { transform-origin: center center; }
-
       section.fold-page.is-folding { animation-duration: 650ms; }
     }
 
-    /* Hormati pengaturan aksesibilitas */
     @media (prefers-reduced-motion: reduce) {
       section.fold-page.is-folding { animation: none; }
     }
@@ -780,10 +919,6 @@
 
       <div class="gift-card">
 
-        <div class="gift-icon">🎁</div>
-
-        <div class="gift-title">Wedding Gift untuk Fajar</div>
-
         <div class="gift-bank">BCA BANK</div>
 
         <div class="gift-name">FAJAR WIRA PERDANA</div>
@@ -791,7 +926,7 @@
         <div class="gift-number">7970302161</div>
 
         <button type="button" class="copy-button" onclick="copyRekening('7970302161', this)">
-          📋 Salin Nomor Rekening
+          Salin Nomor Rekening
         </button>
 
       </div>
@@ -837,16 +972,13 @@
 </div>
 
 
-<!-- ================= AUDIO ================= -->
+<!-- ================= AUDIO =================
+     File musik HARUS bernama persis: music.mp3
+     (huruf kecil semua) dan berada satu folder dengan index.html -->
 
-<audio id="weddingMusic" loop preload="auto">
-  <source src="./music.mp3" type="audio/mpeg">
-  Browser kamu tidak mendukung pemutaran audio.
-</audio>
+<audio id="weddingMusic" src="music.mp3" loop preload="auto"></audio>
 
-<button type="button" id="musicToggle" class="open-button"
-        style="position:fixed;right:14px;bottom:14px;z-index:999;display:none;margin:0;padding:11px 16px"
-        onclick="toggleMusic()">♫ Matikan Musik</button>
+<button type="button" id="musicToggle" class="open-button" onclick="toggleMusic()">♫ Matikan Musik</button>
 
 
 <script>
@@ -866,13 +998,109 @@
 
 
   /* ==================================================
+     MUSIK (music.mp3)
+  ================================================== */
+
+  const musik = document.getElementById("weddingMusic");
+  const tombolMusik = document.getElementById("musicToggle");
+
+  let musikSedangDiputar = false;   // niat pengguna: musik hidup/mati
+  let musikRusak = false;           // true jika music.mp3 gagal dimuat
+
+  function setTombolMusik() {
+    if (!tombolMusik) return;
+    if (musikRusak) {
+      tombolMusik.innerText = "♫ Musik tidak tersedia";
+    } else {
+      tombolMusik.innerText = musikSedangDiputar ? "♫ Matikan Musik" : "♫ Putar Musik";
+    }
+  }
+
+  // Jika file tidak ditemukan / tidak bisa dibaca
+  musik.addEventListener("error", function () {
+    musikRusak = true;
+    musikSedangDiputar = false;
+    console.error(
+      "music.mp3 gagal dimuat. Pastikan nama file persis 'music.mp3' " +
+      "(huruf kecil), satu folder dengan index.html, dan sudah di-upload ke GitHub."
+    );
+    setTombolMusik();
+  });
+
+  function putarMusik() {
+    if (musikRusak) return Promise.resolve();
+    musik.volume = 0.8;
+    const janji = musik.play();
+    if (janji && typeof janji.then === "function") {
+      return janji
+        .then(function () {
+          musikSedangDiputar = true;
+          setTombolMusik();
+        })
+        .catch(function (error) {
+          // Diblokir browser: tunggu sentuhan berikutnya
+          console.log("Musik belum bisa diputar:", error);
+          musikSedangDiputar = false;
+          setTombolMusik();
+          pasangPemicuCadangan();
+        });
+    }
+    musikSedangDiputar = true;
+    setTombolMusik();
+    return Promise.resolve();
+  }
+
+  function jedaMusik() {
+    musik.pause();
+    musikSedangDiputar = false;
+    setTombolMusik();
+  }
+
+  function toggleMusic() {
+    if (musikRusak) {
+      alert("File music.mp3 tidak ditemukan. Pastikan namanya persis 'music.mp3' dan sudah di-upload ke GitHub.");
+      return;
+    }
+    if (musik.paused) {
+      putarMusik();
+    } else {
+      jedaMusik();
+    }
+  }
+
+  // Cadangan: jika autoplay diblokir, putar pada sentuhan/klik berikutnya
+  function pasangPemicuCadangan() {
+    const pemicu = function () {
+      document.removeEventListener("touchstart", pemicu);
+      document.removeEventListener("click", pemicu);
+      if (musik.paused && !musikRusak) putarMusik();
+    };
+    document.addEventListener("touchstart", pemicu, { once: true, passive: true });
+    document.addEventListener("click", pemicu, { once: true });
+  }
+
+  // Jeda saat tab/aplikasi disembunyikan, lanjut saat kembali
+  let dijedaOtomatis = false;
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      if (!musik.paused) {
+        dijedaOtomatis = true;
+        musik.pause();
+      }
+    } else if (dijedaOtomatis) {
+      dijedaOtomatis = false;
+      putarMusik();
+    }
+  });
+
+
+  /* ==================================================
      ANIMASI LEMBAR UNDANGAN SAAT DIGULIR
   ================================================== */
 
   let animasiLembarSiap = false;
 
   function aktifkanAnimasiLembar() {
-    // Hanya dijalankan sekali
     if (animasiLembarSiap) return;
 
     const isi = document.getElementById("isiUndangan");
@@ -887,7 +1115,6 @@
       page.classList.add("fold-page");
     });
 
-    // Tanpa IntersectionObserver atau mode kurangi gerakan: tampil biasa
     const kurangiGerak = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!("IntersectionObserver" in window) || kurangiGerak) return;
 
@@ -902,7 +1129,6 @@
           page.classList.add("is-folding");
 
           page.addEventListener("animationend", function (e) {
-            // Abaikan animasi milik elemen anak
             if (e.target !== page) return;
             page.classList.remove("is-folding");
           });
@@ -928,49 +1154,17 @@
 
     const cover = document.getElementById("cover");
     const isi = document.getElementById("isiUndangan");
-    const music = document.getElementById("weddingMusic");
-    const musicToggle = document.getElementById("musicToggle");
 
-    // Hilangkan cover, tampilkan isi
     cover.style.display = "none";
     isi.style.display = "block";
 
-    // Tombol musik
-    if (musicToggle) musicToggle.style.display = "block";
+    // Tampilkan tombol musik dan putar musik (dipicu klik pengguna)
+    if (tombolMusik) tombolMusik.style.display = "block";
+    putarMusik();
 
-    // Jalankan musik (diizinkan karena dipicu klik pengguna)
-    if (music) {
-      music.play().catch(function (error) {
-        console.log("Musik tidak dapat diputar:", error);
-        if (musicToggle) musicToggle.innerText = "♫ Putar Musik";
-      });
-    }
-
-    // Kembali ke bagian awal
     window.scrollTo({ top: 0, behavior: "auto" });
 
-    // Aktifkan animasi setelah isi benar-benar tampil
     requestAnimationFrame(aktifkanAnimasiLembar);
-  }
-
-
-  /* ==================================================
-     MUSIK
-  ================================================== */
-
-  function toggleMusic() {
-    const music = document.getElementById("weddingMusic");
-    const button = document.getElementById("musicToggle");
-    if (!music || !button) return;
-
-    if (music.paused) {
-      music.play()
-        .then(function () { button.innerText = "♫ Matikan Musik"; })
-        .catch(function () { button.innerText = "♫ Putar Musik"; });
-    } else {
-      music.pause();
-      button.innerText = "♫ Putar Musik";
-    }
   }
 
 
