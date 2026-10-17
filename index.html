@@ -1966,5 +1966,78 @@ section.fold-page.is-folding {
 </script>
 
 
+/* =========================================
+   ANIMASI LEMBAR UNDANGAN SAAT DIGULIR
+========================================= */
+
+(() => {
+  const initPageTurn = () => {
+    const pages = document.querySelectorAll("section");
+
+    pages.forEach((page) => {
+      // Jangan mengubah sesi yang disembunyikan
+      if (page.hidden) return;
+
+      page.classList.add("fold-page");
+    });
+
+    // Fallback untuk browser tanpa IntersectionObserver
+    if (!("IntersectionObserver" in window)) {
+      pages.forEach((page) => {
+        if (!page.hidden) {
+          page.classList.add("is-folding");
+        }
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const page = entry.target;
+
+          if (
+            entry.isIntersecting &&
+            !page.dataset.pageTurned
+          ) {
+            page.dataset.pageTurned = "true";
+            page.classList.add("is-folding");
+
+            page.addEventListener(
+              "animationend",
+              () => {
+                page.classList.remove("is-folding");
+              },
+              { once: true }
+            );
+
+            observer.unobserve(page);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -5% 0px"
+      }
+    );
+
+    pages.forEach((page) => {
+      if (!page.hidden) {
+        observer.observe(page);
+      }
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initPageTurn,
+      { once: true }
+    );
+  } else {
+    initPageTurn();
+  }
+})();
+
 </body>
 </html>
