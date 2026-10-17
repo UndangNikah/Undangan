@@ -166,7 +166,21 @@
 
     /* =============== MEMPELAI =============== */
 
-    .couple { padding-top: 40px; padding-bottom: 40px; }
+    .couple {
+      padding-top: 60px;
+      padding-bottom: 60px;
+      background:
+        linear-gradient(rgba(255,253,248,0.78), rgba(247,242,233,0.84)),
+        url("couple.jpg") center center / cover no-repeat;
+    }
+
+    .couple .person-name,
+    .couple .parents,
+    .couple .section-title {
+      text-shadow: 0 1px 6px rgba(255,253,248,0.9);
+    }
+
+    .couple .parents { color: #4a4035; }
 
     .person { margin: 30px 0; }
 
@@ -534,14 +548,7 @@
     </section>
 
 
-    <!-- FOTO MEMPELAI -->
-
-    <section>
-      <img class="couple-photo" src="couple.jpg" alt="Foto Fajar dan Nurnashriana" loading="lazy">
-    </section>
-
-
-    <!-- MEMPELAI -->
+    <!-- MEMPELAI (foto couple.jpg menjadi latar) -->
 
     <section class="couple">
 
