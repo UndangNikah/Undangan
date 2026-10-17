@@ -1,643 +1,1864 @@
-
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f8f4ed">
-<title>The Wedding of Fajar & Nurnashriana</title>
-<meta name="description" content="Undangan pernikahan Fajar Wira Perdana dan Nurnashriana Jufri, 8 November 2026.">
 
-<style>
-:root {
-  --cream: #f8f4ed;
-  --paper: #fffdf8;
-  --gold: #aa8956;
-  --brown: #554536;
-  --muted: #847969;
-  --line: #dfd3c0;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 25px; }
-body {
-  margin: 0;
-  background: var(--cream);
-  color: var(--brown);
-  font-family: Georgia, "Times New Roman", serif;
-  line-height: 1.8;
-}
-body.locked { overflow: hidden; }
-button, input, textarea, select { font: inherit; }
-button, a { -webkit-tap-highlight-color: transparent; }
-a { color: inherit; }
-img { max-width: 100%; }
-section {
-  padding: 76px 20px;
-  text-align: center;
-}
-.container { width: min(100%, 760px); margin: auto; }
-.eyebrow {
-  font: 11px/1.8 Arial, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  color: var(--gold);
-}
-h1, h2, h3, p { margin-top: 0; }
-h2 { font-size: clamp(29px, 6vw, 42px); font-weight: normal; line-height: 1.25; }
-h3 { font-weight: normal; }
-p { color: var(--muted); }
-.script { font-style: italic; color: var(--gold); }
-.btn {
-  display: inline-block;
-  border: 1px solid var(--gold);
-  border-radius: 30px;
-  padding: 11px 23px;
-  text-decoration: none;
-  cursor: pointer;
-  background: var(--gold);
-  color: white;
-  font: 12px Arial, sans-serif;
-  letter-spacing: 1px;
-}
-.btn.outline { background: transparent; color: var(--brown); }
-.btn:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
-.card {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  padding: 28px 20px;
-  border-radius: 3px;
-}
-.divider {
-  width: 65px;
-  height: 1px;
-  background: var(--gold);
-  margin: 23px auto;
-}
-.small { font: 12px/1.8 Arial, sans-serif; color: var(--muted); }
+  <meta name="theme-color" content="#f8f1e8">
 
-/* Cover */
-.cover {
-  min-height: 100svh;
-  padding: 38px 22px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background:
-    linear-gradient(#f8f4eddd, #f8f4edeb),
-    url("images/cover.jpg") center/cover;
-  text-align: center;
-  position: relative;
-}
-.cover-inner { max-width: 620px; width: 100%; }
-.cover h1 {
-  font-weight: normal;
-  font-size: clamp(44px, 10vw, 76px);
-  line-height: 1.12;
-  color: var(--brown);
-  margin: 24px 0;
-}
-.cover-date { letter-spacing: 3px; font: 12px Arial, sans-serif; }
-.guest-box {
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 16px;
-  margin: 26px auto;
-}
-.guest-box strong { color: var(--brown); font-size: 20px; }
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-/* Hero */
-.hero {
-  min-height: 85svh;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(#f8f4ed70,#f8f4edb8),
-    url("images/couple.jpg") center/cover;
-}
-.hero-content {
-  background: #fffdf0dc;
-  padding: 36px 22px;
-  width: min(100%, 580px);
-  margin: 20px;
-}
-.hero h2 { font-size: clamp(40px, 8vw, 66px); margin: 12px 0; }
-.couple-grid, .event-grid, .gift-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 18px;
-  margin-top: 30px;
-}
-.couple-photo {
-  width: 150px; height: 150px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid white;
-  box-shadow: 0 0 0 1px var(--line);
-}
-.event-card h3 { font-size: 25px; color: var(--gold); }
-.event-card p { margin-bottom: 10px; }
+  <title>Undangan Pernikahan Fajar &amp; Nurnashriana</title>
 
-/* Countdown */
-.countdown {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin: 30px 0;
-}
-.count-box {
-  width: 76px;
-  padding: 12px 5px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-}
-.count-box strong { display: block; font-size: 26px; font-weight: normal; }
-.count-box span { font: 10px Arial, sans-serif; color: var(--muted); }
+  <style>
 
-/* Story and gallery */
-.story-item { border-left: 1px solid var(--line); padding: 0 0 25px 20px; text-align: left; }
-.story-item:last-child { padding-bottom: 0; }
-.story-item h3 { color: var(--gold); font-size: 21px; }
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 10px;
-  margin-top: 28px;
-}
-.gallery img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  background: #e8dfd1;
-}
-.gallery img:first-child { grid-column: span 2; height: 300px; }
+    * {
+      box-sizing: border-box;
+    }
 
-/* Form */
-.form { text-align: left; }
-.form label { display: block; font: 12px Arial,sans-serif; margin: 14px 0 6px; }
-.form input, .form textarea, .form select {
-  width: 100%;
-  border: 1px solid var(--line);
-  background: white;
-  color: var(--brown);
-  border-radius: 3px;
-  padding: 12px;
-}
-.form textarea { min-height: 110px; resize: vertical; }
-.form button { margin-top: 18px; }
-.form-note { font-size: 12px; margin-top: 12px; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* Gift */
-.account {
-  border: 1px dashed var(--line);
-  padding: 18px 12px;
-  overflow-wrap: anywhere;
-}
-.account strong { display: block; font-size: 19px; }
-footer {
-  text-align: center;
-  padding: 45px 20px 100px;
-  background: #eee5d8;
-}
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f7f2e9;
+      color: #3d3428;
+    }
 
-/* Floating music */
-.music-btn {
-  position: fixed;
-  z-index: 100;
-  right: 17px;
-  bottom: 17px;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 1px solid var(--gold);
-  background: var(--paper);
-  color: var(--brown);
-  box-shadow: 0 3px 16px #0002;
-  cursor: pointer;
-}
-.music-btn.playing { animation: spin 5s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      background: #fffdf8;
+      min-height: 100vh;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0,0,0,0.08);
+    }
 
-@media(max-width:540px) {
-  section { padding: 58px 17px; }
-  .couple-grid, .event-grid, .gift-grid { grid-template-columns: 1fr; }
-  .couple-photo { width: 135px; height: 135px; }
-  .gallery img { height: 165px; }
-  .gallery img:first-child { height: 220px; }
-  .countdown { gap: 7px; }
-  .count-box { width: 66px; }
-  .hero-content { padding: 30px 16px; }
-}
+    section {
+      padding: 55px 25px;
+      text-align: center;
+    }
 
-/* Opening screen */
-#opening {
-  position: fixed;
-  z-index: 500;
-  inset: 0;
-  overflow-y: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 25px;
-  background: var(--cream);
-  text-align: center;
-}
-#opening[hidden] { display: none; }
-</style>
+
+    /* ==================================================
+       COVER
+    ================================================== */
+
+    .cover {
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+
+      justify-content: center;
+      align-items: center;
+
+      padding: 30px 18px;
+
+      background:
+        linear-gradient(
+          rgba(255,253,248,0.70),
+          rgba(247,242,233,0.78)
+        ),
+        url("cover.jpg") center center / cover no-repeat;
+
+      text-align: center;
+    }
+
+    .ornament {
+      font-size: 30px;
+      margin-bottom: 18px;
+    }
+
+    .cover-small {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .cover h1 {
+      width: 100%;
+
+      margin: 4px 0;
+
+      font-size: clamp(28px, 8vw, 42px);
+
+      font-weight: normal;
+
+      line-height: 1.15;
+
+      white-space: normal;
+    }
+
+    .cover-nickname {
+      display: block;
+
+      margin-top: 2px;
+
+      font-family: Arial, sans-serif;
+
+      font-size: 13px;
+
+      letter-spacing: 1px;
+
+      color: #746653;
+    }
+
+    .and {
+      font-size: 28px;
+
+      margin: 15px 0;
+
+      font-style: italic;
+    }
+
+    .cover-date {
+      margin-top: 25px;
+
+      font-size: 16px;
+
+      letter-spacing: 3px;
+    }
+
+
+    /* ==================================================
+       TAMU DI COVER
+    ================================================== */
+
+    .guest-cover {
+      margin-top: 35px;
+
+      font-family: Arial, sans-serif;
+
+      font-size: 12px;
+
+      line-height: 1.7;
+
+      color: #62594d;
+    }
+
+    .guest-cover-name {
+      display: block;
+
+      margin-top: 3px;
+
+      font-size: 16px;
+
+      font-weight: bold;
+
+      color: #3d3428;
+    }
+
+    .guest-cover-address {
+      display: block;
+
+      margin-top: 2px;
+
+      font-size: 12px;
+
+      color: #766b5d;
+    }
+
+
+    /* ==================================================
+       TOMBOL BUKA
+    ================================================== */
+
+    .open-button {
+
+      margin-top: 25px;
+
+      padding: 14px 30px;
+
+      border: none;
+
+      border-radius: 30px;
+
+      background: #8d7653;
+
+      color: white;
+
+      font-family: Arial, sans-serif;
+
+      font-size: 14px;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 15px rgba(0,0,0,0.12);
+
+    }
+
+    .open-button:active {
+      transform: scale(0.97);
+    }
+
+
+    /* ==================================================
+       UNDANGAN
+    ================================================== */
+
+    #undangan {
+      display: block;
+    }
+
+
+    /* ==================================================
+       JUDUL
+    ================================================== */
+
+    .section-title {
+
+      font-size: 28px;
+
+      font-weight: normal;
+
+      margin-bottom: 25px;
+
+    }
+
+    .divider {
+
+      width: 70px;
+
+      height: 1px;
+
+      background: #b49a70;
+
+      margin: 20px auto 30px;
+
+    }
+
+
+    /* ==================================================
+       PEMBUKA
+    ================================================== */
+
+    .arabic {
+
+      font-size: 23px;
+
+      line-height: 1.8;
+
+      margin-bottom: 20px;
+
+    }
+
+    .intro {
+
+      font-family: Arial, sans-serif;
+
+      font-size: 14px;
+
+      line-height: 1.9;
+
+      color: #62594d;
+
+    }
+
+    .guest-name {
+
+      margin: 25px 0;
+
+      font-family: Arial, sans-serif;
+
+      font-size: 14px;
+
+      line-height: 1.8;
+
+    }
+
+
+    /* ==================================================
+       FOTO
+    ================================================== */
+
+    .couple-photo {
+      display: block;
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      margin: 20px auto;
+      border-radius: 18px;
+      border: 1px solid #ded1bd;
+      box-shadow: 0 8px 24px rgba(0,0,0,.10);
+    }
+
+
+    /* ==================================================
+       MEMPELAI
+    ================================================== */
+
+    .couple {
+
+      padding-top: 40px;
+
+      padding-bottom: 40px;
+
+    }
+
+    .person {
+
+      margin: 30px 0;
+
+    }
+
+    .person-name {
+
+      font-size: 25px;
+
+      line-height: 1.4;
+
+      margin-bottom: 12px;
+
+    }
+
+    .parents {
+
+      font-family: Arial, sans-serif;
+
+      font-size: 13px;
+
+      line-height: 1.8;
+
+      color: #665d50;
+
+    }
+
+    .heart {
+
+      font-size: 25px;
+
+      margin: 25px 0;
+
+    }
+
+
+    /* ==================================================
+       ACARA
+    ================================================== */
+
+    .event {
+
+      margin: 25px 0;
+
+      padding: 28px 20px;
+
+      border: 1px solid #e1d5c3;
+
+      border-radius: 14px;
+
+      background: #fffdf9;
+
+    }
+
+    .event-title {
+
+      font-size: 23px;
+
+      margin-bottom: 15px;
+
+    }
+
+    .event-date {
+
+      font-size: 17px;
+
+      margin: 8px 0;
+
+    }
+
+    .event-time {
+
+      font-family: Arial, sans-serif;
+
+      font-size: 14px;
+
+      color: #665d50;
+
+      margin-bottom: 18px;
+
+    }
+
+    .event-location {
+
+      font-family: Arial, sans-serif;
+
+      font-size: 13px;
+
+      line-height: 1.7;
+
+      color: #665d50;
+
+    }
+
+
+    /* ==================================================
+       MAPS
+    ================================================== */
+
+    .maps-button {
+
+      display: inline-block;
+
+      margin-top: 20px;
+
+      padding: 13px 25px;
+
+      background: #8d7653;
+
+      color: white;
+
+      text-decoration: none;
+
+      border-radius: 25px;
+
+      font-family: Arial, sans-serif;
+
+      font-size: 13px;
+
+    }
+
+
+    /* ==================================================
+       COUNTDOWN
+    ================================================== */
+
+    .countdown {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 8px;
+
+      margin-top: 25px;
+
+    }
+
+    .count-box {
+
+      padding: 12px 5px;
+
+      border-radius: 10px;
+
+      background: #f2eadc;
+
+    }
+
+    .count-number {
+
+      display: block;
+
+      font-size: 22px;
+
+      font-weight: bold;
+
+    }
+
+    .count-label {
+
+      display: block;
+
+      margin-top: 5px;
+
+      font-family: Arial, sans-serif;
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    /* ==================================================
+       RSVP
+    ================================================== */
+
+    .rsvp-box {
+
+      margin-top: 30px;
+
+      padding: 25px 20px;
+
+      border-radius: 15px;
+
+      background: #f8f3ea;
+
+    }
+
+    .form-group {
+
+      margin-bottom: 18px;
+
+      text-align: left;
+
+    }
+
+    label {
+
+      display: block;
+
+      margin-bottom: 7px;
+
+      font-family: Arial, sans-serif;
+
+      font-size: 13px;
+
+      font-weight: bold;
+
+    }
+
+    input,
+    select,
+    textarea {
+
+      width: 100%;
+
+      padding: 12px;
+
+      border: 1px solid #d8cbb8;
+
+      border-radius: 8px;
+
+      font-family: Arial, sans-serif;
+
+      font-size: 14px;
+
+      background: white;
+
+    }
+
+    textarea {
+
+      min-height: 90px;
+
+      resize: vertical;
+
+    }
+
+    .submit-button {
+
+      width: 100%;
+
+      padding: 14px;
+
+      border: none;
+
+      border-radius: 25px;
+
+      background: #8d7653;
+
+      color: white;
+
+      font-size: 14px;
+
+      cursor: pointer;
+
+    }
+
+    .message {
+
+      margin-top: 15px;
+
+      padding: 12px;
+
+      border-radius: 8px;
+
+      font-family: Arial, sans-serif;
+
+      font-size: 13px;
+
+      display: none;
+
+    }
+
+
+    /* ==================================================
+       WEDDING GIFT
+    ================================================== */
+
+    .gift-section {
+
+      background: #fffdf8;
+
+      padding-top: 55px;
+
+      padding-bottom: 55px;
+
+    }
+
+    .gift-intro {
+
+      font-family: Arial, sans-serif;
+
+      font-size: 13px;
+
+      line-height: 1.8;
+
+      color: #62594d;
+
+    }
+
+    .gift-card {
+
+      margin: 25px 0;
+
+      padding: 30px 20px;
+
+      border: 1px solid #dfd0ba;
+
+      border-radius: 18px;
+
+      background: #f8f3ea;
+
+      box-shadow:
+        0 5px 15px rgba(0,0,0,0.05);
+
+    }
+
+    .gift-icon {
+
+      font-size: 38px;
+
+      margin-bottom: 12px;
+
+    }
+
+    .gift-title {
+
+      font-size: 20px;
+
+      margin-bottom: 18px;
+
+    }
+
+    .gift-bank {
+
+      font-family: Arial, sans-serif;
+
+      font-size: 13px;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 8px;
+
+    }
+
+    .gift-name {
+
+      font-family: Arial, sans-serif;
+
+      font-size: 14px;
+
+      font-weight: bold;
+
+      margin-bottom: 12px;
+
+    }
+
+    .gift-number {
+
+      font-family: Arial, sans-serif;
+
+      font-size: 21px;
+
+      font-weight: bold;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 20px;
+
+    }
+
+    .copy-button {
+
+      border: none;
+
+      border-radius: 25px;
+
+      padding: 12px 20px;
+
+      background: #8d7653;
+
+      color: white;
+
+      font-family: Arial, sans-serif;
+
+      font-size: 13px;
+
+      cursor: pointer;
+
+    }
+
+    .copy-button:active {
+
+      transform: scale(0.97);
+
+    }
+
+    .copy-message {
+
+      display: none;
+
+      margin-top: 15px;
+
+      padding: 10px;
+
+      border-radius: 8px;
+
+      background: #eee5d5;
+
+      font-family: Arial, sans-serif;
+
+      font-size: 13px;
+
+    }
+
+
+    /* ==================================================
+       PENUTUP
+    ================================================== */
+
+    .closing {
+
+      background: #f5efe5;
+
+    }
+
+    .closing-text {
+
+      font-family: Arial, sans-serif;
+
+      font-size: 13px;
+
+      line-height: 1.9;
+
+    }
+
+    .footer-names {
+
+      margin-top: 30px;
+
+      font-size: 25px;
+
+      line-height: 1.5;
+
+    }
+
+
+    /* ==================================================
+       RESPONSIVE HP
+    ================================================== */
+
+    @media (max-width: 450px) {
+
+      .cover {
+
+        padding-left: 10px;
+
+        padding-right: 10px;
+
+      }
+
+      .cover h1 {
+
+        font-size: 27px;
+
+        white-space: normal;
+
+      }
+
+      .cover-small {
+
+        font-size: 10px;
+
+        letter-spacing: 2px;
+
+      }
+
+      .person-name {
+
+        font-size: 22px;
+
+      }
+
+      section {
+
+        padding: 45px 20px;
+
+      }
+
+      .couple-photo {
+        max-height: 420px;
+      }
+
+    }
+
+
+    @media (max-width: 360px) {
+
+      .cover h1 {
+
+        font-size: 24px;
+
+      }
+
+      .cover-date {
+
+        font-size: 14px;
+
+      }
+
+    }
+
+  </style>
+
 </head>
 
-<body class="locked">
 
-<!-- HALAMAN PEMBUKA -->
-<div id="opening">
-  <div class="container">
-    <p class="eyebrow">The Wedding Invitation</p>
-    <div class="divider"></div>
-    <h1 style="font-weight:normal;font-size:clamp(42px,10vw,66px);line-height:1.2">
-      Fajar<br><span class="script">&</span><br>Nurnashriana
+<body>
+
+
+<div class="container">
+
+
+  <!-- ==================================================
+       COVER
+  ================================================== -->
+
+  <section
+    class="cover"
+    id="cover"
+  >
+
+    <div class="ornament">
+      ❦
+    </div>
+
+    <div class="cover-small">
+      The Wedding Of
+    </div>
+
+
+    <!-- FAJAR -->
+
+    <h1>
+      Fajar Wira Perdana
     </h1>
-    <p>Dear</p>
-    <h2 id="openingGuest" style="font-size:25px">Tamu Undangan</h2>
-    <p>Tanpa mengurangi rasa hormat, kami mengundang Anda.</p>
-    <p class="cover-date">08 NOVEMBER 2026 · KENDARI</p>
-    <button class="btn" id="openInvitation">Buka Undangan</button>
-  </div>
+
+    <span class="cover-nickname">
+      (Fajar)
+    </span>
+
+
+    <div class="and">
+      &
+    </div>
+
+
+    <!-- NANA -->
+
+    <h1>
+      Nurnashriana Jufri
+    </h1>
+
+    <span class="cover-nickname">
+      (Nana)
+    </span>
+
+
+    <div class="cover-date">
+      08 • 11 • 2026
+    </div>
+
+
+    <!-- TAMU -->
+
+    <div class="guest-cover">
+
+      Kepada Yth.
+
+      <span class="guest-cover-name" id="namaTamuCover">Tamu Undangan</span>
 </div>
 
-<!-- MUSIK: unggah musik.mp3 ke folder utama repository -->
-<audio id="weddingMusic" loop preload="none">
-  <source src="musik.mp3" type="audio/mpeg">
-</audio>
-<button class="music-btn" id="musicButton" aria-label="Putar musik" title="Putar atau jeda musik">♫</button>
 
-<!-- COVER -->
-<header class="cover" id="home">
-  <div class="cover-inner">
-    <p class="eyebrow">The Wedding Of</p>
-    <h1>Fajar <span class="script">&</span><br>Nurnashriana</h1>
-    <div class="divider"></div>
-    <p class="cover-date">MINGGU · 08 · 11 · 2026</p>
-    <div class="guest-box">
-      <p>Kepada Yth. Bapak/Ibu/Saudara/i</p>
-      <strong id="guestName">Tamu Undangan</strong>
-    </div>
-    <a class="btn outline" href="#mempelai">Lihat Undangan</a>
-  </div>
-</header>
+    <button
+      type="button"
+      class="open-button"
+      onclick="bukaUndangan()"
+    >
 
-<!-- SALAM -->
-<section>
-  <div class="container">
-    <p class="eyebrow">Assalamu'alaikum Warahmatullahi Wabarakatuh</p>
-    <div class="divider"></div>
-    <p>
-      Dengan memohon rahmat dan ridho Allah SWT,
-      kami bermaksud menyelenggarakan pernikahan kami.
-      Merupakan kebahagiaan bagi kami apabila Anda
-      berkenan hadir dan memberikan doa restu.
-    </p>
-    <p class="script">With love and gratitude</p>
-  </div>
-</section>
+      💌 Buka Undangan
 
-<!-- MEMPELAI -->
-<section id="mempelai" style="background:var(--paper)">
-  <div class="container">
-    <p class="eyebrow">The Bride & Groom</p>
-    <h2>Kedua Mempelai</h2>
-    <div class="divider"></div>
-    <div class="couple-grid">
-      <article>
-        <img class="couple-photo" src="images/groom.jpg" alt="Foto mempelai pria"
-             onerror="this.style.display='none'">
-        <h3 style="font-size:25px">Fajar Wira Perdana, S.E.</h3>
-        <p>Putra dari keluarga mempelai pria</p>
-      </article>
-      <article>
-        <img class="couple-photo" src="images/bride.jpg" alt="Foto mempelai wanita"
-             onerror="this.style.display='none'">
-        <h3 style="font-size:25px">Dr. Nurnashriana Jufri, SKM., M.Kes.</h3>
-        <p>Putri dari keluarga mempelai wanita</p>
-      </article>
-    </div>
-    <p class="small">Silakan sesuaikan informasi orang tua pada bagian HTML ini.</p>
-  </div>
-</section>
+    </button>
 
-<!-- COUNTDOWN -->
-<section>
-  <div class="container">
-    <p class="eyebrow">Save The Date</p>
-    <h2>Menuju Hari Bahagia</h2>
-    <p>Minggu, 8 November 2026</p>
-    <div class="countdown" aria-label="Hitung mundur pernikahan">
-      <div class="count-box"><strong id="days">0</strong><span>HARI</span></div>
-      <div class="count-box"><strong id="hours">0</strong><span>JAM</span></div>
-      <div class="count-box"><strong id="minutes">0</strong><span>MENIT</span></div>
-      <div class="count-box"><strong id="seconds">0</strong><span>DETIK</span></div>
-    </div>
-    <p id="countdownMessage" class="small"></p>
-  </div>
-</section>
+  </section>
 
-<!-- ACARA -->
-<section id="acara" style="background:var(--paper)">
-  <div class="container">
-    <p class="eyebrow">Wedding Events</p>
-    <h2>Rangkaian Acara</h2>
-    <div class="divider"></div>
-    <div class="event-grid">
-      <article class="card event-card">
-        <p class="eyebrow">Acara Pertama</p>
-        <h3>Akad Nikah</h3>
-        <p><strong>Minggu, 8 November 2026</strong></p>
-        <p>08.00 WITA</p>
-        <p>Lokasi: Kendari</p>
-      </article>
-      <article class="card event-card">
-        <p class="eyebrow">Acara Kedua</p>
-        <h3>Resepsi</h3>
-        <p><strong>Minggu, 8 November 2026</strong></p>
-        <p>11.00 WITA – selesai</p>
-        <p>Lokasi: Kendari</p>
-      </article>
-    </div>
-    <p class="small" style="margin-top:18px">
-      Alamat lengkap lokasi acara belum diatur.
-    </p>
-    <!-- GANTI ALAMAT_LOKASI dengan alamat acara yang benar -->
-    <a class="btn outline" target="_blank" rel="noopener"
-       href="https://www.google.com/maps/search/?api=1&query=Kendari">
-       Buka Google Maps
-    </a>
-  </div>
-</section>
 
-<!-- LOVE STORY -->
-<section id="story">
-  <div class="container">
-    <p class="eyebrow">Our Journey</p>
-    <h2>Love Story</h2>
-    <div class="divider"></div>
-    <div class="card" style="text-align:left">
-      <div class="story-item">
-        <h3>Awal Pertemuan</h3>
-        <p>Setiap kisah memiliki awal. Di sinilah cerita kami dimulai.</p>
+  <!-- ==================================================
+       ISI UNDANGAN
+  ================================================== -->
+
+  <div id="isiUndangan"
+       style="display:none;">
+
+
+    <!-- PEMBUKA -->
+
+    <section id="undangan">
+
+      <div class="arabic">
+
+        بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+
       </div>
-      <div class="story-item">
-        <h3>Perjalanan Bersama</h3>
-        <p>Belajar memahami, tumbuh bersama, dan menjaga kepercayaan.</p>
+
+      <div class="divider"></div>
+
+
+      <p class="intro">
+
+        Assalamu'alaikum Wr. Wb.
+
+      </p>
+
+
+      <div class="guest-name">
+
+        Yth. Bapak/Ibu/Saudara/i
+
+        <br>
+
+        <strong id="namaTamuIsi">Tamu Undangan</strong>
+
       </div>
-      <div class="story-item">
-        <h3>Menuju Selamanya</h3>
-        <p>Dengan doa dan restu keluarga, kami melangkah ke babak baru.</p>
+
+
+      <p class="intro">
+
+        Dengan memohon rahmat dan ridho Allah SWT,
+        kami bermaksud mengundang Bapak/Ibu/Saudara/i
+        untuk hadir dalam acara pernikahan kami.
+
+        <br><br>
+
+        Merupakan suatu kehormatan dan kebahagiaan
+        bagi kami apabila Bapak/Ibu/Saudara/i
+        berkenan hadir dan memberikan doa restu.
+
+      </p>
+
+    </section>
+
+
+    <!-- FOTO MEMPELAI -->
+    <section>
+      <img class="couple-photo" src="couple.jpg" alt="Foto Fajar dan Nurnashriana" loading="lazy">
+    </section>
+
+
+    <!-- MEMPELAI -->
+
+    <section class="couple">
+
+      <div class="section-title">
+        Mempelai
       </div>
-    </div>
-    <p class="small" style="margin-top:12px">
-      Ganti teks contoh dengan kisah cinta Anda yang sebenarnya.
-    </p>
-  </div>
-</section>
 
-<!-- GALERI -->
-<section id="galeri" style="background:var(--paper)">
-  <div class="container">
-    <p class="eyebrow">Our Moments</p>
-    <h2>Galeri Foto</h2>
-    <div class="divider"></div>
-    <p>Potongan kenangan menuju hari istimewa kami.</p>
-    <div class="gallery">
-      <img src="images/gallery1.jpg" alt="Kenangan pasangan 1" loading="lazy"
-           onerror="this.style.display='none'">
-      <img src="images/gallery2.jpg" alt="Kenangan pasangan 2" loading="lazy"
-           onerror="this.style.display='none'">
-      <img src="images/gallery3.jpg" alt="Kenangan pasangan 3" loading="lazy"
-           onerror="this.style.display='none'">
-      <img src="images/gallery4.jpg" alt="Kenangan pasangan 4" loading="lazy"
-           onerror="this.style.display='none'">
-    </div>
-    <p class="small" style="margin-top:14px">
-      Unggah foto Anda dengan nama file yang sesuai.
-    </p>
-  </div>
-</section>
+      <div class="divider"></div>
 
-<!-- RSVP & WISHES -->
-<section id="rsvp">
-  <div class="container">
-    <p class="eyebrow">Kindly Respond</p>
-    <h2>RSVP & Wishes</h2>
-    <div class="divider"></div>
-    <p>Mohon konfirmasi kehadiran dan sampaikan doa terbaik Anda.</p>
 
-    <div class="card form">
-      <form id="rsvpForm">
-        <label for="rsvpName">Nama</label>
-        <input id="rsvpName" name="nama" required maxlength="100">
+      <div class="person">
 
-        <label for="attendance">Konfirmasi Kehadiran</label>
-        <select id="attendance" name="kehadiran" required>
-          <option value="">Pilih konfirmasi</option>
-          <option value="Hadir">Insyaallah hadir</option>
-          <option value="Tidak hadir">Mohon maaf, tidak dapat hadir</option>
-        </select>
+        <div class="person-name">
+          Fajar Wira Perdana
+        </div>
 
-        <label for="wishes">Ucapan & Doa</label>
-        <textarea id="wishes" name="ucapan"
-          maxlength="1000" placeholder="Tuliskan ucapan dan doa terbaik..."></textarea>
+        <div class="parents">
 
-        <button class="btn" type="submit">Kirim Konfirmasi</button>
-        <p id="rsvpStatus" class="form-note" role="status">
-          Form perlu dihubungkan ke Google Apps Script agar jawaban tersimpan.
-        </p>
-      </form>
-    </div>
-  </div>
-</section>
+          Putra dari
 
-<!-- WEDDING GIFT: DEKAT DENGAN RSVP -->
-<section id="gift" style="background:var(--paper)">
-  <div class="container">
-    <p class="eyebrow">Wedding Gift</p>
-    <h2>Tanda Kasih</h2>
-    <div class="divider"></div>
-    <p>
-      Doa restu Anda merupakan hadiah terindah bagi kami.
-      Bagi keluarga dan sahabat yang ingin berbagi tanda kasih,
-      informasi rekening dapat ditampilkan di bawah ini.
-    </p>
-    <div class="gift-grid">
-      <div class="account">
-        <p class="eyebrow">Bank</p>
-        <strong id="bankName">NAMA BANK</strong>
-        <p id="accountNumber">NOMOR REKENING</p>
-        <p>a.n. <span id="accountOwner">NAMA PEMILIK</span></p>
-        <button class="btn outline" type="button" onclick="copyAccount()">
-          Salin Rekening
+          <br>
+
+          <strong>
+            Dr. H. Mustawa. D, S.E., M.Si.
+          </strong>
+
+          <br>
+
+          &
+
+          <br>
+
+          <strong>
+            Hj. Rusni. S., S.Pd.
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="heart">
+        ♥
+      </div>
+
+
+      <div class="person">
+
+        <div class="person-name">
+          Dr. Nurnashriana Jufri, SKM., M.Kes.
+        </div>
+
+        <div class="parents">
+
+          Putri dari
+
+          <br>
+
+          <strong>
+            Prof. Dr. H. Muh. Jufri Dewa, S.H., M.S.
+          </strong>
+
+          <br>
+
+          &
+
+          <br>
+
+          <strong>
+            Dra. Hj. Nursyamsi
+          </strong>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ACARA -->
+
+    <section>
+
+      <div class="section-title">
+        Waktu & Tempat
+      </div>
+
+      <div class="divider"></div>
+
+
+      <!-- AKAD -->
+
+      <div class="event">
+
+        <div class="event-title">
+          🕌 Akad Nikah
+        </div>
+
+        <div class="event-date">
+          Minggu, 8 November 2026
+        </div>
+
+        <div class="event-time">
+          08.00 WITA – Selesai
+        </div>
+
+        <div class="event-location">
+
+          <strong>
+            Ballroom Khaira
+          </strong>
+
+          <br>
+
+          Hotel Zahra Syariah, Kendari
+
+        </div>
+
+      </div>
+
+
+      <!-- RESEPSI -->
+
+      <div class="event">
+
+        <div class="event-title">
+          ✨ Resepsi
+        </div>
+
+        <div class="event-date">
+          Minggu, 8 November 2026
+        </div>
+
+        <div class="event-time">
+          11.00 WITA – Selesai
+        </div>
+
+        <div class="event-location">
+
+          <strong>
+            Ballroom Khaira
+          </strong>
+
+          <br>
+
+          Hotel Zahra Syariah, Kendari
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="https://maps.app.goo.gl/QayRAC2xfcRYpPws7"
+        target="_blank"
+        class="maps-button"
+      >
+
+        📍 Buka Lokasi di Google Maps
+
+      </a>
+
+    </section>
+
+
+    <!-- COUNTDOWN -->
+
+    <section>
+
+      <div class="section-title">
+        Menuju Hari Bahagia
+      </div>
+
+      <div class="divider"></div>
+
+
+      <div class="countdown">
+
+
+        <div class="count-box">
+
+          <span
+            class="count-number"
+            id="days"
+          >
+            0
+          </span>
+
+          <span class="count-label">
+            Hari
+          </span>
+
+        </div>
+
+
+        <div class="count-box">
+
+          <span
+            class="count-number"
+            id="hours"
+          >
+            0
+          </span>
+
+          <span class="count-label">
+            Jam
+          </span>
+
+        </div>
+
+
+        <div class="count-box">
+
+          <span
+            class="count-number"
+            id="minutes"
+          >
+            0
+          </span>
+
+          <span class="count-label">
+            Menit
+          </span>
+
+        </div>
+
+
+        <div class="count-box">
+
+          <span
+            class="count-number"
+            id="seconds"
+          >
+            0
+          </span>
+
+          <span class="count-label">
+            Detik
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- RSVP -->
+
+    <section>
+
+      <div class="section-title">
+        RSVP &amp; Wishes
+      </div>
+
+      <div class="divider"></div>
+
+
+      <p class="intro">
+
+        Mohon konfirmasi kehadiran
+        Bapak/Ibu/Saudara/i.
+
+      </p>
+
+
+      <div class="rsvp-box">
+
+
+        <div class="form-group">
+
+          <label>
+            Kehadiran
+          </label>
+
+          <select id="kehadiran">
+
+            <option value="">
+              Pilih Kehadiran
+            </option>
+
+            <option value="HADIR">
+              Hadir
+            </option>
+
+            <option value="TIDAK HADIR">
+              Tidak Hadir
+            </option>
+
+          </select>
+
+        </div>
+
+<div class="form-group">
+
+          <label>
+            Wishes — Ucapan / Doa
+          </label>
+
+          <textarea
+            id="ucapan"
+            placeholder="Tuliskan ucapan atau doa..."
+          ></textarea>
+
+        </div>
+
+
+
+        <button
+          type="button"
+          class="submit-button"
+          onclick="kirimRSVP()"
+        >
+
+          💌 Kirim Konfirmasi
+
         </button>
-      </div>
-      <div class="account">
-        <p class="eyebrow">Pesan</p>
-        <strong>Terima Kasih</strong>
-        <p>Terima kasih atas doa dan perhatian Anda untuk hari bahagia kami.</p>
-      </div>
-    </div>
-    <p id="copyStatus" class="small" role="status"></p>
-  </div>
-</section>
 
-<!-- PENUTUP -->
-<section>
-  <div class="container">
-    <p class="eyebrow">With Love</p>
-    <h2>Merupakan Kehormatan</h2>
-    <p>
-      Merupakan kebahagiaan dan kehormatan bagi kami
-      apabila Bapak/Ibu/Saudara/i berkenan hadir
-      untuk memberikan doa restu.
-    </p>
-    <div class="divider"></div>
-    <p>Wassalamu'alaikum Warahmatullahi Wabarakatuh.</p>
-    <h2 class="script">Fajar & Nurnashriana</h2>
-  </div>
-</section>
 
-<footer>
-  <p class="eyebrow">The Wedding Of</p>
-  <p>Fajar & Nurnashriana · 08.11.2026</p>
-  <p class="small">Made with love</p>
-</footer>
+        <div
+          class="message"
+          id="message"
+        ></div>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         WEDDING GIFT
+    ================================================== -->
+
+    <section class="gift-section">
+
+      <div class="section-title">
+        Wedding Gift
+      </div>
+
+      <div class="divider"></div>
+
+
+      <p class="gift-intro">
+
+        Doa restu dan kehadiran Anda
+        merupakan hadiah terindah bagi kami.
+
+        <br><br>
+
+        Namun apabila ingin memberikan tanda kasih,
+        dapat melalui:
+
+      </p>
+
+
+      <!-- GIFT FAJAR -->
+
+      <div class="gift-card">
+
+        <div class="gift-icon">
+          🎁
+        </div>
+
+        <div class="gift-title">
+          Wedding Gift untuk Fajar
+        </div>
+
+        <div class="gift-bank">
+          BCA BANK
+        </div>
+
+        <div class="gift-name">
+          FAJAR WIRA PERDANA
+        </div>
+
+        <div class="gift-number">
+          7970302161
+        </div>
+
+
+        <button
+          type="button"
+          class="copy-button"
+          onclick="copyRekening('7970302161', this)"
+        >
+
+          📋 Salin Nomor Rekening
+
+        </button>
+
+      </div>
+
+
+
+      <div
+        id="copyMessage"
+        class="copy-message"
+      ></div>
+
+    </section>
+
+
+    <!-- PENUTUP -->
+
+    <section class="closing">
+
+      <div class="section-title">
+        Terima Kasih
+      </div>
+
+      <div class="divider"></div>
+
+
+      <p class="closing-text">
+
+        Merupakan suatu kehormatan dan kebahagiaan
+        bagi kami apabila Bapak/Ibu/Saudara/i
+        berkenan hadir dan memberikan doa restu
+        untuk pernikahan kami.
+
+        <br><br>
+
+        Atas kehadiran dan doa restunya,
+        kami mengucapkan terima kasih.
+
+        <br><br>
+
+        Wassalamu'alaikum Wr. Wb.
+
+      </p>
+
+
+      <div class="footer-names">
+
+        Fajar Wira Perdana
+
+        <br>
+
+        &
+
+        <br>
+
+        Nurnashriana Jufri
+
+      </div>
+
+    </section>
+
+
+  </div>
+
+
+</div>
+
+
+<!-- ==================================================
+     AUDIO
+================================================== -->
+
+<audio
+  id="weddingMusic"
+  loop
+  preload="auto"
+>
+
+  <source src="music.mp3" type="audio/mpeg">
+
+</audio>
+
+<button type="button" id="musicToggle" class="open-button" style="position:fixed;right:14px;bottom:14px;z-index:999;display:none;margin:0;padding:11px 16px" onclick="toggleMusic()">♫ Musik</button>
 
 <script>
-/* NAMA TAMU DARI LINK ?to=Nana */
-const query = new URLSearchParams(window.location.search);
-const guest = query.get("to");
-const safeGuest = guest ? guest.trim().slice(0, 100) : "";
-const guestText = safeGuest || "Tamu Undangan";
 
-document.getElementById("guestName").textContent = guestText;
-document.getElementById("openingGuest").textContent = guestText;
-document.getElementById("rsvpName").value = safeGuest;
 
-/* BUKA UNDANGAN DAN MUSIK */
-const music = document.getElementById("weddingMusic");
-const musicButton = document.getElementById("musicButton");
-const opening = document.getElementById("opening");
+  /* ==================================================
+     KONFIGURASI GITHUB PAGES + DATA TAMU
+     Isi URL Web App Apps Script yang berakhiran /exec agar RSVP tersimpan.
+  ================================================== */
+  const APPS_SCRIPT_URL = "";
+  const paramsUndangan = new URLSearchParams(window.location.search);
+  const namaTamu = (paramsUndangan.get("to") || "Tamu Undangan").trim();
+  const tamuId = paramsUndangan.get("id") || "";
+  document.getElementById("namaTamuCover").textContent = namaTamu || "Tamu Undangan";
+  document.getElementById("namaTamuIsi").textContent = namaTamu || "Tamu Undangan";
 
-async function playMusic() {
-  try {
-    await music.play();
-    musicButton.classList.add("playing");
-    musicButton.textContent = "Ⅱ";
-    musicButton.setAttribute("aria-label", "Jeda musik");
-  } catch (e) {
-    musicButton.textContent = "♫";
-  }
-}
-function pauseMusic() {
-  music.pause();
-  musicButton.classList.remove("playing");
-  musicButton.textContent = "♫";
-  musicButton.setAttribute("aria-label", "Putar musik");
-}
 
-document.getElementById("openInvitation").addEventListener("click", async () => {
-  opening.hidden = true;
-  document.body.classList.remove("locked");
-  await playMusic();
-  document.getElementById("home").scrollIntoView({behavior:"smooth"});
-});
-musicButton.addEventListener("click", () => {
-  if (music.paused) playMusic();
-  else pauseMusic();
-});
+  /* ==================================================
+     BUKA UNDANGAN
+  ================================================== */
 
-/* COUNTDOWN WAKTU KENDARI (WITA = UTC+8) */
-const weddingDate = new Date("2026-11-08T08:00:00+08:00").getTime();
-function updateCountdown() {
-  const diff = weddingDate - Date.now();
-  if (diff <= 0) {
-    ["days","hours","minutes","seconds"].forEach(id =>
-      document.getElementById(id).textContent = "0"
-    );
-    document.getElementById("countdownMessage").textContent =
-      "Hari bahagia kami telah tiba.";
-    return;
-  }
-  document.getElementById("days").textContent =
-    Math.floor(diff / 86400000);
-  document.getElementById("hours").textContent =
-    Math.floor(diff % 86400000 / 3600000);
-  document.getElementById("minutes").textContent =
-    Math.floor(diff % 3600000 / 60000);
-  document.getElementById("seconds").textContent =
-    Math.floor(diff % 60000 / 1000);
-}
-updateCountdown();
-setInterval(updateCountdown, 1000);
+  function bukaUndangan() {
 
-/*
- * KONFIGURASI GOOGLE APPS SCRIPT
- * Ganti URL di bawah setelah backend doPost siap.
- * Kosongkan sampai endpoint sudah dibuat dan diuji.
- */
-const APPS_SCRIPT_URL = "";
+    const cover =
+      document.getElementById("cover");
 
-document.getElementById("rsvpForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const status = document.getElementById("rsvpStatus");
+    const isi =
+      document.getElementById("isiUndangan");
 
-  if (!APPS_SCRIPT_URL) {
-    status.textContent =
-      "Form belum terhubung. Konfigurasikan URL Google Apps Script terlebih dahulu.";
-    return;
-  }
+    const music =
+      document.getElementById("weddingMusic");
 
-  const payload = {
-    nama: document.getElementById("rsvpName").value.trim(),
-    kehadiran: document.getElementById("attendance").value,
-    ucapan: document.getElementById("wishes").value.trim(),
-    tamu: safeGuest
-  };
 
-  status.textContent = "Mengirim konfirmasi...";
+    /*
+      Hilangkan cover
+    */
 
-  try {
-    await fetch(APPS_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(payload)
+    cover.style.display =
+      "none";
+
+
+    /*
+      Tampilkan isi undangan
+    */
+
+    isi.style.display =
+      "block";
+
+
+    /*
+      Jalankan musik.
+      Browser HP biasanya mengizinkan
+      audio karena dipicu oleh klik pengguna.
+    */
+
+    const musicToggle = document.getElementById("musicToggle");
+    if (musicToggle) musicToggle.style.display = "block";
+
+    if (music) {
+
+      music.play()
+        .catch(function(error) {
+
+          console.log(
+            "Musik tidak dapat diputar:",
+            error
+          );
+
+        });
+
+    }
+
+
+    /*
+      Scroll ke bagian awal
+    */
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
     });
-    status.textContent =
-      "Permintaan telah dikirim. Pastikan backend Google Apps Script menyimpan data dengan benar.";
-  } catch (err) {
-    status.textContent =
-      "Pengiriman gagal. Periksa koneksi dan konfigurasi Google Apps Script.";
-  }
-});
 
-/* WEDDING GIFT: GANTI DENGAN DATA REKENING ASLI */
-const gift = {
-  bank: "NAMA BANK",
-  number: "NOMOR REKENING",
-  owner: "NAMA PEMILIK"
-};
-document.getElementById("bankName").textContent = gift.bank;
-document.getElementById("accountNumber").textContent = gift.number;
-document.getElementById("accountOwner").textContent = gift.owner;
+  }
 
-async function copyAccount() {
-  const status = document.getElementById("copyStatus");
-  if (gift.number === "NOMOR REKENING") {
-    status.textContent = "Silakan isi nomor rekening pada konfigurasi HTML.";
-    return;
+
+
+
+  function toggleMusic() {
+    const music = document.getElementById("weddingMusic");
+    const button = document.getElementById("musicToggle");
+    if (!music || !button) return;
+    if (music.paused) {
+      music.play().then(function(){ button.innerText = "♫ Matikan Musik"; })
+        .catch(function(){ button.innerText = "♫ Putar Musik"; });
+    } else {
+      music.pause();
+      button.innerText = "♫ Putar Musik";
+    }
   }
-  try {
-    await navigator.clipboard.writeText(gift.number);
-    status.textContent = "Nomor rekening berhasil disalin.";
-  } catch (e) {
-    status.textContent = "Tidak dapat menyalin otomatis. Silakan salin nomor rekening secara manual.";
+
+  /* ==================================================
+     COUNTDOWN
+  ================================================== */
+
+  const targetDate =
+    new Date(
+      "2026-11-08T08:00:00+08:00"
+    ).getTime();
+
+
+  function updateCountdown() {
+
+    const sekarang =
+      new Date().getTime();
+
+
+    const selisih =
+      targetDate - sekarang;
+
+
+    if (selisih <= 0) {
+
+      document.getElementById(
+        "days"
+      ).innerText = "0";
+
+      document.getElementById(
+        "hours"
+      ).innerText = "0";
+
+      document.getElementById(
+        "minutes"
+      ).innerText = "0";
+
+      document.getElementById(
+        "seconds"
+      ).innerText = "0";
+
+      return;
+
+    }
+
+
+    const days =
+      Math.floor(
+        selisih /
+        (1000 * 60 * 60 * 24)
+      );
+
+
+    const hours =
+      Math.floor(
+        (
+          selisih %
+          (1000 * 60 * 60 * 24)
+        ) /
+        (1000 * 60 * 60)
+      );
+
+
+    const minutes =
+      Math.floor(
+        (
+          selisih %
+          (1000 * 60 * 60)
+        ) /
+        (1000 * 60)
+      );
+
+
+    const seconds =
+      Math.floor(
+        (
+          selisih %
+          (1000 * 60)
+        ) /
+        1000
+      );
+
+
+    document.getElementById(
+      "days"
+    ).innerText = days;
+
+
+    document.getElementById(
+      "hours"
+    ).innerText = hours;
+
+
+    document.getElementById(
+      "minutes"
+    ).innerText = minutes;
+
+
+    document.getElementById(
+      "seconds"
+    ).innerText = seconds;
+
   }
-}
+
+
+  updateCountdown();
+
+
+  setInterval(
+    updateCountdown,
+    1000
+  );
+
+
+  /* ==================================================
+     RSVP
+  ================================================== */
+
+  const kehadiran = document.getElementById("kehadiran");
+
+
+  async function kirimRSVP() {
+    const hadir = document.getElementById("kehadiran").value;
+    const ucapan = document.getElementById("ucapan").value.trim();
+    const message = document.getElementById("message");
+
+    if (!hadir) {
+      message.style.display = "block";
+      message.innerText = "Silakan pilih konfirmasi kehadiran.";
+      return;
+    }
+    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes("ISI_URL_WEB_APP")) {
+      message.style.display = "block";
+      message.innerText = "RSVP belum dihubungkan. Pemilik website perlu mengisi URL Web App Google Apps Script di file index.html.";
+      return;
+    }
+
+    message.style.display = "block";
+    message.innerText = "Mengirim konfirmasi...";
+
+    const data = new URLSearchParams();
+    data.set("action", "rsvp");
+    data.set("name", namaTamu || "Tamu Undangan");
+    data.set("count", "1"); // jumlah hadir tidak ditampilkan/ditanyakan
+    data.set("attendance", hadir === "HADIR" ? "Hadir" : "Tidak Hadir");
+    data.set("message", ucapan);
+
+    try {
+      // no-cors dipakai agar permintaan form sederhana dapat dikirim dari GitHub Pages.
+      // Karena respons Google Apps Script lintas-domain tidak bisa dibaca browser,
+      // status ditulis sebagai terkirim, bukan sebagai verifikasi penyimpanan.
+      await fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", body: data });
+      message.innerText = "Konfirmasi telah dikirim. Terima kasih atas ucapan dan doa Anda.";
+      document.getElementById("kehadiran").value = "";
+      document.getElementById("ucapan").value = "";
+    } catch (error) {
+      message.innerText = "Pengiriman gagal. Silakan coba lagi atau hubungi keluarga mempelai.";
+    }
+  }
+
+
+  /* ==================================================
+     COPY REKENING
+  ================================================== */
+
+  function copyRekening(
+    nomor,
+    tombol
+  ) {
+
+    /*
+      Metode modern
+    */
+
+    if (
+      navigator.clipboard &&
+      window.isSecureContext
+    ) {
+
+      navigator.clipboard
+        .writeText(nomor)
+        .then(function() {
+
+          berhasilCopy(
+            tombol,
+            nomor
+          );
+
+        })
+        .catch(function() {
+
+          copyFallback(
+            nomor,
+            tombol
+          );
+
+        });
+
+    } else {
+
+      copyFallback(
+        nomor,
+        tombol
+      );
+
+    }
+
+  }
+
+
+  /* ==================================================
+     FALLBACK COPY
+  ================================================== */
+
+  function copyFallback(
+    nomor,
+    tombol
+  ) {
+
+    const textarea =
+      document.createElement(
+        "textarea"
+      );
+
+
+    textarea.value =
+      nomor;
+
+
+    textarea.style.position =
+      "fixed";
+
+    textarea.style.left =
+      "-9999px";
+
+
+    document.body.appendChild(
+      textarea
+    );
+
+
+    textarea.focus();
+
+    textarea.select();
+
+
+    try {
+
+      document.execCommand(
+        "copy"
+      );
+
+      berhasilCopy(
+        tombol,
+        nomor
+      );
+
+    } catch (error) {
+
+      const message =
+        document.getElementById(
+          "copyMessage"
+        );
+
+      message.style.display =
+        "block";
+
+      message.innerText =
+        "Nomor rekening: " +
+        nomor;
+
+    }
+
+
+    document.body.removeChild(
+      textarea
+    );
+
+  }
+
+
+  /* ==================================================
+     PESAN COPY
+  ================================================== */
+
+  function berhasilCopy(
+    tombol,
+    nomor
+  ) {
+
+    const message =
+      document.getElementById(
+        "copyMessage"
+      );
+
+
+    message.style.display =
+      "block";
+
+
+    message.innerText =
+      "✓ Nomor rekening berhasil disalin.";
+
+
+    const teksAwal =
+      tombol.innerText;
+
+
+    tombol.innerText =
+      "✓ Berhasil Disalin";
+
+
+    setTimeout(function() {
+
+      tombol.innerText =
+        teksAwal;
+
+      message.style.display =
+        "none";
+
+    }, 2500);
+
+  }
+
+
 </script>
+
+
 </body>
 </html>
