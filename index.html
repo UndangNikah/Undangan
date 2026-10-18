@@ -1231,6 +1231,21 @@
       .panel-nama { font-size: clamp(36px, 4vw, 60px); }
     }
 
+    /* Alamat / Komunitas di bawah nama tamu */
+    .guest-ket {
+      display: block;
+      margin-top: 8px;
+      font-family: var(--font-teks);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      line-height: 1.5;
+      word-wrap: break-word;
+    }
+    .guest-name .guest-ket { margin-top: 6px; font-size: 11px; }
+
     /* ===== AKHIR TEMA BUNGA ===== */
 
   </style>
@@ -1284,6 +1299,7 @@
       <span class="guest-honor">Bapak/Ibu/Saudara/i</span>
       <span class="guest-line"></span>
       <span class="guest-cover-name" id="namaTamuCover">Tamu Undangan</span>
+      <span class="guest-ket" id="ketTamuCover" style="display:none;"></span>
     </div>
 
     <button type="button" class="open-button" onclick="bukaUndangan()">
@@ -1312,6 +1328,7 @@
         Yth. Bapak/Ibu/Saudara/i
         <br>
         <strong id="namaTamuIsi">Tamu Undangan</strong>
+        <span class="guest-ket" id="ketTamuIsi" style="display:none;"></span>
       </div>
 
       <p class="intro">
@@ -1644,6 +1661,16 @@
 
   document.getElementById("namaTamuCover").textContent = namaTamu || "Tamu Undangan";
   document.getElementById("namaTamuIsi").textContent = namaTamu || "Tamu Undangan";
+
+  // Alamat / Komunitas (dari link: &ket=...) tampil di bawah nama tamu
+  const ketTamu = (paramsUndangan.get("ket") || "").trim().slice(0, 80);
+  if (ketTamu) {
+    ["ketTamuCover", "ketTamuIsi"].forEach(function (id) {
+      const el = document.getElementById(id);
+      el.textContent = ketTamu;          // textContent: aman dari kode berbahaya
+      el.style.display = "block";
+    });
+  }
 
 
   /* ==================================================
