@@ -32,3 +32,1585 @@
 
   <!-- FONT: Playfair Display (judul), Montserrat (teks), Amiri (Arab) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* =========================================
+       TEMA: SAGE & GOLD
+       Ubah warna cukup di bagian variabel ini.
+    ========================================= */
+    :root {
+      --bg: #f3f5ef;          /* latar halaman */
+      --paper: #fbfcf8;       /* latar kartu/undangan */
+      --soft: #e9eee4;        /* latar lembut */
+      --ink: #2e3a31;         /* teks utama */
+      --muted: #5b6a5f;       /* teks sekunder */
+      --accent: #5d7262;      /* hijau sage (tombol) */
+      --accent-dark: #475a4c; /* hijau sage gelap */
+      --gold: #b08d57;        /* emas */
+      --gold-light: #d9c08a;  /* emas terang */
+      --line: #d3dacb;        /* garis */
+      --shadow: rgba(40, 56, 44, 0.12);
+
+      --font-judul: "Playfair Display", Georgia, "Times New Roman", serif;
+      --font-teks: "Montserrat", "Segoe UI", Arial, sans-serif;
+      --font-arab: "Amiri", "Traditional Arabic", serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-judul);
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      background: var(--paper);
+      min-height: 100vh;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0,0,0,0.08);
+    }
+
+    section {
+      padding: 55px 25px;
+      text-align: center;
+    }
+
+
+    /* ================= COVER ================= */
+
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 18px;
+      background:
+        linear-gradient(rgba(251,252,248,0.72), rgba(233,238,228,0.82)),
+        url("cover.jpg") center center / cover no-repeat;
+      text-align: center;
+    }
+
+    .ornament { font-size: 30px; margin-bottom: 18px; color: var(--gold); }
+
+    .cover-small {
+      font-family: var(--font-teks);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 25px;
+    }
+
+    .cover h1 {
+      width: 100%;
+      margin: 4px 0;
+      font-family: var(--font-judul);
+      font-size: clamp(28px, 8vw, 42px);
+      font-weight: 500;
+      line-height: 1.2;
+      white-space: normal;
+      color: var(--ink);
+    }
+
+    .cover-nickname {
+      display: block;
+      margin-top: 2px;
+      font-family: var(--font-teks);
+      font-size: 13px;
+      letter-spacing: 1px;
+      color: var(--muted);
+    }
+
+    .and {
+      font-family: var(--font-judul);
+      font-size: 28px;
+      margin: 15px 0;
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .cover-date {
+      margin-top: 25px;
+      font-family: var(--font-teks);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      color: var(--ink);
+    }
+
+
+    /* ============== TAMU DI COVER ============== */
+
+    .guest-cover {
+      position: relative;
+      width: 100%;
+      max-width: 340px;
+      margin-top: 35px;
+      padding: 26px 18px 24px;
+      text-align: center;
+      border: 1px solid rgba(176,141,87,0.8);
+      border-radius: 6px;
+      background: rgba(251,252,248,0.62);
+      box-shadow:
+        0 0 0 4px rgba(251,252,248,0.5),
+        0 0 0 5px rgba(176,141,87,0.45),
+        0 10px 28px var(--shadow);
+    }
+
+    .guest-cover::before,
+    .guest-cover::after {
+      content: "❖";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0 10px;
+      font-size: 13px;
+      line-height: 1;
+      color: var(--gold);
+      background: #eef2e9;
+    }
+    .guest-cover::before { top: -8px; }
+    .guest-cover::after { bottom: -8px; }
+
+    .guest-label {
+      display: block;
+      font-family: var(--font-teks);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .guest-honor {
+      display: block;
+      margin-top: 5px;
+      font-family: var(--font-judul);
+      font-style: italic;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .guest-line {
+      display: block;
+      width: 90px;
+      height: 1px;
+      margin: 14px auto 12px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+
+    .guest-cover-name {
+      display: block;
+      margin: 0;
+      font-family: var(--font-judul);
+      font-style: italic;
+      font-size: clamp(26px, 7.5vw, 34px);
+      font-weight: 600;
+      line-height: 1.3;
+      word-break: break-word;
+      color: #8a6b35;
+      background: linear-gradient(135deg, #7d5f2c 0%, #b08d57 40%, #d9b977 52%, #9a763a 75%, #7d5f2c 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+
+    /* ============== TOMBOL ============== */
+
+    .open-button {
+      margin-top: 25px;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 30px;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-teks);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.14);
+    }
+
+    .open-button:active { transform: scale(0.97); }
+
+
+    /* ================ JUDUL ================ */
+
+    .section-title {
+      font-family: var(--font-judul);
+      font-size: 28px;
+      font-weight: 500;
+      margin-bottom: 25px;
+      color: var(--accent-dark);
+    }
+
+    .divider {
+      width: 70px;
+      height: 1px;
+      background: var(--gold);
+      margin: 20px auto 30px;
+    }
+
+
+    /* ================ PEMBUKA ================ */
+
+    .arabic {
+      font-family: var(--font-arab);
+      font-size: 28px;
+      line-height: 1.9;
+      margin-bottom: 20px;
+      color: var(--accent-dark);
+    }
+
+    .intro {
+      font-family: var(--font-teks);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .guest-name {
+      margin: 25px 0;
+      font-family: var(--font-teks);
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--ink);
+    }
+
+    .guest-name strong {
+      font-family: var(--font-judul);
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+
+    /* =============== MEMPELAI =============== */
+
+    .couple {
+      padding-top: 60px;
+      padding-bottom: 60px;
+      background:
+        linear-gradient(rgba(251,252,248,0.80), rgba(233,238,228,0.86)),
+        url("couple.jpg") center center / cover no-repeat;
+    }
+
+    .couple .person-name,
+    .couple .parents,
+    .couple .section-title {
+      text-shadow: 0 1px 6px rgba(251,252,248,0.9);
+    }
+
+    .person { margin: 30px 0; }
+
+    .person-name {
+      font-family: var(--font-judul);
+      font-size: 25px;
+      font-weight: 500;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .parents {
+      font-family: var(--font-teks);
+      font-size: 13px;
+      line-height: 1.9;
+      color: #46544a;
+    }
+
+    .heart { font-size: 25px; margin: 25px 0; color: var(--gold); }
+
+
+    /* ================= ACARA ================= */
+
+    .event {
+      margin: 25px 0;
+      padding: 28px 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--paper);
+    }
+
+    .event-title {
+      font-family: var(--font-judul);
+      font-size: 23px;
+      font-weight: 500;
+      margin-bottom: 15px;
+      color: var(--accent-dark);
+    }
+
+    .event-date {
+      font-family: var(--font-judul);
+      font-size: 17px;
+      margin: 8px 0;
+    }
+
+    .event-time {
+      font-family: var(--font-teks);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .event-location {
+      font-family: var(--font-teks);
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+
+    /* ================= MAPS ================= */
+
+    .maps-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 13px 25px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 25px;
+      font-family: var(--font-teks);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+
+    /* ============== COUNTDOWN ============== */
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 25px;
+    }
+
+    .count-box { padding: 12px 5px; border-radius: 10px; background: var(--soft); }
+
+    .count-number {
+      display: block;
+      font-family: var(--font-judul);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
+
+    .count-label {
+      display: block;
+      margin-top: 5px;
+      font-family: var(--font-teks);
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+
+    /* ================= RSVP ================= */
+
+    .rsvp-box { margin-top: 30px; padding: 25px 20px; border-radius: 15px; background: var(--soft); }
+
+    .form-group { margin-bottom: 18px; text-align: left; }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-family: var(--font-teks);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-family: var(--font-teks);
+      font-size: 14px;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    textarea { min-height: 90px; resize: vertical; }
+
+    .submit-button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 25px;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-teks);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+
+    .message {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      font-family: var(--font-teks);
+      font-size: 13px;
+      line-height: 1.6;
+      display: none;
+    }
+
+
+    /* ============== WEDDING GIFT ============== */
+
+    .gift-section { background: var(--paper); padding-top: 55px; padding-bottom: 55px; }
+
+    .gift-intro {
+      font-family: var(--font-teks);
+      font-size: 13px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .gift-card {
+      margin: 25px 0;
+      padding: 30px 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--soft);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .gift-icon { font-size: 38px; margin-bottom: 12px; }
+
+    .gift-title {
+      font-family: var(--font-judul);
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 18px;
+      color: var(--accent-dark);
+    }
+
+    .gift-bank {
+      font-family: var(--font-teks);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+
+    .gift-name {
+      font-family: var(--font-teks);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .gift-number {
+      font-family: var(--font-judul);
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .copy-button {
+      border: none;
+      border-radius: 25px;
+      padding: 12px 20px;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-teks);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+    }
+
+    .copy-button:active { transform: scale(0.97); }
+
+    .copy-message {
+      display: none;
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--soft);
+      font-family: var(--font-teks);
+      font-size: 13px;
+    }
+
+
+    /* ================ PENUTUP ================ */
+
+    .closing { background: var(--soft); }
+
+    .closing-text {
+      font-family: var(--font-teks);
+      font-size: 13px;
+      line-height: 2;
+      color: var(--muted);
+    }
+
+    .footer-names {
+      margin-top: 30px;
+      font-family: var(--font-judul);
+      font-style: italic;
+      font-size: 25px;
+      line-height: 1.5;
+      color: var(--accent-dark);
+    }
+
+
+    /* ============== TOMBOL MUSIK ============== */
+
+    #musicToggle {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      z-index: 999;
+      display: none;
+      margin: 0;
+      padding: 11px 16px;
+    }
+
+
+    /* ============== RESPONSIVE HP ============== */
+
+    @media (max-width: 450px) {
+      .cover { padding-left: 10px; padding-right: 10px; }
+      .cover h1 { font-size: 27px; white-space: normal; }
+      .cover-small { font-size: 10px; letter-spacing: 3px; }
+      .person-name { font-size: 22px; }
+      section { padding: 45px 20px; }
+    }
+
+    @media (max-width: 360px) {
+      .cover h1 { font-size: 24px; }
+      .cover-date { font-size: 13px; }
+    }
+
+
+    /* =========================================
+       ANIMASI LEMBAR HALAMAN (PAGE TURN)
+    ========================================= */
+
+    section.fold-page {
+      position: relative;
+      transform-origin: left center;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      box-shadow:
+        0 3px 5px rgba(40, 56, 44, 0.05),
+        0 12px 25px rgba(40, 56, 44, 0.08),
+        0 24px 45px rgba(40, 56, 44, 0.05);
+    }
+
+    section.fold-page::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 3px;
+      pointer-events: none;
+      background: linear-gradient(
+        to right,
+        rgba(176, 141, 87, 0.35),
+        rgba(251, 252, 248, 0.7),
+        transparent
+      );
+      opacity: 0.7;
+    }
+
+    section.fold-page.is-folding {
+      animation: elegantPageTurn 850ms cubic-bezier(.22, .61, .36, 1) both;
+    }
+
+    @keyframes elegantPageTurn {
+      0% {
+        opacity: 0;
+        transform: perspective(1400px) rotateY(-12deg) translateY(24px);
+        box-shadow: 12px 8px 20px rgba(30, 44, 34, 0.20);
+      }
+      45% {
+        opacity: 1;
+        transform: perspective(1400px) rotateY(3deg) translateY(2px);
+        box-shadow: 5px 5px 15px rgba(30, 44, 34, 0.14);
+      }
+      100% {
+        opacity: 1;
+        transform: perspective(1400px) rotateY(0deg) translateY(0);
+        box-shadow:
+          0 3px 5px rgba(40, 56, 44, 0.05),
+          0 12px 25px rgba(40, 56, 44, 0.08),
+          0 24px 45px rgba(40, 56, 44, 0.05);
+      }
+    }
+
+    @media (max-width: 600px) {
+      section.fold-page { transform-origin: center center; }
+      section.fold-page.is-folding { animation-duration: 650ms; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      section.fold-page.is-folding { animation: none; }
+    }
+
+    /* =========================================================
+       TEMA BUNGA ROMANTIS (pastel ceria)
+       Blok ini menimpa warna/latar di atas. Hapus seluruh blok
+       sampai penanda "AKHIR TEMA BUNGA" untuk kembali ke tema lama.
+    ========================================================= */
+
+    :root {
+      --paper: #fffafa;          /* bukan putih polos lagi */
+      --soft: #fdeff2;           /* blush lembut */
+      --rose: #c4607c;           /* mawar */
+      --rose-dark: #9c3f5c;      /* mawar tua (judul) */
+      --blush: #fff3f5;
+      --peach: #fff4ea;
+      --lilac: #f7f1fc;
+      --mint: #eff8f1;
+      --line: #f0d3db;
+      --ukuran-bunga: 150px;
+      --geser: -15px;            /* bunga sedikit keluar bingkai agar tidak menutup teks */
+      --pos-kiri-atas: var(--geser) var(--geser);
+      --pos-kanan-atas: calc(100% - var(--geser)) var(--geser);
+      --pos-kanan-bawah: calc(100% - var(--geser)) calc(100% - var(--geser));
+      --pos-kiri-bawah: var(--geser) calc(100% - var(--geser));
+
+      --bunga-kiri-atas: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' width='240' height='240'%3E%3Cpath d='M-6,-6 C60,40 120,70 176,150' fill='none' stroke='%2386b894' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M-6,40 C40,70 70,110 78,196' fill='none' stroke='%2386b894' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M40,-6 C90,20 150,30 214,52' fill='none' stroke='%2386b894' stroke-width='2.6' stroke-linecap='round'/%3E%3Cg transform='translate(70 52) rotate(118)'%3E%3Cpath d='M0,0 C17,-16.8 17,-42 0,-56 C-17,-42 -17,-16.8 0,0Z' fill='%239bc7a6'/%3E%3Cpath d='M0,-4.5 L0,-45.9' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(108 80) rotate(150)'%3E%3Cpath d='M0,0 C15,-15.6 15,-39 0,-52 C-15,-39 -15,-15.6 0,0Z' fill='%237fb48e'/%3E%3Cpath d='M0,-4.2 L0,-42.6' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(150 118) rotate(128)'%3E%3Cpath d='M0,0 C14,-14.4 14,-36 0,-48 C-14,-36 -14,-14.4 0,0Z' fill='%23a9d2b2'/%3E%3Cpath d='M0,-3.8 L0,-39.4' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(60 118) rotate(205)'%3E%3Cpath d='M0,0 C15,-15 15,-37.5 0,-50 C-15,-37.5 -15,-15 0,0Z' fill='%238cbf9a'/%3E%3Cpath d='M0,-4 L0,-41' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(84 160) rotate(190)'%3E%3Cpath d='M0,0 C13,-13.2 13,-33 0,-44 C-13,-33 -13,-13.2 0,0Z' fill='%23a9d2b2'/%3E%3Cpath d='M0,-3.5 L0,-36.1' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(128 30) rotate(80)'%3E%3Cpath d='M0,0 C13,-13.8 13,-34.5 0,-46 C-13,-34.5 -13,-13.8 0,0Z' fill='%238cbf9a'/%3E%3Cpath d='M0,-3.7 L0,-37.7' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(176 40) rotate(98)'%3E%3Cpath d='M0,0 C12,-12 12,-30 0,-40 C-12,-30 -12,-12 0,0Z' fill='%23a9d2b2'/%3E%3Cpath d='M0,-3.2 L0,-32.8' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(28 92) rotate(232)'%3E%3Cpath d='M0,0 C12,-12.6 12,-31.5 0,-42 C-12,-31.5 -12,-12.6 0,0Z' fill='%237fb48e'/%3E%3Cpath d='M0,-3.4 L0,-34.4' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(200 24) rotate(50)'%3E%3Cpath d='M0,0 Q4,-17 0,-34' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-34' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-34' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-24.5' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-24.5' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-20.4' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-20.4' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-13.6' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-13.6' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-9.5' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-9.5' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(224 64) rotate(70)'%3E%3Cpath d='M0,0 Q4,-15 0,-30' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-30' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-30' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-21.6' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-21.6' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-18' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-18' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-12' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-12' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-8.4' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-8.4' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(26 200) rotate(200)'%3E%3Cpath d='M0,0 Q4,-17 0,-34' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-34' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-34' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-24.5' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-24.5' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-20.4' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-20.4' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-13.6' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-13.6' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-9.5' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-9.5' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(62 222) rotate(175)'%3E%3Cpath d='M0,0 Q4,-15 0,-30' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-30' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-30' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-21.6' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-21.6' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-18' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-18' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-12' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-12' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-8.4' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-8.4' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(170 92) rotate(95)'%3E%3Cpath d='M0,0 Q4,-13 0,-26' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-26' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-26' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-18.7' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-18.7' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-15.6' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-15.6' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-10.4' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-10.4' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-7.3' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-7.3' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(98 172) rotate(168)'%3E%3Cpath d='M0,0 Q4,-13 0,-26' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-26' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-26' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-18.7' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-18.7' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-15.6' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-15.6' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-10.4' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-10.4' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-7.3' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-7.3' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(196 96) rotate(100)'%3E%3Cellipse cx='0' cy='-9' rx='5.5' ry='9' fill='%23f7b3c4'/%3E%3Cpath d='M-6,-3 Q0,6 6,-3 Q0,-1 -6,-3Z' fill='%237fb48e'/%3E%3C/g%3E%3Cg transform='translate(98 196) rotate(190)'%3E%3Cellipse cx='0' cy='-9' rx='5.5' ry='9' fill='%23ffc9a8'/%3E%3Cpath d='M-6,-3 Q0,6 6,-3 Q0,-1 -6,-3Z' fill='%237fb48e'/%3E%3C/g%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(10 156 40)'/%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(82 156 40)'/%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(154 156 40)'/%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(226 156 40)'/%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(298 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(10 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(82 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(154 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(226 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(298 156 40)'/%3E%3Ccircle cx='156' cy='40' r='5.4' fill='%23f2cf6a'/%3E%3Ccircle cx='154.7' cy='38.6' r='2.2' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(36 36 156)'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(108 36 156)'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(180 36 156)'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(252 36 156)'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(324 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(36 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(108 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(180 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(252 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(324 36 156)'/%3E%3Ccircle cx='36' cy='156' r='5.8' fill='%23f0c05a'/%3E%3Ccircle cx='34.5' cy='154.6' r='2.3' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(10 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(55 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(100 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(145 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(190 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(235 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(280 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(325 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(25 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(85 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(145 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(205 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(265 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(325 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(5 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(77 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(149 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(221 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(293 66 66)'/%3E%3Ccircle cx='66' cy='66' r='10.4' fill='%23cf4f73'/%3E%3Cpath d='M59.8,66 a6.2,6.2 0 1 1 6.2,6.2 a3.6,3.6 0 1 1 -2.6,-5.2' fill='none' stroke='%23fff' stroke-opacity='.55' stroke-width='1.8' stroke-linecap='round'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(60 128 118)'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(120 128 118)'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(180 128 118)'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(240 128 118)'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(300 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(60 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(120 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(180 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(240 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(300 128 118)'/%3E%3Ccircle cx='128' cy='118' r='3.8' fill='%23f2cf6a'/%3E%3Ccircle cx='127' cy='117' r='1.5' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(20 112 62)'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(92 112 62)'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(164 112 62)'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(236 112 62)'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(308 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(20 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(92 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(164 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(236 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(308 112 62)'/%3E%3Ccircle cx='112' cy='62' r='2.4' fill='%23f2cf6a'/%3E%3Ccircle cx='111.4' cy='61.4' r='1' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(40 60 120)'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(112 60 120)'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(184 60 120)'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(256 60 120)'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(328 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(40 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(112 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(184 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(256 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(328 60 120)'/%3E%3Ccircle cx='60' cy='120' r='2.4' fill='%23f2cf6a'/%3E%3Ccircle cx='59.4' cy='119.4' r='1' fill='%23fff6c9' fill-opacity='0.9'/%3E%3C/svg%3E");
+      --bunga-kanan-atas: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' width='240' height='240'%3E%3Cg transform='translate(240 0) scale(-1 1)'%3E%3Cpath d='M-6,-6 C60,40 120,70 176,150' fill='none' stroke='%2386b894' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M-6,40 C40,70 70,110 78,196' fill='none' stroke='%2386b894' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M40,-6 C90,20 150,30 214,52' fill='none' stroke='%2386b894' stroke-width='2.6' stroke-linecap='round'/%3E%3Cg transform='translate(70 52) rotate(118)'%3E%3Cpath d='M0,0 C17,-16.8 17,-42 0,-56 C-17,-42 -17,-16.8 0,0Z' fill='%239bc7a6'/%3E%3Cpath d='M0,-4.5 L0,-45.9' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(108 80) rotate(150)'%3E%3Cpath d='M0,0 C15,-15.6 15,-39 0,-52 C-15,-39 -15,-15.6 0,0Z' fill='%237fb48e'/%3E%3Cpath d='M0,-4.2 L0,-42.6' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(150 118) rotate(128)'%3E%3Cpath d='M0,0 C14,-14.4 14,-36 0,-48 C-14,-36 -14,-14.4 0,0Z' fill='%23a9d2b2'/%3E%3Cpath d='M0,-3.8 L0,-39.4' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(60 118) rotate(205)'%3E%3Cpath d='M0,0 C15,-15 15,-37.5 0,-50 C-15,-37.5 -15,-15 0,0Z' fill='%238cbf9a'/%3E%3Cpath d='M0,-4 L0,-41' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(84 160) rotate(190)'%3E%3Cpath d='M0,0 C13,-13.2 13,-33 0,-44 C-13,-33 -13,-13.2 0,0Z' fill='%23a9d2b2'/%3E%3Cpath d='M0,-3.5 L0,-36.1' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(128 30) rotate(80)'%3E%3Cpath d='M0,0 C13,-13.8 13,-34.5 0,-46 C-13,-34.5 -13,-13.8 0,0Z' fill='%238cbf9a'/%3E%3Cpath d='M0,-3.7 L0,-37.7' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(176 40) rotate(98)'%3E%3Cpath d='M0,0 C12,-12 12,-30 0,-40 C-12,-30 -12,-12 0,0Z' fill='%23a9d2b2'/%3E%3Cpath d='M0,-3.2 L0,-32.8' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(28 92) rotate(232)'%3E%3Cpath d='M0,0 C12,-12.6 12,-31.5 0,-42 C-12,-31.5 -12,-12.6 0,0Z' fill='%237fb48e'/%3E%3Cpath d='M0,-3.4 L0,-34.4' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(200 24) rotate(50)'%3E%3Cpath d='M0,0 Q4,-17 0,-34' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-34' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-34' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-24.5' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-24.5' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-20.4' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-20.4' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-13.6' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-13.6' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-9.5' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-9.5' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(224 64) rotate(70)'%3E%3Cpath d='M0,0 Q4,-15 0,-30' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-30' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-30' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-21.6' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-21.6' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-18' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-18' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-12' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-12' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-8.4' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-8.4' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(26 200) rotate(200)'%3E%3Cpath d='M0,0 Q4,-17 0,-34' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-34' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-34' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-24.5' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-24.5' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-20.4' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-20.4' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-13.6' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-13.6' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-9.5' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-9.5' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(62 222) rotate(175)'%3E%3Cpath d='M0,0 Q4,-15 0,-30' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-30' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-30' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-21.6' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-21.6' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-18' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-18' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-12' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-12' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-8.4' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-8.4' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(170 92) rotate(95)'%3E%3Cpath d='M0,0 Q4,-13 0,-26' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-26' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-26' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-18.7' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-18.7' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-15.6' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-15.6' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-10.4' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-10.4' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-7.3' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-7.3' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(98 172) rotate(168)'%3E%3Cpath d='M0,0 Q4,-13 0,-26' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-26' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-26' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-18.7' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-18.7' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-15.6' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-15.6' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-10.4' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-10.4' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-7.3' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-7.3' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(196 96) rotate(100)'%3E%3Cellipse cx='0' cy='-9' rx='5.5' ry='9' fill='%23f7b3c4'/%3E%3Cpath d='M-6,-3 Q0,6 6,-3 Q0,-1 -6,-3Z' fill='%237fb48e'/%3E%3C/g%3E%3Cg transform='translate(98 196) rotate(190)'%3E%3Cellipse cx='0' cy='-9' rx='5.5' ry='9' fill='%23ffc9a8'/%3E%3Cpath d='M-6,-3 Q0,6 6,-3 Q0,-1 -6,-3Z' fill='%237fb48e'/%3E%3C/g%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(10 156 40)'/%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(82 156 40)'/%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(154 156 40)'/%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(226 156 40)'/%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(298 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(10 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(82 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(154 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(226 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(298 156 40)'/%3E%3Ccircle cx='156' cy='40' r='5.4' fill='%23f2cf6a'/%3E%3Ccircle cx='154.7' cy='38.6' r='2.2' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(36 36 156)'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(108 36 156)'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(180 36 156)'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(252 36 156)'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(324 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(36 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(108 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(180 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(252 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(324 36 156)'/%3E%3Ccircle cx='36' cy='156' r='5.8' fill='%23f0c05a'/%3E%3Ccircle cx='34.5' cy='154.6' r='2.3' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(10 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(55 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(100 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(145 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(190 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(235 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(280 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(325 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(25 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(85 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(145 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(205 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(265 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(325 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(5 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(77 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(149 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(221 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(293 66 66)'/%3E%3Ccircle cx='66' cy='66' r='10.4' fill='%23cf4f73'/%3E%3Cpath d='M59.8,66 a6.2,6.2 0 1 1 6.2,6.2 a3.6,3.6 0 1 1 -2.6,-5.2' fill='none' stroke='%23fff' stroke-opacity='.55' stroke-width='1.8' stroke-linecap='round'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(60 128 118)'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(120 128 118)'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(180 128 118)'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(240 128 118)'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(300 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(60 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(120 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(180 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(240 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(300 128 118)'/%3E%3Ccircle cx='128' cy='118' r='3.8' fill='%23f2cf6a'/%3E%3Ccircle cx='127' cy='117' r='1.5' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(20 112 62)'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(92 112 62)'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(164 112 62)'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(236 112 62)'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(308 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(20 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(92 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(164 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(236 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(308 112 62)'/%3E%3Ccircle cx='112' cy='62' r='2.4' fill='%23f2cf6a'/%3E%3Ccircle cx='111.4' cy='61.4' r='1' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(40 60 120)'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(112 60 120)'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(184 60 120)'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(256 60 120)'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(328 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(40 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(112 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(184 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(256 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(328 60 120)'/%3E%3Ccircle cx='60' cy='120' r='2.4' fill='%23f2cf6a'/%3E%3Ccircle cx='59.4' cy='119.4' r='1' fill='%23fff6c9' fill-opacity='0.9'/%3E%3C/g%3E%3C/svg%3E");
+      --bunga-kanan-bawah: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' width='240' height='240'%3E%3Cg transform='translate(240 240) rotate(180)'%3E%3Cpath d='M-6,-6 C60,40 120,70 176,150' fill='none' stroke='%2386b894' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M-6,40 C40,70 70,110 78,196' fill='none' stroke='%2386b894' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M40,-6 C90,20 150,30 214,52' fill='none' stroke='%2386b894' stroke-width='2.6' stroke-linecap='round'/%3E%3Cg transform='translate(70 52) rotate(118)'%3E%3Cpath d='M0,0 C17,-16.8 17,-42 0,-56 C-17,-42 -17,-16.8 0,0Z' fill='%239bc7a6'/%3E%3Cpath d='M0,-4.5 L0,-45.9' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(108 80) rotate(150)'%3E%3Cpath d='M0,0 C15,-15.6 15,-39 0,-52 C-15,-39 -15,-15.6 0,0Z' fill='%237fb48e'/%3E%3Cpath d='M0,-4.2 L0,-42.6' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(150 118) rotate(128)'%3E%3Cpath d='M0,0 C14,-14.4 14,-36 0,-48 C-14,-36 -14,-14.4 0,0Z' fill='%23a9d2b2'/%3E%3Cpath d='M0,-3.8 L0,-39.4' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(60 118) rotate(205)'%3E%3Cpath d='M0,0 C15,-15 15,-37.5 0,-50 C-15,-37.5 -15,-15 0,0Z' fill='%238cbf9a'/%3E%3Cpath d='M0,-4 L0,-41' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(84 160) rotate(190)'%3E%3Cpath d='M0,0 C13,-13.2 13,-33 0,-44 C-13,-33 -13,-13.2 0,0Z' fill='%23a9d2b2'/%3E%3Cpath d='M0,-3.5 L0,-36.1' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(128 30) rotate(80)'%3E%3Cpath d='M0,0 C13,-13.8 13,-34.5 0,-46 C-13,-34.5 -13,-13.8 0,0Z' fill='%238cbf9a'/%3E%3Cpath d='M0,-3.7 L0,-37.7' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(176 40) rotate(98)'%3E%3Cpath d='M0,0 C12,-12 12,-30 0,-40 C-12,-30 -12,-12 0,0Z' fill='%23a9d2b2'/%3E%3Cpath d='M0,-3.2 L0,-32.8' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(28 92) rotate(232)'%3E%3Cpath d='M0,0 C12,-12.6 12,-31.5 0,-42 C-12,-31.5 -12,-12.6 0,0Z' fill='%237fb48e'/%3E%3Cpath d='M0,-3.4 L0,-34.4' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(200 24) rotate(50)'%3E%3Cpath d='M0,0 Q4,-17 0,-34' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-34' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-34' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-24.5' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-24.5' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-20.4' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-20.4' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-13.6' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-13.6' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-9.5' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-9.5' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(224 64) rotate(70)'%3E%3Cpath d='M0,0 Q4,-15 0,-30' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-30' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-30' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-21.6' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-21.6' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-18' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-18' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-12' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-12' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-8.4' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-8.4' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(26 200) rotate(200)'%3E%3Cpath d='M0,0 Q4,-17 0,-34' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-34' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-34' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-24.5' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-24.5' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-20.4' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-20.4' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-13.6' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-13.6' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-9.5' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-9.5' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(62 222) rotate(175)'%3E%3Cpath d='M0,0 Q4,-15 0,-30' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-30' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-30' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-21.6' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-21.6' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-18' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-18' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-12' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-12' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-8.4' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-8.4' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(170 92) rotate(95)'%3E%3Cpath d='M0,0 Q4,-13 0,-26' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-26' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-26' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-18.7' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-18.7' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-15.6' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-15.6' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-10.4' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-10.4' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-7.3' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-7.3' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(98 172) rotate(168)'%3E%3Cpath d='M0,0 Q4,-13 0,-26' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-26' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-26' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-18.7' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-18.7' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-15.6' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-15.6' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-10.4' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-10.4' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-7.3' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-7.3' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(196 96) rotate(100)'%3E%3Cellipse cx='0' cy='-9' rx='5.5' ry='9' fill='%23f7b3c4'/%3E%3Cpath d='M-6,-3 Q0,6 6,-3 Q0,-1 -6,-3Z' fill='%237fb48e'/%3E%3C/g%3E%3Cg transform='translate(98 196) rotate(190)'%3E%3Cellipse cx='0' cy='-9' rx='5.5' ry='9' fill='%23ffc9a8'/%3E%3Cpath d='M-6,-3 Q0,6 6,-3 Q0,-1 -6,-3Z' fill='%237fb48e'/%3E%3C/g%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(10 156 40)'/%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(82 156 40)'/%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(154 156 40)'/%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(226 156 40)'/%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(298 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(10 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(82 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(154 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(226 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(298 156 40)'/%3E%3Ccircle cx='156' cy='40' r='5.4' fill='%23f2cf6a'/%3E%3Ccircle cx='154.7' cy='38.6' r='2.2' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(36 36 156)'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(108 36 156)'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(180 36 156)'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(252 36 156)'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(324 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(36 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(108 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(180 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(252 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(324 36 156)'/%3E%3Ccircle cx='36' cy='156' r='5.8' fill='%23f0c05a'/%3E%3Ccircle cx='34.5' cy='154.6' r='2.3' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(10 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(55 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(100 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(145 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(190 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(235 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(280 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(325 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(25 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(85 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(145 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(205 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(265 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(325 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(5 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(77 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(149 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(221 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(293 66 66)'/%3E%3Ccircle cx='66' cy='66' r='10.4' fill='%23cf4f73'/%3E%3Cpath d='M59.8,66 a6.2,6.2 0 1 1 6.2,6.2 a3.6,3.6 0 1 1 -2.6,-5.2' fill='none' stroke='%23fff' stroke-opacity='.55' stroke-width='1.8' stroke-linecap='round'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(60 128 118)'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(120 128 118)'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(180 128 118)'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(240 128 118)'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(300 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(60 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(120 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(180 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(240 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(300 128 118)'/%3E%3Ccircle cx='128' cy='118' r='3.8' fill='%23f2cf6a'/%3E%3Ccircle cx='127' cy='117' r='1.5' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(20 112 62)'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(92 112 62)'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(164 112 62)'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(236 112 62)'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(308 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(20 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(92 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(164 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(236 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(308 112 62)'/%3E%3Ccircle cx='112' cy='62' r='2.4' fill='%23f2cf6a'/%3E%3Ccircle cx='111.4' cy='61.4' r='1' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(40 60 120)'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(112 60 120)'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(184 60 120)'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(256 60 120)'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(328 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(40 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(112 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(184 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(256 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(328 60 120)'/%3E%3Ccircle cx='60' cy='120' r='2.4' fill='%23f2cf6a'/%3E%3Ccircle cx='59.4' cy='119.4' r='1' fill='%23fff6c9' fill-opacity='0.9'/%3E%3C/g%3E%3C/svg%3E");
+      --bunga-kiri-bawah: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' width='240' height='240'%3E%3Cg transform='translate(0 240) scale(1 -1)'%3E%3Cpath d='M-6,-6 C60,40 120,70 176,150' fill='none' stroke='%2386b894' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M-6,40 C40,70 70,110 78,196' fill='none' stroke='%2386b894' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M40,-6 C90,20 150,30 214,52' fill='none' stroke='%2386b894' stroke-width='2.6' stroke-linecap='round'/%3E%3Cg transform='translate(70 52) rotate(118)'%3E%3Cpath d='M0,0 C17,-16.8 17,-42 0,-56 C-17,-42 -17,-16.8 0,0Z' fill='%239bc7a6'/%3E%3Cpath d='M0,-4.5 L0,-45.9' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(108 80) rotate(150)'%3E%3Cpath d='M0,0 C15,-15.6 15,-39 0,-52 C-15,-39 -15,-15.6 0,0Z' fill='%237fb48e'/%3E%3Cpath d='M0,-4.2 L0,-42.6' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(150 118) rotate(128)'%3E%3Cpath d='M0,0 C14,-14.4 14,-36 0,-48 C-14,-36 -14,-14.4 0,0Z' fill='%23a9d2b2'/%3E%3Cpath d='M0,-3.8 L0,-39.4' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(60 118) rotate(205)'%3E%3Cpath d='M0,0 C15,-15 15,-37.5 0,-50 C-15,-37.5 -15,-15 0,0Z' fill='%238cbf9a'/%3E%3Cpath d='M0,-4 L0,-41' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(84 160) rotate(190)'%3E%3Cpath d='M0,0 C13,-13.2 13,-33 0,-44 C-13,-33 -13,-13.2 0,0Z' fill='%23a9d2b2'/%3E%3Cpath d='M0,-3.5 L0,-36.1' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(128 30) rotate(80)'%3E%3Cpath d='M0,0 C13,-13.8 13,-34.5 0,-46 C-13,-34.5 -13,-13.8 0,0Z' fill='%238cbf9a'/%3E%3Cpath d='M0,-3.7 L0,-37.7' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(176 40) rotate(98)'%3E%3Cpath d='M0,0 C12,-12 12,-30 0,-40 C-12,-30 -12,-12 0,0Z' fill='%23a9d2b2'/%3E%3Cpath d='M0,-3.2 L0,-32.8' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(28 92) rotate(232)'%3E%3Cpath d='M0,0 C12,-12.6 12,-31.5 0,-42 C-12,-31.5 -12,-12.6 0,0Z' fill='%237fb48e'/%3E%3Cpath d='M0,-3.4 L0,-34.4' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(200 24) rotate(50)'%3E%3Cpath d='M0,0 Q4,-17 0,-34' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-34' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-34' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-24.5' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-24.5' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-20.4' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-20.4' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-13.6' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-13.6' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-9.5' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-9.5' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(224 64) rotate(70)'%3E%3Cpath d='M0,0 Q4,-15 0,-30' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-30' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-30' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-21.6' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-21.6' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-18' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-18' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-12' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-12' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-8.4' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-8.4' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(26 200) rotate(200)'%3E%3Cpath d='M0,0 Q4,-17 0,-34' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-34' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-34' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-24.5' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-24.5' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-20.4' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-20.4' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-13.6' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-13.6' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-9.5' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-9.5' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(62 222) rotate(175)'%3E%3Cpath d='M0,0 Q4,-15 0,-30' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-30' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-30' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-21.6' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-21.6' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-18' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-18' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-12' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-12' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-8.4' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-8.4' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(170 92) rotate(95)'%3E%3Cpath d='M0,0 Q4,-13 0,-26' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-26' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-26' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-18.7' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-18.7' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-15.6' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-15.6' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-10.4' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-10.4' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-7.3' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-7.3' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(98 172) rotate(168)'%3E%3Cpath d='M0,0 Q4,-13 0,-26' stroke='%238fc19c' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='0' cy='-26' r='3.4' fill='%23fffaf5'/%3E%3Ccircle cx='0' cy='-26' r='1.3' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-7' cy='-18.7' r='3' fill='%23fffaf5'/%3E%3Ccircle cx='-7' cy='-18.7' r='1.1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='-15.6' r='3.2' fill='%23fffaf5'/%3E%3Ccircle cx='7' cy='-15.6' r='1.2' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='-5' cy='-10.4' r='2.6' fill='%23fffaf5'/%3E%3Ccircle cx='-5' cy='-10.4' r='1' fill='%23f6d98a' fill-opacity='0.9'/%3E%3Ccircle cx='5' cy='-7.3' r='2.4' fill='%23fffaf5'/%3E%3Ccircle cx='5' cy='-7.3' r='0.9' fill='%23f6d98a' fill-opacity='0.9'/%3E%3C/g%3E%3Cg transform='translate(196 96) rotate(100)'%3E%3Cellipse cx='0' cy='-9' rx='5.5' ry='9' fill='%23f7b3c4'/%3E%3Cpath d='M-6,-3 Q0,6 6,-3 Q0,-1 -6,-3Z' fill='%237fb48e'/%3E%3C/g%3E%3Cg transform='translate(98 196) rotate(190)'%3E%3Cellipse cx='0' cy='-9' rx='5.5' ry='9' fill='%23ffc9a8'/%3E%3Cpath d='M-6,-3 Q0,6 6,-3 Q0,-1 -6,-3Z' fill='%237fb48e'/%3E%3C/g%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(10 156 40)'/%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(82 156 40)'/%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(154 156 40)'/%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(226 156 40)'/%3E%3Cellipse cx='156' cy='26' rx='11.9' ry='16.2' fill='%23c1a7e6' transform='rotate(298 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(10 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(82 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(154 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(226 156 40)'/%3E%3Cellipse cx='156' cy='26.5' rx='10.3' ry='14.6' fill='%23d9c6f2' transform='rotate(298 156 40)'/%3E%3Ccircle cx='156' cy='40' r='5.4' fill='%23f2cf6a'/%3E%3Ccircle cx='154.7' cy='38.6' r='2.2' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(36 36 156)'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(108 36 156)'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(180 36 156)'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(252 36 156)'/%3E%3Cellipse cx='36' cy='140.9' rx='12.8' ry='17.4' fill='%23ffb892' transform='rotate(324 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(36 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(108 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(180 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(252 36 156)'/%3E%3Cellipse cx='36' cy='141.5' rx='11' ry='15.7' fill='%23ffd2b6' transform='rotate(324 36 156)'/%3E%3Ccircle cx='36' cy='156' r='5.8' fill='%23f0c05a'/%3E%3Ccircle cx='34.5' cy='154.6' r='2.3' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(10 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(55 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(100 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(145 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(190 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(235 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(280 66 66)'/%3E%3Cellipse cx='66' cy='35.8' rx='21.8' ry='23.9' fill='%23f6a9bd' transform='rotate(325 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(25 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(85 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(145 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(205 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(265 66 66)'/%3E%3Cellipse cx='66' cy='45.2' rx='18.7' ry='20.8' fill='%23f291ac' transform='rotate(325 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(5 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(77 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(149 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(221 66 66)'/%3E%3Cellipse cx='66' cy='54.6' rx='14' ry='16.1' fill='%23e4708f' transform='rotate(293 66 66)'/%3E%3Ccircle cx='66' cy='66' r='10.4' fill='%23cf4f73'/%3E%3Cpath d='M59.8,66 a6.2,6.2 0 1 1 6.2,6.2 a3.6,3.6 0 1 1 -2.6,-5.2' fill='none' stroke='%23fff' stroke-opacity='.55' stroke-width='1.8' stroke-linecap='round'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(60 128 118)'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(120 128 118)'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(180 128 118)'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(240 128 118)'/%3E%3Cellipse cx='128' cy='108.1' rx='8.4' ry='11.4' fill='%23fbc3d1' transform='rotate(300 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(60 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(120 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(180 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(240 128 118)'/%3E%3Cellipse cx='128' cy='108.5' rx='7.2' ry='10.3' fill='%23ffe7ee' transform='rotate(300 128 118)'/%3E%3Ccircle cx='128' cy='118' r='3.8' fill='%23f2cf6a'/%3E%3Ccircle cx='127' cy='117' r='1.5' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(20 112 62)'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(92 112 62)'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(164 112 62)'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(236 112 62)'/%3E%3Cellipse cx='112' cy='55.8' rx='5.3' ry='7.2' fill='%23f9cbd8' transform='rotate(308 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(20 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(92 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(164 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(236 112 62)'/%3E%3Cellipse cx='112' cy='56' rx='4.6' ry='6.5' fill='%23fff0f4' transform='rotate(308 112 62)'/%3E%3Ccircle cx='112' cy='62' r='2.4' fill='%23f2cf6a'/%3E%3Ccircle cx='111.4' cy='61.4' r='1' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(40 60 120)'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(112 60 120)'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(184 60 120)'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(256 60 120)'/%3E%3Cellipse cx='60' cy='113.8' rx='5.3' ry='7.2' fill='%23d3bff0' transform='rotate(328 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(40 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(112 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(184 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(256 60 120)'/%3E%3Cellipse cx='60' cy='114' rx='4.6' ry='6.5' fill='%23e9ddf9' transform='rotate(328 60 120)'/%3E%3Ccircle cx='60' cy='120' r='2.4' fill='%23f2cf6a'/%3E%3Ccircle cx='59.4' cy='119.4' r='1' fill='%23fff6c9' fill-opacity='0.9'/%3E%3C/g%3E%3C/svg%3E");
+      --pembatas-bunga: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 32' width='300' height='32'%3E%3Cpath d='M4,16 H92' stroke='%23c9a45c' stroke-width='1.2' stroke-linecap='round'/%3E%3Cpath d='M208,16 H296' stroke='%23c9a45c' stroke-width='1.2' stroke-linecap='round'/%3E%3Ccircle cx='100' cy='16' r='2.2' fill='%23c9a45c'/%3E%3Ccircle cx='200' cy='16' r='2.2' fill='%23c9a45c'/%3E%3Cg transform='translate(128 20) rotate(-70)'%3E%3Cpath d='M0,0 C7,-6.6 7,-16.5 0,-22 C-7,-16.5 -7,-6.6 0,0Z' fill='%239bc7a6'/%3E%3Cpath d='M0,-1.8 L0,-18' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cg transform='translate(172 20) rotate(70)'%3E%3Cpath d='M0,0 C7,-6.6 7,-16.5 0,-22 C-7,-16.5 -7,-6.6 0,0Z' fill='%239bc7a6'/%3E%3Cpath d='M0,-1.8 L0,-18' stroke='%235f9a74' stroke-opacity='.5' stroke-width='1' fill='none'/%3E%3C/g%3E%3Cellipse cx='150' cy='8.2' rx='6.6' ry='9' fill='%23ee86a2'/%3E%3Cellipse cx='150' cy='8.2' rx='6.6' ry='9' fill='%23ee86a2' transform='rotate(72 150 16)'/%3E%3Cellipse cx='150' cy='8.2' rx='6.6' ry='9' fill='%23ee86a2' transform='rotate(144 150 16)'/%3E%3Cellipse cx='150' cy='8.2' rx='6.6' ry='9' fill='%23ee86a2' transform='rotate(216 150 16)'/%3E%3Cellipse cx='150' cy='8.2' rx='6.6' ry='9' fill='%23ee86a2' transform='rotate(288 150 16)'/%3E%3Cellipse cx='150' cy='8.5' rx='5.7' ry='8.1' fill='%23f6a9bd'/%3E%3Cellipse cx='150' cy='8.5' rx='5.7' ry='8.1' fill='%23f6a9bd' transform='rotate(72 150 16)'/%3E%3Cellipse cx='150' cy='8.5' rx='5.7' ry='8.1' fill='%23f6a9bd' transform='rotate(144 150 16)'/%3E%3Cellipse cx='150' cy='8.5' rx='5.7' ry='8.1' fill='%23f6a9bd' transform='rotate(216 150 16)'/%3E%3Cellipse cx='150' cy='8.5' rx='5.7' ry='8.1' fill='%23f6a9bd' transform='rotate(288 150 16)'/%3E%3Ccircle cx='150' cy='16' r='3' fill='%23f2cf6a'/%3E%3Ccircle cx='149.2' cy='15.2' r='1.2' fill='%23fff6c9' fill-opacity='0.9'/%3E%3Ccircle cx='116' cy='16' r='3' fill='%23f7b3c4'/%3E%3Ccircle cx='184' cy='16' r='3' fill='%23f7b3c4'/%3E%3C/svg%3E");
+    }
+
+    body { background: #fbeff1; }
+
+    .container { box-shadow: 0 0 34px rgba(156, 63, 92, 0.12); }
+
+    /* ---- Latar tiap bagian: pastel + bunga di dua sudut ---- */
+    #isiUndangan > section {
+      background-repeat: no-repeat;
+      background-position: var(--pos-kiri-atas), var(--pos-kanan-bawah), 0 0, 0 0;
+      background-size: var(--ukuran-bunga) var(--ukuran-bunga), var(--ukuran-bunga) var(--ukuran-bunga), auto, auto;
+    }
+
+    #isiUndangan > section:nth-child(1) {
+      background-color: var(--blush);
+      background-image:
+        var(--bunga-kiri-atas), var(--bunga-kanan-bawah),
+        radial-gradient(circle at 88% 14%, rgba(255, 210, 222, 0.55), transparent 46%),
+        radial-gradient(circle at 8% 92%, rgba(255, 233, 214, 0.65), transparent 48%);
+    }
+
+    #isiUndangan > section:nth-child(3) {
+      background-color: var(--peach);
+      background-position: var(--pos-kanan-atas), var(--pos-kiri-bawah), 0 0, 0 0;
+      background-image:
+        var(--bunga-kanan-atas), var(--bunga-kiri-bawah),
+        radial-gradient(circle at 10% 12%, rgba(255, 224, 200, 0.65), transparent 46%),
+        radial-gradient(circle at 92% 88%, rgba(255, 213, 224, 0.5), transparent 48%);
+    }
+
+    #isiUndangan > section:nth-child(4) {
+      background-color: var(--lilac);
+      background-image:
+        var(--bunga-kiri-atas), var(--bunga-kanan-bawah),
+        radial-gradient(circle at 90% 10%, rgba(226, 208, 246, 0.6), transparent 46%),
+        radial-gradient(circle at 6% 92%, rgba(255, 220, 230, 0.5), transparent 48%);
+    }
+
+    #isiUndangan > section:nth-child(5) {
+      background-color: var(--blush);
+      background-position: var(--pos-kanan-atas), var(--pos-kiri-bawah), 0 0, 0 0;
+      background-image:
+        var(--bunga-kanan-atas), var(--bunga-kiri-bawah),
+        radial-gradient(circle at 12% 10%, rgba(255, 210, 222, 0.5), transparent 46%),
+        radial-gradient(circle at 90% 90%, rgba(226, 208, 246, 0.5), transparent 48%);
+    }
+
+    #isiUndangan > section:nth-child(6) {
+      background-color: var(--mint);
+      background-image:
+        var(--bunga-kiri-atas), var(--bunga-kanan-bawah),
+        radial-gradient(circle at 88% 12%, rgba(205, 233, 213, 0.65), transparent 46%),
+        radial-gradient(circle at 8% 90%, rgba(255, 233, 214, 0.55), transparent 48%);
+    }
+
+    #isiUndangan > section:nth-child(7) {
+      background-color: var(--soft);
+      background-position: var(--pos-kanan-atas), var(--pos-kiri-bawah), 0 0, 0 0;
+      background-image:
+        var(--bunga-kanan-atas), var(--bunga-kiri-bawah),
+        radial-gradient(circle at 10% 14%, rgba(255, 205, 220, 0.55), transparent 46%),
+        radial-gradient(circle at 92% 88%, rgba(255, 233, 214, 0.6), transparent 48%);
+    }
+
+    /* Cover & Mempelai (berlatar foto): kerudung jadi blush + bunga di sudut */
+    .cover {
+      background-color: #fdeff2;
+      background-repeat: no-repeat;
+      background-position: var(--pos-kiri-atas), var(--pos-kanan-bawah), 0 0, center center;
+      background-size: var(--ukuran-bunga) var(--ukuran-bunga), var(--ukuran-bunga) var(--ukuran-bunga), auto, cover;
+      background-image:
+        var(--bunga-kiri-atas), var(--bunga-kanan-bawah),
+        linear-gradient(rgba(255, 244, 246, 0.74), rgba(253, 232, 238, 0.84)),
+        url("cover.jpg");
+    }
+
+    .couple {
+      background-repeat: no-repeat;
+      background-position: var(--pos-kanan-atas), var(--pos-kiri-bawah), 0 0, center center;
+      background-size: var(--ukuran-bunga) var(--ukuran-bunga), var(--ukuran-bunga) var(--ukuran-bunga), auto, cover;
+      background-image:
+        var(--bunga-kanan-atas), var(--bunga-kiri-bawah),
+        linear-gradient(rgba(255, 246, 248, 0.82), rgba(253, 234, 240, 0.88)),
+        url("couple.jpg");
+    }
+
+    /* ---- Pembatas bunga ---- */
+    .divider {
+      width: 190px;
+      height: 20px;
+      margin: 14px auto 26px;
+      background: var(--pembatas-bunga) center / contain no-repeat;
+    }
+
+    /* ---- Warna judul & aksen ---- */
+    .section-title,
+    .event-title,
+    .gift-title,
+    .count-number,
+    .footer-names { color: var(--rose-dark); }
+
+    .heart { color: var(--rose); }
+    .ornament { color: var(--rose); }
+    .and { color: var(--rose); }
+    .arabic { color: var(--rose-dark); }
+
+    .guest-cover::before,
+    .guest-cover::after { background: #fbe9ee; }
+
+    /* ---- Kartu & kotak: tidak putih polos ---- */
+    .event {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 22px rgba(196, 96, 124, 0.10);
+    }
+
+    .count-box { background: rgba(255, 255, 255, 0.78); border: 1px solid var(--line); }
+
+    .rsvp-box {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 22px rgba(196, 96, 124, 0.08);
+    }
+
+    .gift-card {
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 22px rgba(196, 96, 124, 0.10);
+    }
+
+    .copy-message { background: #fde6ec; }
+
+    input, select, textarea { border-color: var(--line); }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--rose);
+      box-shadow: 0 0 0 3px rgba(196, 96, 124, 0.18);
+    }
+
+    /* Ruang atas/bawah lebih lega agar teks tidak tertutup bunga */
+    #isiUndangan > section { padding-top: 100px; padding-bottom: 100px; }
+
+    @media (max-width: 450px) {
+      :root { --ukuran-bunga: 116px; --geser: -14px; }
+      #isiUndangan > section { padding-top: 90px; padding-bottom: 90px; }
+    }
+
+
+    /* =========================================================
+       EFEK AIR SAAT LAYAR DISENTUH (di dalam frame undangan)
+    ========================================================= */
+
+    #lapisanAir {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: min(600px, 100%);
+      transform: translateX(-50%);
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 998;
+    }
+
+    .riak {
+      position: absolute;
+      width: var(--d);
+      height: var(--d);
+      margin-left: calc(var(--d) / -2);
+      margin-top: calc(var(--d) / -2);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+      background:
+        radial-gradient(circle at 38% 34%, rgba(255, 255, 255, 0.70), rgba(170, 220, 238, 0.34) 52%, rgba(170, 220, 238, 0.08) 72%, transparent 74%);
+      border: 2.5px solid rgba(255, 255, 255, 1);
+      box-shadow:
+        0 0 0 1.5px rgba(70, 150, 185, 0.50),
+        inset 0 0 18px rgba(110, 185, 220, 0.55),
+        0 0 16px rgba(120, 195, 228, 0.65);
+      animation: riakUtama 1.15s cubic-bezier(.2, .6, .3, 1) forwards;
+    }
+
+    .riak::before,
+    .riak::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 1);
+      box-shadow: 0 0 0 1.5px rgba(70, 150, 185, 0.42), 0 0 12px rgba(120, 195, 228, 0.55);
+      opacity: 0;
+    }
+
+    .riak::before { animation: riakSusulan 1.15s cubic-bezier(.2, .6, .3, 1) 0.16s forwards; }
+    .riak::after  { animation: riakSusulan 1.15s cubic-bezier(.2, .6, .3, 1) 0.34s forwards; }
+
+    @keyframes riakUtama {
+      0%   { opacity: 0.95; transform: scale(0.08); }
+      70%  { opacity: 0.55; }
+      100% { opacity: 0;    transform: scale(1); }
+    }
+
+    @keyframes riakSusulan {
+      0%   { opacity: 0.85; transform: scale(0.35); }
+      100% { opacity: 0;    transform: scale(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #lapisanAir { display: none; }
+    }
+
+    /* ===== AKHIR TEMA BUNGA ===== */
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+  <!-- ================= COVER ================= -->
+
+  <section class="cover" id="cover">
+
+    <div class="ornament">❦</div>
+
+    <div class="cover-small">The Wedding Of</div>
+
+    <!-- FAJAR -->
+    <h1>Fajar Wira Perdana</h1>
+    <span class="cover-nickname">(Fajar)</span>
+
+    <div class="and">&amp;</div>
+
+    <!-- NANA -->
+    <h1>Nurnashriana Jufri</h1>
+    <span class="cover-nickname">(Nana)</span>
+
+    <div class="cover-date">08 • 11 • 2026</div>
+
+    <!-- TAMU -->
+    <div class="guest-cover">
+      <span class="guest-label">Kepada Yth.</span>
+      <span class="guest-honor">Bapak/Ibu/Saudara/i</span>
+      <span class="guest-line"></span>
+      <span class="guest-cover-name" id="namaTamuCover">Tamu Undangan</span>
+    </div>
+
+    <button type="button" class="open-button" onclick="bukaUndangan()">
+      💌 Buka Undangan
+    </button>
+
+  </section>
+
+
+  <!-- ============== ISI UNDANGAN ============== -->
+
+  <div id="isiUndangan" style="display:none;">
+
+
+    <!-- PEMBUKA -->
+
+    <section id="undangan">
+
+      <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+
+      <div class="divider"></div>
+
+      <p class="intro">Assalamu'alaikum Wr. Wb.</p>
+
+      <div class="guest-name">
+        Yth. Bapak/Ibu/Saudara/i
+        <br>
+        <strong id="namaTamuIsi">Tamu Undangan</strong>
+      </div>
+
+      <p class="intro">
+        Dengan memohon rahmat dan ridho Allah SWT,
+        kami bermaksud mengundang Bapak/Ibu/Saudara/i
+        untuk hadir dalam acara pernikahan kami.
+        <br><br>
+        Merupakan suatu kehormatan dan kebahagiaan
+        bagi kami apabila Bapak/Ibu/Saudara/i
+        berkenan hadir dan memberikan doa restu.
+      </p>
+
+    </section>
+
+
+    <!-- MEMPELAI (foto couple.jpg menjadi latar) -->
+
+    <section class="couple">
+
+      <div class="section-title">Mempelai</div>
+
+      <div class="divider"></div>
+
+      <div class="person">
+        <div class="person-name">Fajar Wira Perdana S.E,</div>
+        <div class="parents">
+          Putra dari
+          <br>
+          <strong>Dr. H. Mustawa. D, S.E., M.Si.</strong>
+          <br>
+          &amp;
+          <br>
+          <strong>Hj. Rusni. S., S.Pd.</strong>
+        </div>
+      </div>
+
+      <div class="heart">♥</div>
+
+      <div class="person">
+        <div class="person-name">Dr. Nurnashriana Jufri, SKM., M.Kes.</div>
+        <div class="parents">
+          Putri dari
+          <br>
+          <strong>Prof. Dr. H. Muh. Jufri Dewa, S.H., M.S.</strong>
+          <br>
+          &amp;
+          <br>
+          <strong>Dra. Hj. Nursyamsi</strong>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ACARA -->
+
+    <section>
+
+      <div class="section-title">Waktu &amp; Tempat</div>
+
+      <div class="divider"></div>
+
+      <!-- AKAD -->
+      <div class="event">
+        <div class="event-title">🕌 Akad Nikah</div>
+        <div class="event-date">Minggu, 8 November 2026</div>
+        <div class="event-time">08.00 WITA – Selesai</div>
+        <div class="event-location">
+          <strong>Ballroom Khaira</strong>
+          <br>
+          Hotel Zahra Syariah, Kendari
+        </div>
+      </div>
+
+      <!-- RESEPSI -->
+      <div class="event">
+        <div class="event-title">✨ Resepsi</div>
+        <div class="event-date">Minggu, 8 November 2026</div>
+        <div class="event-time">11.00 WITA – Selesai</div>
+        <div class="event-location">
+          <strong>Ballroom Khaira</strong>
+          <br>
+          Hotel Zahra Syariah, Kendari
+        </div>
+      </div>
+
+      <a href="https://maps.app.goo.gl/QayRAC2xfcRYpPws7" target="_blank" rel="noopener" class="maps-button">
+        📍 Buka Lokasi di Google Maps
+      </a>
+
+    </section>
+
+
+    <!-- COUNTDOWN -->
+
+    <section>
+
+      <div class="section-title">Menuju Hari Bahagia</div>
+
+      <div class="divider"></div>
+
+      <div class="countdown">
+
+        <div class="count-box">
+          <span class="count-number" id="days">0</span>
+          <span class="count-label">Hari</span>
+        </div>
+
+        <div class="count-box">
+          <span class="count-number" id="hours">0</span>
+          <span class="count-label">Jam</span>
+        </div>
+
+        <div class="count-box">
+          <span class="count-number" id="minutes">0</span>
+          <span class="count-label">Menit</span>
+        </div>
+
+        <div class="count-box">
+          <span class="count-number" id="seconds">0</span>
+          <span class="count-label">Detik</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- RSVP -->
+
+    <section>
+
+      <div class="section-title">RSVP &amp; Wishes</div>
+
+      <div class="divider"></div>
+
+      <p class="intro">Mohon konfirmasi kehadiran Bapak/Ibu/Saudara/i.</p>
+
+      <div class="rsvp-box">
+
+        <div class="form-group">
+          <label for="kehadiran">Kehadiran</label>
+          <select id="kehadiran">
+            <option value="">Pilih Kehadiran</option>
+            <option value="HADIR">Hadir</option>
+            <option value="TIDAK HADIR">Tidak Hadir</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="ucapan">Wishes — Ucapan / Doa</label>
+          <textarea id="ucapan" placeholder="Tuliskan ucapan atau doa..."></textarea>
+        </div>
+
+        <button type="button" class="submit-button" onclick="kirimRSVP()">
+          💌 Kirim Konfirmasi
+        </button>
+
+        <div class="message" id="message"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- WEDDING GIFT -->
+
+    <section class="gift-section">
+
+      <div class="section-title">Wedding Gift</div>
+
+      <div class="divider"></div>
+
+      <p class="gift-intro">
+        Doa restu dan kehadiran Anda
+        merupakan hadiah terindah bagi kami.
+        <br><br>
+        Namun apabila ingin memberikan tanda kasih,
+        dapat melalui:
+      </p>
+
+      <div class="gift-card">
+
+        <div class="gift-bank">BCA BANK</div>
+
+        <div class="gift-name">FAJAR WIRA PERDANA</div>
+
+        <div class="gift-number">7970302161</div>
+
+        <button type="button" class="copy-button" onclick="copyRekening('7970302161', this)">
+          Salin Nomor Rekening
+        </button>
+
+      </div>
+
+      <div id="copyMessage" class="copy-message"></div>
+
+    </section>
+
+
+    <!-- PENUTUP -->
+
+    <section class="closing">
+
+      <div class="section-title">Terima Kasih</div>
+
+      <div class="divider"></div>
+
+      <p class="closing-text">
+        Merupakan suatu kehormatan dan kebahagiaan
+        bagi kami apabila Bapak/Ibu/Saudara/i
+        berkenan hadir dan memberikan doa restu
+        untuk pernikahan kami.
+        <br><br>
+        Atas kehadiran dan doa restunya,
+        kami mengucapkan terima kasih.
+        <br><br>
+        Wassalamu'alaikum Wr. Wb.
+      </p>
+
+      <div class="footer-names">
+        Fajar Wira Perdana
+        <br>
+        &amp;
+        <br>
+        Nurnashriana Jufri
+      </div>
+
+    </section>
+
+
+  </div>
+
+</div>
+
+
+<!-- Lapisan efek air saat layar disentuh -->
+<div id="lapisanAir" aria-hidden="true"></div>
+
+<!-- ================= AUDIO =================
+     File musik HARUS bernama persis: music.mp3
+     (huruf kecil semua) dan berada satu folder dengan index.html -->
+
+<audio id="weddingMusic" src="music.mp3" loop preload="auto"></audio>
+
+<button type="button" id="musicToggle" class="open-button" onclick="toggleMusic()">♫ Matikan Musik</button>
+
+
+<script>
+
+  /* ==================================================
+     KONFIGURASI GITHUB PAGES + DATA TAMU
+     Isi URL Web App Apps Script (berakhiran /exec) agar RSVP tersimpan.
+  ================================================== */
+  const APPS_SCRIPT_URL = "";
+
+  const paramsUndangan = new URLSearchParams(window.location.search);
+  const namaTamu = (paramsUndangan.get("to") || "Tamu Undangan").trim();
+  const tamuId = paramsUndangan.get("id") || "";
+
+  document.getElementById("namaTamuCover").textContent = namaTamu || "Tamu Undangan";
+  document.getElementById("namaTamuIsi").textContent = namaTamu || "Tamu Undangan";
+
+
+  /* ==================================================
+     LAPOR KE GOOGLE SHEET (buka undangan / salin rekening)
+     aksi: "open" atau "copy". Gagal kirim tidak mengganggu tampilan.
+  ================================================== */
+  function kirimKejadian(aksi) {
+    if (!APPS_SCRIPT_URL) return;
+    try {
+      const data = new URLSearchParams();
+      data.set("action", aksi);
+      data.set("id", tamuId);
+      data.set("name", namaTamu);
+      fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", body: data, keepalive: true })
+        .catch(function () {});
+    } catch (error) {}
+  }
+
+
+  /* ==================================================
+     MUSIK (music.mp3)
+  ================================================== */
+
+  const musik = document.getElementById("weddingMusic");
+  const tombolMusik = document.getElementById("musicToggle");
+
+  let musikSedangDiputar = false;   // niat pengguna: musik hidup/mati
+  let musikRusak = false;           // true jika music.mp3 gagal dimuat
+
+  function setTombolMusik() {
+    if (!tombolMusik) return;
+    if (musikRusak) {
+      tombolMusik.innerText = "♫ Musik tidak tersedia";
+    } else {
+      tombolMusik.innerText = musikSedangDiputar ? "♫ Matikan Musik" : "♫ Putar Musik";
+    }
+  }
+
+  // Jika file tidak ditemukan / tidak bisa dibaca
+  musik.addEventListener("error", function () {
+    musikRusak = true;
+    musikSedangDiputar = false;
+    console.error(
+      "music.mp3 gagal dimuat. Pastikan nama file persis 'music.mp3' " +
+      "(huruf kecil), satu folder dengan index.html, dan sudah di-upload ke GitHub."
+    );
+    setTombolMusik();
+  });
+
+  function putarMusik() {
+    if (musikRusak) return Promise.resolve();
+    musik.volume = 0.8;
+    const janji = musik.play();
+    if (janji && typeof janji.then === "function") {
+      return janji
+        .then(function () {
+          musikSedangDiputar = true;
+          setTombolMusik();
+        })
+        .catch(function (error) {
+          // Diblokir browser: tunggu sentuhan berikutnya
+          console.log("Musik belum bisa diputar:", error);
+          musikSedangDiputar = false;
+          setTombolMusik();
+          pasangPemicuCadangan();
+        });
+    }
+    musikSedangDiputar = true;
+    setTombolMusik();
+    return Promise.resolve();
+  }
+
+  function jedaMusik() {
+    musik.pause();
+    musikSedangDiputar = false;
+    setTombolMusik();
+  }
+
+  function toggleMusic() {
+    if (musikRusak) {
+      alert("File music.mp3 tidak ditemukan. Pastikan namanya persis 'music.mp3' dan sudah di-upload ke GitHub.");
+      return;
+    }
+    if (musik.paused) {
+      putarMusik();
+    } else {
+      jedaMusik();
+    }
+  }
+
+  // Cadangan: jika autoplay diblokir, putar pada sentuhan/klik berikutnya
+  function pasangPemicuCadangan() {
+    const pemicu = function () {
+      document.removeEventListener("touchstart", pemicu);
+      document.removeEventListener("click", pemicu);
+      if (musik.paused && !musikRusak) putarMusik();
+    };
+    document.addEventListener("touchstart", pemicu, { once: true, passive: true });
+    document.addEventListener("click", pemicu, { once: true });
+  }
+
+  // Jeda saat tab/aplikasi disembunyikan, lanjut saat kembali
+  let dijedaOtomatis = false;
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      if (!musik.paused) {
+        dijedaOtomatis = true;
+        musik.pause();
+      }
+    } else if (dijedaOtomatis) {
+      dijedaOtomatis = false;
+      putarMusik();
+    }
+  });
+
+
+  /* ==================================================
+     ANIMASI LEMBAR UNDANGAN SAAT DIGULIR
+  ================================================== */
+
+  let animasiLembarSiap = false;
+
+  function aktifkanAnimasiLembar() {
+    if (animasiLembarSiap) return;
+
+    const isi = document.getElementById("isiUndangan");
+    if (!isi) return;
+
+    const pages = isi.querySelectorAll("section");
+    if (pages.length === 0) return;
+
+    animasiLembarSiap = true;
+
+    pages.forEach(function (page) {
+      page.classList.add("fold-page");
+    });
+
+    const kurangiGerak = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!("IntersectionObserver" in window) || kurangiGerak) return;
+
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+
+          const page = entry.target;
+          observer.unobserve(page);
+
+          page.classList.add("is-folding");
+
+          page.addEventListener("animationend", function (e) {
+            if (e.target !== page) return;
+            page.classList.remove("is-folding");
+          });
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -5% 0px"
+      }
+    );
+
+    pages.forEach(function (page) {
+      observer.observe(page);
+    });
+  }
+
+
+  /* ==================================================
+     BUKA UNDANGAN
+  ================================================== */
+
+  function bukaUndangan() {
+
+    const cover = document.getElementById("cover");
+    const isi = document.getElementById("isiUndangan");
+
+    cover.style.display = "none";
+    isi.style.display = "block";
+
+    // Tampilkan tombol musik dan putar musik (dipicu klik pengguna)
+    if (tombolMusik) tombolMusik.style.display = "block";
+    putarMusik();
+
+    // Catat di Google Sheet bahwa undangan sudah dibuka
+    kirimKejadian("open");
+
+    window.scrollTo({ top: 0, behavior: "auto" });
+
+    requestAnimationFrame(aktifkanAnimasiLembar);
+  }
+
+
+  /* ==================================================
+     COUNTDOWN
+  ================================================== */
+
+  const targetDate = new Date("2026-11-08T08:00:00+08:00").getTime();
+
+  function updateCountdown() {
+
+    const selisih = targetDate - new Date().getTime();
+
+    if (selisih <= 0) {
+      document.getElementById("days").innerText = "0";
+      document.getElementById("hours").innerText = "0";
+      document.getElementById("minutes").innerText = "0";
+      document.getElementById("seconds").innerText = "0";
+      return;
+    }
+
+    const days = Math.floor(selisih / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((selisih % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((selisih % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+
+  /* ==================================================
+     RSVP
+  ================================================== */
+
+  async function kirimRSVP() {
+    const hadir = document.getElementById("kehadiran").value;
+    const ucapan = document.getElementById("ucapan").value.trim();
+    const message = document.getElementById("message");
+
+    if (!hadir) {
+      message.style.display = "block";
+      message.innerText = "Silakan pilih konfirmasi kehadiran.";
+      return;
+    }
+
+    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes("ISI_URL_WEB_APP")) {
+      message.style.display = "block";
+      message.innerText = "RSVP belum dihubungkan. Pemilik website perlu mengisi URL Web App Google Apps Script di file index.html.";
+      return;
+    }
+
+    message.style.display = "block";
+    message.innerText = "Mengirim konfirmasi...";
+
+    const data = new URLSearchParams();
+    data.set("action", "rsvp");
+    data.set("id", tamuId);
+    data.set("name", namaTamu || "Tamu Undangan");
+    data.set("count", "1");
+    data.set("attendance", hadir === "HADIR" ? "Hadir" : "Tidak Hadir");
+    data.set("message", ucapan);
+
+    try {
+      // no-cors: respons Apps Script lintas-domain tidak bisa dibaca browser,
+      // jadi status ini berarti "terkirim", bukan verifikasi penyimpanan.
+      await fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", body: data });
+      message.innerText = "Konfirmasi telah dikirim. Terima kasih atas ucapan dan doa Anda.";
+      document.getElementById("kehadiran").value = "";
+      document.getElementById("ucapan").value = "";
+    } catch (error) {
+      message.innerText = "Pengiriman gagal. Silakan coba lagi atau hubungi keluarga mempelai.";
+    }
+  }
+
+
+  /* ==================================================
+     COPY REKENING
+  ================================================== */
+
+  function copyRekening(nomor, tombol) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(nomor)
+        .then(function () { berhasilCopy(tombol, nomor); })
+        .catch(function () { copyFallback(nomor, tombol); });
+    } else {
+      copyFallback(nomor, tombol);
+    }
+  }
+
+  function copyFallback(nomor, tombol) {
+    const textarea = document.createElement("textarea");
+    textarea.value = nomor;
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+
+    try {
+      document.execCommand("copy");
+      berhasilCopy(tombol, nomor);
+    } catch (error) {
+      const message = document.getElementById("copyMessage");
+      message.style.display = "block";
+      message.innerText = "Nomor rekening: " + nomor;
+    }
+
+    document.body.removeChild(textarea);
+  }
+
+  function berhasilCopy(tombol, nomor) {
+    // Catat di Google Sheet bahwa tamu menyalin nomor rekening
+    kirimKejadian("copy");
+
+    const message = document.getElementById("copyMessage");
+    message.style.display = "block";
+    message.innerText = "✓ Nomor rekening berhasil disalin.";
+
+    const teksAwal = tombol.innerText;
+    tombol.innerText = "✓ Berhasil Disalin";
+
+    setTimeout(function () {
+      tombol.innerText = teksAwal;
+      message.style.display = "none";
+    }, 2500);
+  }
+
+
+  /* ==================================================
+     EFEK AIR SAAT LAYAR DISENTUH
+     Riak muncul di titik sentuhan, di mana pun dalam frame undangan.
+  ================================================== */
+  (function efekAir() {
+    const lapisan = document.getElementById("lapisanAir");
+    if (!lapisan) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const MAKS_RIAK = 14;
+    let aktif = 0;
+
+    function buatRiak(x, y) {
+      const kotak = lapisan.getBoundingClientRect();
+      if (x < kotak.left || x > kotak.right || y < kotak.top || y > kotak.bottom) return;
+      if (aktif >= MAKS_RIAK) return;
+
+      const diameter = Math.round(Math.min(Math.max(kotak.width * 0.55, 150), 300));
+      const riak = document.createElement("span");
+      riak.className = "riak";
+      riak.style.setProperty("--d", diameter + "px");
+      riak.style.left = (x - kotak.left) + "px";
+      riak.style.top = (y - kotak.top) + "px";
+      lapisan.appendChild(riak);
+      aktif++;
+
+      let selesai = false;
+      function bersihkan() {
+        if (selesai) return;
+        selesai = true;
+        aktif = Math.max(0, aktif - 1);
+        if (riak.parentNode) riak.parentNode.removeChild(riak);
+      }
+      riak.addEventListener("animationend", function (e) {
+        if (e.target === riak) bersihkan(); // abaikan animasi ring anak
+      });
+      setTimeout(bersihkan, 2200); // cadangan
+    }
+
+    document.addEventListener("pointerdown", function (e) {
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      buatRiak(e.clientX, e.clientY);
+    }, { passive: true });
+  })();
+
+</script>
+
+</body>
+</html>
