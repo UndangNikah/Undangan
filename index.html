@@ -777,8 +777,8 @@
 
     .couple {
       background-repeat: no-repeat;
-      background-position: var(--pos-kanan-atas), var(--pos-kiri-bawah), 0 0, center top;
-      background-size: var(--ukuran-bunga) var(--ukuran-bunga), var(--ukuran-bunga) var(--ukuran-bunga), auto, 100% auto;
+      background-position: var(--pos-kanan-atas), var(--pos-kiri-bawah), 0 0, center center;
+      background-size: var(--ukuran-bunga) var(--ukuran-bunga), var(--ukuran-bunga) var(--ukuran-bunga), auto, cover;
       background-image:
         var(--bunga-kanan-atas), var(--bunga-kiri-bawah),
         linear-gradient(rgba(255, 246, 248, 0.82), rgba(253, 234, 240, 0.88)),
@@ -911,6 +911,137 @@
       #lapisanAir { display: none; }
     }
 
+
+    /* =========================================================
+       TAMPILAN BARU: PC (panel kiri + kolom undangan) & HP
+    ========================================================= */
+    :root { --kol: 480px; --tepi: 5vw; }
+
+    html { scroll-padding-bottom: 80px; }
+    #profil, #acara, #tanggal, #rsvp, #hadiah { scroll-margin-top: 0; }
+
+    /* Kilau pada nama */
+    .kilau, .cover h1 {
+      background: linear-gradient(105deg, var(--rose-dark) 44%, #e0b45e 50%, var(--rose-dark) 56%);
+      background-size: 260% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      animation: kilauGeser 3.4s linear infinite;
+    }
+    @keyframes kilauGeser { from { background-position: 130% 0; } to { background-position: -130% 0; } }
+
+    /* Save the date */
+    .save-kecil { font-family: var(--font-teks); font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .save-tanggal { font-family: var(--font-judul); font-style: italic; font-size: 22px; color: var(--rose-dark); margin-bottom: 26px; }
+    .kalender-btn { margin-top: 26px; }
+
+    /* Ucapan */
+    .ucapan-judul { font-family: var(--font-judul); font-size: 22px; color: var(--rose-dark); margin: 34px 0 12px; }
+    .ucapan-daftar { max-width: 420px; margin: 0 auto; max-height: 340px; overflow-y: auto; text-align: left; padding-right: 4px; }
+    .ucapan-item { background: rgba(255,255,255,.86); border: 1px solid rgba(196,96,124,.22); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; box-shadow: 0 4px 12px rgba(156,63,92,.08); }
+    .ucapan-nama { font-family: var(--font-teks); font-weight: 600; font-size: 13px; color: var(--rose-dark); }
+    .ucapan-status { font-family: var(--font-teks); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; margin-left: 6px; color: var(--gold); }
+    .ucapan-isi { font-family: var(--font-teks); font-size: 13px; line-height: 1.65; color: var(--ink); margin-top: 5px; word-wrap: break-word; }
+    .ucapan-kosong { font-family: var(--font-teks); font-size: 13px; color: var(--muted); text-align: center; }
+
+    /* Tombol musik bulat */
+    #musicToggle {
+      width: 48px; height: 48px; padding: 0; margin: 0;
+      border-radius: 50%; align-items: center; justify-content: center;
+      right: 14px; bottom: 82px;
+      background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+      color: #fff;
+    }
+    #musicToggle.putar svg { animation: putarMusik 4s linear infinite; }
+    #musicToggle.mati::after { content: ""; position: absolute; width: 28px; height: 2.5px; background: #fff; border-radius: 2px; transform: rotate(-45deg); }
+    #musicToggle.rusak { opacity: .45; }
+    @keyframes putarMusik { to { transform: rotate(360deg); } }
+
+    /* Navigasi bawah */
+    #navBawah {
+      position: fixed; z-index: 997; bottom: 10px; left: 50%; transform: translateX(-50%);
+      width: min(calc(100% - 20px), calc(var(--kol) - 20px));
+      display: none; justify-content: space-around; align-items: center;
+      padding: 7px 6px;
+      background: rgba(255, 247, 249, .92);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border: 1px solid rgba(196, 96, 124, .28);
+      border-radius: 999px;
+      box-shadow: 0 8px 24px rgba(156, 63, 92, .22);
+    }
+    #navBawah.tampil { display: flex; }
+    #navBawah a { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 52px; padding: 5px 8px; border-radius: 999px; text-decoration: none; color: var(--muted); font-family: var(--font-teks); font-size: 9.5px; letter-spacing: .3px; transition: background .25s, color .25s; }
+    #navBawah svg { width: 20px; height: 20px; fill: currentColor; }
+    #navBawah a.aktif { background: var(--rose); color: #fff; }
+    #isiUndangan { padding-bottom: 84px; }
+
+    .panel-pc { display: none; }
+
+    /* ===== PC / tablet lebar ===== */
+    @media (min-width: 992px) {
+      body { background: #f9dfe6; }
+      .container { max-width: var(--kol); margin: 0 var(--tepi) 0 auto; box-shadow: 0 0 60px rgba(156, 63, 92, .28); }
+      .panel-pc {
+        display: flex; position: fixed; z-index: 1; left: 0; top: 0; bottom: 0;
+        width: calc(100vw - var(--kol) - var(--tepi));
+        align-items: center; justify-content: center; text-align: center; padding: 40px;
+        background:
+          linear-gradient(rgba(255,244,246,.62), rgba(253,226,234,.78)),
+          url("cover.jpg") center center / cover no-repeat;
+      }
+      .panel-isi { max-width: 520px; }
+      .panel-kecil { font-family: var(--font-teks); font-size: 13px; letter-spacing: 7px; text-transform: uppercase; color: var(--rose-dark); }
+      .panel-nama { font-family: var(--font-judul); font-style: italic; font-size: clamp(44px, 5.2vw, 78px); line-height: 1.12; margin: 20px 0 10px; font-weight: 500; }
+      .panel-garis { width: 140px; height: 20px; margin: 14px auto; background: var(--pembatas-bunga) center / contain no-repeat; }
+      .panel-tgl { font-family: var(--font-judul); font-size: 24px; color: var(--rose-dark); }
+      .panel-tempat { font-family: var(--font-teks); font-size: 13px; letter-spacing: 1.5px; color: var(--muted); margin-top: 8px; }
+
+      .container { position: relative; z-index: 2; }
+      #lapisanAir { left: auto; right: var(--tepi); width: var(--kol); transform: none; }
+      #navBawah { left: auto; right: var(--tepi); transform: none; width: calc(var(--kol) - 24px); margin-right: 12px; }
+      #musicToggle { right: calc(var(--tepi) + 16px); }
+      .cover h1 { font-size: 36px; }
+    }
+
+    /* Tablet: satu kolom di tengah */
+    @media (min-width: 601px) and (max-width: 991px) {
+      body { background: #f9dfe6; }
+      .container { max-width: 560px; }
+      #musicToggle { right: calc(50% - 280px + 14px); }
+    }
+    @media (max-width: 600px) {
+      #navBawah { bottom: 8px; }
+    }
+    @media (max-width: 380px) {
+      #navBawah a { min-width: 44px; padding: 5px 5px; font-size: 9px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .kilau, .cover h1 { animation: none; background-position: 50% 0; }
+      #musicToggle.putar svg { animation: none; }
+    }
+
+
+    /* ===== Potret mempelai & galeri ===== */
+    .potret { width: 168px; height: 210px; margin: 0 auto 16px; border-radius: 84px 84px 18px 18px; overflow: hidden; border: 4px solid #fff; box-shadow: 0 0 0 2px var(--gold), 0 10px 26px rgba(156,63,92,.28); background: var(--soft); }
+    .potret img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+
+    .galeri-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; max-width: 440px; margin: 0 auto; }
+    .foto { padding: 0; border: 3px solid #fff; border-radius: 12px; overflow: hidden; background: var(--soft); cursor: pointer; aspect-ratio: 3 / 4; box-shadow: 0 6px 16px rgba(156,63,92,.18); transition: transform .25s; }
+    .foto:nth-child(5n+1) { grid-column: span 2; aspect-ratio: 16 / 10; }
+    .foto:active { transform: scale(.98); }
+    .foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    #penampil { position: fixed; inset: 0; z-index: 1100; background: rgba(40,16,26,.93); align-items: center; justify-content: center; }
+    #penampil.tampil { display: flex !important; }
+    #penampilGambar { max-width: 92vw; max-height: 82vh; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.5); }
+    .p-tutup, .p-nav { position: absolute; border: 0; background: rgba(255,255,255,.16); color: #fff; cursor: pointer; border-radius: 50%; width: 44px; height: 44px; font-size: 28px; line-height: 1; }
+    .p-tutup { top: 14px; right: 14px; }
+    .p-nav { top: 50%; margin-top: -22px; }
+    .p-kiri { left: 10px; } .p-kanan { right: 10px; }
+    .p-hitung { position: absolute; bottom: 18px; left: 0; right: 0; text-align: center; color: #fff; font-family: var(--font-teks); font-size: 12px; letter-spacing: 2px; }
+
     /* ===== AKHIR TEMA BUNGA ===== */
 
   </style>
@@ -920,6 +1051,17 @@
 
 <body>
 
+
+<!-- Panel kiri (hanya tampil di PC) -->
+<aside class="panel-pc" aria-hidden="true">
+  <div class="panel-isi">
+    <div class="panel-kecil">Undangan Pernikahan</div>
+    <div class="panel-nama kilau">Fajar &amp; Nurnashriana</div>
+    <div class="panel-garis"></div>
+    <div class="panel-tgl">8 November 2026</div>
+    <div class="panel-tempat">Ballroom Khaira · Hotel Zahra Syariah · Kendari</div>
+  </div>
+</aside>
 
 <div class="container">
 
@@ -995,13 +1137,14 @@
 
     <!-- MEMPELAI (foto couple.jpg menjadi latar) -->
 
-    <section class="couple">
+    <section class="couple" id="profil">
 
       <div class="section-title">Mempelai</div>
 
       <div class="divider"></div>
 
       <div class="person">
+        <div class="potret"><img src="groom.jpg" alt="Fajar Wira Perdana" loading="lazy" onerror="this.parentNode.style.display='none'"></div>
         <div class="person-name">Fajar Wira Perdana S.E,</div>
         <div class="parents">
           Putra dari
@@ -1017,6 +1160,7 @@
       <div class="heart">♥</div>
 
       <div class="person">
+        <div class="potret"><img src="bride.jpg" alt="Dr. Nurnashriana Jufri" loading="lazy" onerror="this.parentNode.style.display='none'"></div>
         <div class="person-name">Dr. Nurnashriana Jufri, SKM., M.Kes.</div>
         <div class="parents">
           Putri dari
@@ -1034,7 +1178,7 @@
 
     <!-- ACARA -->
 
-    <section>
+    <section id="acara">
 
       <div class="section-title">Waktu &amp; Tempat</div>
 
@@ -1073,7 +1217,10 @@
 
     <!-- COUNTDOWN -->
 
-    <section>
+    <section id="tanggal">
+
+      <div class="save-kecil">Save The Date</div>
+      <div class="save-tanggal">Minggu · 8 November 2026</div>
 
       <div class="section-title">Menuju Hari Bahagia</div>
 
@@ -1103,12 +1250,41 @@
 
       </div>
 
+      <a class="maps-button kalender-btn" target="_blank" rel="noopener"
+         href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Fajar+%26+Nurnashriana&dates=20261108T000000Z/20261108T070000Z&location=Ballroom+Khaira%2C+Hotel+Zahra+Syariah%2C+Kendari&details=Akad+08.00+WITA+%C2%B7+Resepsi+11.00+WITA">
+        Simpan ke Kalender
+      </a>
+
+    </section>
+
+
+    <!-- GALERI -->
+
+    <section id="galeri">
+
+      <div class="section-title">Galeri</div>
+
+      <div class="divider"></div>
+
+      <div class="galeri-grid" id="galeriGrid">
+        <button type="button" class="foto" data-i="0" aria-label="Buka foto 1"><img src="gallery-01.jpg" alt="Galeri foto 1" loading="lazy" onerror="this.parentNode.style.display='none'"></button>
+        <button type="button" class="foto" data-i="1" aria-label="Buka foto 2"><img src="gallery-02.jpg" alt="Galeri foto 2" loading="lazy" onerror="this.parentNode.style.display='none'"></button>
+        <button type="button" class="foto" data-i="2" aria-label="Buka foto 3"><img src="gallery-03.jpg" alt="Galeri foto 3" loading="lazy" onerror="this.parentNode.style.display='none'"></button>
+        <button type="button" class="foto" data-i="3" aria-label="Buka foto 4"><img src="gallery-04.jpg" alt="Galeri foto 4" loading="lazy" onerror="this.parentNode.style.display='none'"></button>
+        <button type="button" class="foto" data-i="4" aria-label="Buka foto 5"><img src="gallery-05.jpg" alt="Galeri foto 5" loading="lazy" onerror="this.parentNode.style.display='none'"></button>
+        <button type="button" class="foto" data-i="5" aria-label="Buka foto 6"><img src="gallery-06.jpg" alt="Galeri foto 6" loading="lazy" onerror="this.parentNode.style.display='none'"></button>
+        <button type="button" class="foto" data-i="6" aria-label="Buka foto 7"><img src="gallery-07.jpg" alt="Galeri foto 7" loading="lazy" onerror="this.parentNode.style.display='none'"></button>
+        <button type="button" class="foto" data-i="7" aria-label="Buka foto 8"><img src="gallery-08.jpg" alt="Galeri foto 8" loading="lazy" onerror="this.parentNode.style.display='none'"></button>
+        <button type="button" class="foto" data-i="8" aria-label="Buka foto 9"><img src="gallery-09.jpg" alt="Galeri foto 9" loading="lazy" onerror="this.parentNode.style.display='none'"></button>
+        <button type="button" class="foto" data-i="9" aria-label="Buka foto 10"><img src="gallery-10.jpg" alt="Galeri foto 10" loading="lazy" onerror="this.parentNode.style.display='none'"></button>
+      </div>
+
     </section>
 
 
     <!-- RSVP -->
 
-    <section>
+    <section id="rsvp">
 
       <div class="section-title">RSVP &amp; Wishes</div>
 
@@ -1127,6 +1303,17 @@
           </select>
         </div>
 
+        <div class="form-group" id="grupJumlah" style="display:none;">
+          <label for="jumlahTamu">Jumlah Tamu yang Hadir</label>
+          <select id="jumlahTamu">
+            <option value="1">1 orang</option>
+            <option value="2">2 orang</option>
+            <option value="3">3 orang</option>
+            <option value="4">4 orang</option>
+            <option value="5">5 orang</option>
+          </select>
+        </div>
+
         <div class="form-group">
           <label for="ucapan">Wishes — Ucapan / Doa</label>
           <textarea id="ucapan" placeholder="Tuliskan ucapan atau doa..."></textarea>
@@ -1140,12 +1327,17 @@
 
       </div>
 
+      <div class="ucapan-judul">Ucapan &amp; Doa</div>
+      <div class="ucapan-daftar" id="daftarUcapan">
+        <div class="ucapan-kosong">Memuat ucapan...</div>
+      </div>
+
     </section>
 
 
     <!-- WEDDING GIFT -->
 
-    <section class="gift-section">
+    <section class="gift-section" id="hadiah">
 
       <div class="section-title">Wedding Gift</div>
 
@@ -1159,7 +1351,11 @@
         dapat melalui:
       </p>
 
-      <div class="gift-card">
+      <button type="button" class="submit-button" id="tombolHadiah" onclick="bukaHadiah()">
+        Tampilkan Rekening
+      </button>
+
+      <div class="gift-card" id="kartuHadiah" style="display:none;">
 
         <div class="gift-bank">BCA BANK</div>
 
@@ -1223,7 +1419,28 @@
 
 <audio id="weddingMusic" src="music.mp3" loop preload="auto"></audio>
 
-<button type="button" id="musicToggle" class="open-button" onclick="toggleMusic()">♫ Matikan Musik</button>
+<button type="button" id="musicToggle" class="open-button" onclick="toggleMusic()" aria-label="Putar atau matikan musik" title="Musik">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M9 3v11.6A3.5 3.5 0 1 0 11 18V7.8l8-1.8v6.6A3.5 3.5 0 1 0 21 16V3z"/></svg>
+</button>
+
+<!-- Penampil foto -->
+<div id="penampil" role="dialog" aria-modal="true" aria-label="Galeri foto" style="display:none;">
+  <button type="button" class="p-tutup" onclick="tutupFoto()" aria-label="Tutup">&times;</button>
+  <button type="button" class="p-nav p-kiri" onclick="gantiFoto(-1)" aria-label="Sebelumnya">&#8249;</button>
+  <img id="penampilGambar" alt="">
+  <button type="button" class="p-nav p-kanan" onclick="gantiFoto(1)" aria-label="Berikutnya">&#8250;</button>
+  <div class="p-hitung" id="penampilHitung"></div>
+</div>
+
+<!-- Navigasi bawah -->
+<nav id="navBawah" aria-label="Navigasi undangan">
+  <a href="#cover" data-ke="cover" class="aktif" aria-label="Awal"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Awal</span></a>
+  <a href="#profil" data-ke="profil" aria-label="Mempelai"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9.2C1.2 8.4 3.3 5 6.8 5c2 0 3.6 1.1 5.2 3 1.6-1.9 3.2-3 5.2-3 3.5 0 5.6 3.4 4.3 6.8C19.500 16.400 12 21 12 21z"/></svg><span>Mempelai</span></a>
+  <a href="#acara" data-ke="acara" aria-label="Acara"><svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2zM5 9h14v11H5z"/></svg><span>Acara</span></a>
+  <a href="#galeri" data-ke="galeri" aria-label="Galeri"><svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm2 11h12l-3.500-4.500-2.500 3-2-2.500z"/></svg><span>Galeri</span></a>
+  <a href="#rsvp" data-ke="rsvp" aria-label="RSVP"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg><span>RSVP</span></a>
+  <a href="#hadiah" data-ke="hadiah" aria-label="Hadiah"><svg viewBox="0 0 24 24"><path d="M3 7h18v4H3zM4 12h7v9H4zM13 12h7v9h-7zM11 7h2v14h-2z"/></svg><span>Hadiah</span></a>
+</nav>
 
 
 <script>
@@ -1271,11 +1488,11 @@
 
   function setTombolMusik() {
     if (!tombolMusik) return;
-    if (musikRusak) {
-      tombolMusik.innerText = "♫ Musik tidak tersedia";
-    } else {
-      tombolMusik.innerText = musikSedangDiputar ? "♫ Matikan Musik" : "♫ Putar Musik";
-    }
+    tombolMusik.classList.toggle("rusak", musikRusak);
+    tombolMusik.classList.toggle("putar", !musikRusak && musikSedangDiputar);
+    tombolMusik.classList.toggle("mati", !musikRusak && !musikSedangDiputar);
+    tombolMusik.title = musikRusak ? "Musik tidak tersedia"
+      : (musikSedangDiputar ? "Matikan musik" : "Putar musik");
   }
 
   // Jika file tidak ditemukan / tidak bisa dibaca
@@ -1421,7 +1638,11 @@
     isi.style.display = "block";
 
     // Tampilkan tombol musik dan putar musik (dipicu klik pengguna)
-    if (tombolMusik) tombolMusik.style.display = "block";
+    if (tombolMusik) tombolMusik.style.display = "flex";
+    const nav = document.getElementById("navBawah");
+    if (nav) nav.classList.add("tampil");
+    pantauNavigasi();
+    muatUcapan();
     putarMusik();
 
     // Catat di Google Sheet bahwa undangan sudah dibuka
@@ -1494,7 +1715,8 @@
     data.set("action", "rsvp");
     data.set("id", tamuId);
     data.set("name", namaTamu || "Tamu Undangan");
-    data.set("count", "1");
+    const jumlah = hadir === "HADIR" ? (document.getElementById("jumlahTamu").value || "1") : "0";
+    data.set("count", jumlah);
     data.set("attendance", hadir === "HADIR" ? "Hadir" : "Tidak Hadir");
     data.set("message", ucapan);
 
@@ -1503,6 +1725,7 @@
       // jadi status ini berarti "terkirim", bukan verifikasi penyimpanan.
       await fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", body: data });
       message.innerText = "Konfirmasi telah dikirim. Terima kasih atas ucapan dan doa Anda.";
+      if (ucapan) tambahUcapan({ nama: namaTamu, status: hadir === "HADIR" ? "Hadir" : "Tidak Hadir", pesan: ucapan }, true);
       document.getElementById("kehadiran").value = "";
       document.getElementById("ucapan").value = "";
     } catch (error) {
@@ -1564,6 +1787,144 @@
     }, 2500);
   }
 
+
+
+  /* ==================================================
+     TAMPILAN BARU: tombol hadiah, jumlah tamu, ucapan, navigasi
+  ================================================== */
+
+  function bukaHadiah() {
+    document.getElementById("kartuHadiah").style.display = "block";
+    document.getElementById("tombolHadiah").style.display = "none";
+  }
+
+  document.getElementById("kehadiran").addEventListener("change", function () {
+    document.getElementById("grupJumlah").style.display = this.value === "HADIR" ? "block" : "none";
+  });
+
+  function tambahUcapan(u, diAtas) {
+    const daftar = document.getElementById("daftarUcapan");
+    const kosong = daftar.querySelector(".ucapan-kosong");
+    if (kosong) daftar.removeChild(kosong);
+
+    const item = document.createElement("div");
+    item.className = "ucapan-item";
+    const nama = document.createElement("span");
+    nama.className = "ucapan-nama";
+    nama.textContent = u.nama || "Tamu";
+    const status = document.createElement("span");
+    status.className = "ucapan-status";
+    status.textContent = u.status || "";
+    const isi = document.createElement("div");
+    isi.className = "ucapan-isi";
+    isi.textContent = u.pesan || "";   // textContent: aman dari kode berbahaya
+    item.appendChild(nama);
+    item.appendChild(status);
+    item.appendChild(isi);
+    if (diAtas && daftar.firstChild) daftar.insertBefore(item, daftar.firstChild);
+    else daftar.appendChild(item);
+  }
+
+  function muatUcapan() {
+    const daftar = document.getElementById("daftarUcapan");
+    if (!APPS_SCRIPT_URL) {
+      daftar.innerHTML = '<div class="ucapan-kosong">Jadilah yang pertama memberikan ucapan.</div>';
+      return;
+    }
+    fetch(APPS_SCRIPT_URL + "?action=ucapan")
+      .then(function (r) { return r.json(); })
+      .then(function (hasil) {
+        daftar.innerHTML = "";
+        const data = (hasil && hasil.ucapan) || [];
+        if (!data.length) {
+          daftar.innerHTML = '<div class="ucapan-kosong">Jadilah yang pertama memberikan ucapan.</div>';
+          return;
+        }
+        data.forEach(function (u) { tambahUcapan(u, false); });
+      })
+      .catch(function () {
+        daftar.innerHTML = '<div class="ucapan-kosong">Ucapan belum dapat dimuat.</div>';
+      });
+  }
+
+  // Sorot ikon navigasi sesuai bagian yang sedang terlihat
+  let navDipantau = false;
+  function pantauNavigasi() {
+    if (navDipantau) return;
+    navDipantau = true;
+    const tautan = document.querySelectorAll("#navBawah a");
+    const peta = {};
+    tautan.forEach(function (a) { peta[a.getAttribute("data-ke")] = a; });
+    function tandai() {
+      const ids = ["cover", "profil", "acara", "galeri", "rsvp", "hadiah"];
+      let aktif = "profil";
+      const garis = window.innerHeight * 0.4;
+      if (window.scrollY < 80) aktif = "cover";
+      ids.forEach(function (id) {
+        const el = document.getElementById(id);
+        if (el && el.offsetParent !== null && el.getBoundingClientRect().top <= garis) aktif = id;
+      });
+      tautan.forEach(function (a) { a.classList.remove("aktif"); });
+      if (peta[aktif]) peta[aktif].classList.add("aktif");
+    }
+    window.addEventListener("scroll", tandai, { passive: true });
+    tandai();
+    // "Awal" kembali ke atas halaman (cover disembunyikan setelah dibuka)
+    peta.cover.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+
+
+  /* ==================================================
+     GALERI: penampil foto
+  ================================================== */
+  let fotoKe = 0;
+  function daftarFoto() {
+    return Array.prototype.slice.call(document.querySelectorAll("#galeriGrid .foto"))
+      .filter(function (b) { return b.style.display !== "none"; });
+  }
+  function tampilkanFoto() {
+    const f = daftarFoto();
+    if (!f.length) return tutupFoto();
+    fotoKe = (fotoKe + f.length) % f.length;
+    const img = f[fotoKe].querySelector("img");
+    document.getElementById("penampilGambar").src = img.src;
+    document.getElementById("penampilHitung").textContent = (fotoKe + 1) + " / " + f.length;
+  }
+  function bukaFoto(tombol) {
+    fotoKe = Math.max(0, daftarFoto().indexOf(tombol));
+    document.getElementById("penampil").classList.add("tampil");
+    tampilkanFoto();
+  }
+  function tutupFoto() { document.getElementById("penampil").classList.remove("tampil"); }
+  function gantiFoto(n) { fotoKe += n; tampilkanFoto(); }
+
+  document.getElementById("galeriGrid").addEventListener("click", function (e) {
+    const b = e.target.closest(".foto");
+    if (b) bukaFoto(b);
+  });
+  document.getElementById("penampil").addEventListener("click", function (e) {
+    if (e.target.id === "penampil") tutupFoto();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (!document.getElementById("penampil").classList.contains("tampil")) return;
+    if (e.key === "Escape") tutupFoto();
+    if (e.key === "ArrowLeft") gantiFoto(-1);
+    if (e.key === "ArrowRight") gantiFoto(1);
+  });
+  (function gesekFoto() {
+    let x0 = null;
+    const p = document.getElementById("penampil");
+    p.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    p.addEventListener("touchend", function (e) {
+      if (x0 === null) return;
+      const d = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(d) > 50) gantiFoto(d < 0 ? 1 : -1);
+    }, { passive: true });
+  })();
 
   /* ==================================================
      EFEK AIR SAAT LAYAR DISENTUH
