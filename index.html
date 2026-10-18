@@ -33,7 +33,7 @@
   <!-- FONT: Playfair Display (judul), Montserrat (teks), Amiri (Arab) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
   <style>
 
@@ -1027,9 +1027,11 @@
     .potret { width: 168px; height: 210px; margin: 0 auto 16px; border-radius: 84px 84px 18px 18px; overflow: hidden; border: 4px solid #fff; box-shadow: 0 0 0 2px var(--gold), 0 10px 26px rgba(156,63,92,.28); background: var(--soft); }
     .potret img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
 
-    .galeri-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; max-width: 440px; margin: 0 auto; }
+    .galeri-grid { grid-auto-flow: dense; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; max-width: 440px; margin: 0 auto; }
     .foto { padding: 0; border: 3px solid #fff; border-radius: 12px; overflow: hidden; background: var(--soft); cursor: pointer; aspect-ratio: 3 / 4; box-shadow: 0 6px 16px rgba(156,63,92,.18); transition: transform .25s; }
-    .foto:nth-child(5n+1) { grid-column: span 2; aspect-ratio: 16 / 10; }
+    /* gallery-01, 04, 07 = foto LANDSCAPE (lebar penuh); lainnya potret (berdua) */
+    .foto.lebar { grid-column: span 2; aspect-ratio: 3 / 2; }
+    .foto.tunggal { grid-column: 1 / -1; justify-self: center; width: calc(50% - 4px); }
     .foto:active { transform: scale(.98); }
     .foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -1041,6 +1043,193 @@
     .p-nav { top: 50%; margin-top: -22px; }
     .p-kiri { left: 10px; } .p-kanan { right: 10px; }
     .p-hitung { position: absolute; bottom: 18px; left: 0; right: 0; text-align: center; color: #fff; font-family: var(--font-teks); font-size: 12px; letter-spacing: 2px; }
+
+
+    /* =========================================================
+       FONT TAMU & MEMPELAI (elegan, tetap terbaca)
+    ========================================================= */
+    .guest-name {
+      margin: 26px auto;
+      max-width: 340px;
+      padding: 20px 16px 22px;
+      background: rgba(255, 255, 255, .72);
+      border: 1px solid rgba(176, 141, 87, .55);
+      border-radius: 16px;
+      box-shadow: 0 0 0 5px rgba(255, 255, 255, .55), 0 10px 26px rgba(156, 63, 92, .14);
+      font-family: var(--font-teks);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .guest-name strong {
+      display: block;
+      margin-top: 10px;
+      font-family: "Cormorant Garamond", var(--font-judul);
+      font-size: 34px;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: .3px;
+      text-transform: none;
+      line-height: 1.15;
+      color: var(--rose-dark);
+      text-shadow: 0 1px 0 #fff, 0 2px 8px rgba(176, 141, 87, .35);
+      word-wrap: break-word;
+    }
+    .guest-name strong::after {
+      content: "";
+      display: block;
+      width: 90px; height: 2px;
+      margin: 12px auto 0;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .couple .person-name {
+      font-family: "Cormorant Garamond", var(--font-judul);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: .2px;
+      color: var(--rose-dark);
+      text-shadow: 0 0 10px #fff, 0 0 4px #fff, 0 1px 0 #fff;
+      margin-bottom: 14px;
+    }
+    .couple .parents {
+      font-family: "Cormorant Garamond", var(--font-judul);
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: #3a2a30;
+      text-shadow: 0 0 8px #fff, 0 0 3px #fff;
+    }
+    .couple .parents strong { font-weight: 700; color: #2a1a20; }
+    .couple .parents .peran {
+      display: block;
+      font-family: var(--font-teks);
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    @media (max-width: 450px) {
+      .guest-name strong { font-size: 30px; }
+      .couple .person-name { font-size: 28px; }
+      .couple .parents { font-size: 18px; }
+    }
+
+    /* =========================================================
+       WEDDING GIFT: lembut tetapi tegas
+       Hijau sage-zamrud lembut = tenang & tepercaya (uang),
+       emas halus = bernilai, tombol persik-karamel hangat =
+       ajakan bertindak yang kontras namun tidak mengagetkan.
+    ========================================================= */
+    .gift-section {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 226, 190, .55), transparent 58%),
+        linear-gradient(180deg, #fff8ef, #fdeee6) !important;
+    }
+    .gift-section .section-title { font-weight: 600; font-size: 32px; }
+    .gift-intro { font-size: 14px; color: #6b4b45; font-weight: 400; }
+
+    .kartu-bank {
+      position: relative;
+      max-width: 340px;
+      margin: 26px auto 22px;
+      padding: 22px 22px 24px;
+      text-align: left;
+      border-radius: 22px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 88% 10%, rgba(255, 236, 190, .28), transparent 48%),
+        linear-gradient(135deg, #4f9c86 0%, #2f7a68 100%);
+      border: 1px solid rgba(240, 214, 150, .85);
+      box-shadow: 0 0 0 4px rgba(240, 214, 150, .22), 0 14px 28px rgba(47, 122, 104, .24);
+    }
+    .kb-atas { display: flex; justify-content: space-between; align-items: center; }
+    .kb-chip { width: 40px; height: 29px; border-radius: 6px; background: linear-gradient(135deg, #f6e3a8, #d8b66a); box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+    .kb-bank { font-family: var(--font-teks); font-weight: 600; font-size: 20px; letter-spacing: 4px; color: #fbeec4; }
+    .kb-label { margin-top: 20px; font-family: var(--font-teks); font-size: 10.5px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.82); }
+    .kb-nomor {
+      margin-top: 4px;
+      font-family: var(--font-teks);
+      font-size: 29px; font-weight: 600; letter-spacing: 3px;
+      color: #fff3cf;
+      text-shadow: 0 2px 8px rgba(30, 80, 66, .35);
+      cursor: pointer;
+    }
+    .kb-nama { margin-top: 12px; font-family: var(--font-teks); font-size: 13px; font-weight: 500; letter-spacing: 1.5px; color: #fff; }
+
+    .tombol-salin {
+      display: block;
+      width: 100%; max-width: 340px;
+      margin: 0 auto;
+      padding: 17px 20px;
+      border: none; border-radius: 999px;
+      cursor: pointer;
+      font-family: var(--font-teks); font-weight: 600; font-size: 14px; letter-spacing: 1.8px;
+      color: #fff;
+      background: linear-gradient(180deg, #f5ad72 0%, #e98a5b 100%);
+      box-shadow: 0 10px 20px rgba(233, 138, 91, .35);
+      animation: denyutSalin 2.4s ease-in-out infinite;
+      transition: transform .12s, box-shadow .12s;
+    }
+    .tombol-salin:active { transform: scale(.97); box-shadow: 0 4px 10px rgba(233, 138, 91, .3); animation: none; }
+    .tombol-salin.sukses { background: linear-gradient(180deg, #5fb894, #3f9a77); box-shadow: 0 10px 20px rgba(63, 154, 119, .3); animation: none; }
+    @keyframes denyutSalin { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.025); } }
+    .salin-petunjuk { margin-top: 12px; font-family: var(--font-teks); font-size: 12px; color: #8a6a5e; }
+    #copyMessage { background: #eaf7f0; color: #2f7a68; font-weight: 500; border: 1px solid #b9e0cd; }
+    @media (prefers-reduced-motion: reduce) { .tombol-salin { animation: none; } }
+
+
+    /* =========================================================
+       LATAR FOTO UTUH (cover.jpg & couple.jpg, potret, tidak terpotong)
+       Foto ditampilkan penuh (contain); sisi kosongnya diisi salinan foto
+       yang diburamkan, lalu kerudung blush + bunga di atasnya.
+    ========================================================= */
+    .cover, .couple {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background: #fdeff2 !important;
+    }
+    .cover::before, .couple::before {
+      content: ""; position: absolute; inset: -40px; z-index: -3;
+      background-size: cover; background-position: center;
+      filter: blur(22px) saturate(1.1);
+    }
+    .cover::after, .couple::after {
+      content: ""; position: absolute; inset: 0; z-index: -2;
+      background-repeat: no-repeat; background-size: contain;
+    }
+    .cover::before { background-image: url("cover.jpg"); }
+    .cover::after  { background-image: url("cover.jpg"); background-position: center center; }
+    .couple::before { background-image: url("couple.jpg"); }
+    .couple::after  { background-image: url("couple.jpg"); background-position: center top; }
+
+    .hiasan { position: absolute; inset: 0; z-index: -1; pointer-events: none; background-repeat: no-repeat; background-size: var(--ukuran-bunga) var(--ukuran-bunga), var(--ukuran-bunga) var(--ukuran-bunga), auto; }
+    .cover .hiasan {
+      background-position: var(--pos-kiri-atas), var(--pos-kanan-bawah), 0 0;
+      background-image: var(--bunga-kiri-atas), var(--bunga-kanan-bawah),
+        linear-gradient(rgba(255, 244, 246, .50), rgba(253, 232, 238, .66));
+    }
+    .couple .hiasan {
+      background-position: var(--pos-kanan-atas), var(--pos-kiri-bawah), 0 0;
+      background-image: var(--bunga-kanan-atas), var(--bunga-kiri-bawah),
+        linear-gradient(rgba(255, 246, 248, .46), rgba(253, 234, 240, .60));
+    }
+
+    /* Panel PC: foto potret utuh dalam bingkai lengkung */
+    @media (min-width: 992px) {
+      .panel-pc { background: #fdeff2; isolation: isolate; overflow: hidden; }
+      .panel-pc::before { content: ""; position: absolute; inset: -40px; z-index: -2; background: url("cover.jpg") center / cover; filter: blur(26px) saturate(1.1); }
+      .panel-pc::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(rgba(255,244,246,.55), rgba(253,226,234,.72)); }
+      .panel-foto { width: min(240px, 22vw); aspect-ratio: 3 / 4; margin: 0 auto 26px; border-radius: 999px 999px 18px 18px; overflow: hidden; border: 4px solid #fff; box-shadow: 0 0 0 2px var(--gold), 0 14px 34px rgba(156, 63, 92, .32); }
+      .panel-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .panel-nama { font-size: clamp(36px, 4vw, 60px); }
+    }
 
     /* ===== AKHIR TEMA BUNGA ===== */
 
@@ -1055,6 +1244,7 @@
 <!-- Panel kiri (hanya tampil di PC) -->
 <aside class="panel-pc" aria-hidden="true">
   <div class="panel-isi">
+    <div class="panel-foto"><img src="cover.jpg" alt="" onerror="this.parentNode.style.display='none'"></div>
     <div class="panel-kecil">Undangan Pernikahan</div>
     <div class="panel-nama kilau">Fajar &amp; Nurnashriana</div>
     <div class="panel-garis"></div>
@@ -1069,6 +1259,8 @@
   <!-- ================= COVER ================= -->
 
   <section class="cover" id="cover">
+
+    <div class="hiasan" aria-hidden="true"></div>
 
     <div class="ornament">❦</div>
 
@@ -1139,6 +1331,8 @@
 
     <section class="couple" id="profil">
 
+      <div class="hiasan" aria-hidden="true"></div>
+
       <div class="section-title">Mempelai</div>
 
       <div class="divider"></div>
@@ -1147,8 +1341,7 @@
         <div class="potret"><img src="groom.jpg" alt="Fajar Wira Perdana" loading="lazy" onerror="this.parentNode.style.display='none'"></div>
         <div class="person-name">Fajar Wira Perdana S.E,</div>
         <div class="parents">
-          Putra dari
-          <br>
+          <span class="peran">Putra dari</span>
           <strong>Dr. H. Mustawa. D, S.E., M.Si.</strong>
           <br>
           &amp;
@@ -1163,8 +1356,7 @@
         <div class="potret"><img src="bride.jpg" alt="Dr. Nurnashriana Jufri" loading="lazy" onerror="this.parentNode.style.display='none'"></div>
         <div class="person-name">Dr. Nurnashriana Jufri, SKM., M.Kes.</div>
         <div class="parents">
-          Putri dari
-          <br>
+          <span class="peran">Putri dari</span>
           <strong>Prof. Dr. H. Muh. Jufri Dewa, S.H., M.S.</strong>
           <br>
           &amp;
@@ -1286,7 +1478,7 @@
 
     <section id="rsvp">
 
-      <div class="section-title">RSVP &amp; Wishes</div>
+      <div class="section-title">RSVP &amp; Ucapan Serta Doa</div>
 
       <div class="divider"></div>
 
@@ -1315,7 +1507,7 @@
         </div>
 
         <div class="form-group">
-          <label for="ucapan">Wishes — Ucapan / Doa</label>
+          <label for="ucapan">Ucapan &amp; Doa</label>
           <textarea id="ucapan" placeholder="Tuliskan ucapan atau doa..."></textarea>
         </div>
 
@@ -1327,10 +1519,8 @@
 
       </div>
 
-      <div class="ucapan-judul">Ucapan &amp; Doa</div>
-      <div class="ucapan-daftar" id="daftarUcapan">
-        <div class="ucapan-kosong">Memuat ucapan...</div>
-      </div>
+      <div class="ucapan-judul" id="judulUcapan" style="display:none;">Ucapan &amp; Doa</div>
+      <div class="ucapan-daftar" id="daftarUcapan" style="display:none;"></div>
 
     </section>
 
@@ -1351,23 +1541,20 @@
         dapat melalui:
       </p>
 
-      <button type="button" class="submit-button" id="tombolHadiah" onclick="bukaHadiah()">
-        Tampilkan Rekening
-      </button>
-
-      <div class="gift-card" id="kartuHadiah" style="display:none;">
-
-        <div class="gift-bank">BCA BANK</div>
-
-        <div class="gift-name">FAJAR WIRA PERDANA</div>
-
-        <div class="gift-number">7970302161</div>
-
-        <button type="button" class="copy-button" onclick="copyRekening('7970302161', this)">
-          Salin Nomor Rekening
-        </button>
-
+      <div class="kartu-bank" id="kartuHadiah">
+        <div class="kb-atas">
+          <span class="kb-chip"></span>
+          <span class="kb-bank">BCA</span>
+        </div>
+        <div class="kb-label">Nomor Rekening</div>
+        <div class="kb-nomor" onclick="copyRekening('7970302161', document.getElementById('tombolSalin'))">7970302161</div>
+        <div class="kb-nama">a.n. FAJAR WIRA PERDANA</div>
       </div>
+
+      <button type="button" class="tombol-salin" id="tombolSalin" onclick="copyRekening('7970302161', this)">
+        SALIN NOMOR REKENING
+      </button>
+      <div class="salin-petunjuk">Cukup satu ketukan, nomor langsung tersalin</div>
 
       <div id="copyMessage" class="copy-message"></div>
 
@@ -1776,13 +1963,15 @@
 
     const message = document.getElementById("copyMessage");
     message.style.display = "block";
-    message.innerText = "✓ Nomor rekening berhasil disalin.";
+    message.innerText = "✓ Nomor rekening tersalin. Terima kasih atas tanda kasih Anda, semoga berkah.";
 
     const teksAwal = tombol.innerText;
-    tombol.innerText = "✓ Berhasil Disalin";
+    tombol.innerText = "✓ TERSALIN";
+    tombol.classList.add("sukses");
 
     setTimeout(function () {
       tombol.innerText = teksAwal;
+      tombol.classList.remove("sukses");
       message.style.display = "none";
     }, 2500);
   }
@@ -1793,10 +1982,6 @@
      TAMPILAN BARU: tombol hadiah, jumlah tamu, ucapan, navigasi
   ================================================== */
 
-  function bukaHadiah() {
-    document.getElementById("kartuHadiah").style.display = "block";
-    document.getElementById("tombolHadiah").style.display = "none";
-  }
 
   document.getElementById("kehadiran").addEventListener("change", function () {
     document.getElementById("grupJumlah").style.display = this.value === "HADIR" ? "block" : "none";
@@ -1804,8 +1989,8 @@
 
   function tambahUcapan(u, diAtas) {
     const daftar = document.getElementById("daftarUcapan");
-    const kosong = daftar.querySelector(".ucapan-kosong");
-    if (kosong) daftar.removeChild(kosong);
+    daftar.style.display = "block";
+    document.getElementById("judulUcapan").style.display = "block";
 
     const item = document.createElement("div");
     item.className = "ucapan-item";
@@ -1826,26 +2011,52 @@
   }
 
   function muatUcapan() {
-    const daftar = document.getElementById("daftarUcapan");
-    if (!APPS_SCRIPT_URL) {
-      daftar.innerHTML = '<div class="ucapan-kosong">Jadilah yang pertama memberikan ucapan.</div>';
-      return;
-    }
+    // Daftar ucapan hanya muncul jika sudah ada ucapan; kalau kosong tidak ada tulisan apa pun
+    if (!APPS_SCRIPT_URL) return;
     fetch(APPS_SCRIPT_URL + "?action=ucapan")
       .then(function (r) { return r.json(); })
       .then(function (hasil) {
-        daftar.innerHTML = "";
         const data = (hasil && hasil.ucapan) || [];
-        if (!data.length) {
-          daftar.innerHTML = '<div class="ucapan-kosong">Jadilah yang pertama memberikan ucapan.</div>';
-          return;
-        }
         data.forEach(function (u) { tambahUcapan(u, false); });
       })
-      .catch(function () {
-        daftar.innerHTML = '<div class="ucapan-kosong">Ucapan belum dapat dimuat.</div>';
-      });
+      .catch(function () {});
   }
+
+  // Galeri: foto landscape otomatis melebar, foto potret berpasangan (tanpa perlu mengatur nomor foto)
+  (function aturGaleri() {
+    const kotak = Array.prototype.slice.call(document.querySelectorAll("#galeriGrid .foto"));
+    function tandai() {
+      kotak.forEach(function (k) {
+        const img = k.querySelector("img");
+        if (img && img.naturalWidth && img.naturalHeight) {
+          k.classList.toggle("lebar", img.naturalWidth > img.naturalHeight);
+        }
+      });
+      // foto potret terakhir yang sendirian: taruh di tengah
+      const grid = document.getElementById("galeriGrid");
+      const tampil = kotak.filter(function (k) { return k.style.display !== "none"; });
+      tampil.forEach(function (k) { k.classList.remove("tunggal"); });
+      const akhir = tampil[tampil.length - 1];
+      if (akhir && !akhir.classList.contains("lebar") && grid.offsetWidth) {
+        const kiri = akhir.offsetLeft - grid.offsetLeft;
+        if (kiri < 6 && akhir.offsetWidth < grid.offsetWidth * 0.7) {
+          const sebelah = tampil.some(function (k) {
+            return k !== akhir && Math.abs(k.offsetTop - akhir.offsetTop) < 6 && k.offsetLeft > akhir.offsetLeft;
+          });
+          if (!sebelah) akhir.classList.add("tunggal");
+        }
+      }
+    }
+    kotak.forEach(function (k) {
+      const img = k.querySelector("img");
+      if (!img) return;
+      img.addEventListener("load", tandai);
+      img.addEventListener("error", tandai);
+    });
+    window.addEventListener("load", tandai);
+    window.addEventListener("resize", tandai);
+    tandai();
+  })();
 
   // Sorot ikon navigasi sesuai bagian yang sedang terlihat
   let navDipantau = false;
