@@ -1273,6 +1273,46 @@
       background: rgba(255, 255, 255, .8); border: 1px dashed rgba(196, 96, 124, .5); border-radius: 14px;
     }
 
+    /* =========================================================
+       PROTEKSI TAMPILAN: tidak bisa diblok/disalin/diseret,
+       kecuali nomor rekening, hak cipta, dan kolom isian.
+    ========================================================= */
+    html, body, body * {
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    img { -webkit-user-drag: none; user-drag: none; }
+    input, textarea, select, .kb-nomor, .kb-nomor *, .hak-cipta, .hak-cipta * {
+      -webkit-user-select: text;
+      user-select: text;
+      -webkit-touch-callout: default;
+    }
+
+    .hak-cipta {
+      margin-top: 40px;
+      padding-bottom: 20px;
+      font-family: var(--font-teks);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      opacity: .85;
+    }
+
+    /* Permohonan maaf (hanya di cover) */
+    .guest-maaf {
+      display: block;
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(176, 141, 87, .35);
+      font-family: var(--font-judul);
+      font-style: italic;
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
     /* ===== AKHIR TEMA BUNGA ===== */
 
   </style>
@@ -1327,6 +1367,7 @@
       <span class="guest-line"></span>
       <span class="guest-cover-name" id="namaTamuCover">Tamu Undangan</span>
       <span class="guest-ket" id="ketTamuCover" style="display:none;"></span>
+      <span class="guest-maaf">Mohon maaf apabila terdapat kesalahan penulisan nama, jabatan, dan lokasi.</span>
     </div>
 
     <button type="button" class="open-button" onclick="bukaUndangan()">
@@ -1632,6 +1673,8 @@
         <br>
         Nurnashriana Jufri
       </div>
+
+      <div class="hak-cipta">©fjrdesign6282349711933</div>
 
     </section>
 
@@ -2130,6 +2173,33 @@
   aturNamaTamu();
 
   cekTautan();
+
+  /* Proteksi: tanpa klik kanan, seret, blok & salin kecuali bagian yang diizinkan */
+  (function proteksi() {
+    function izin(el) {
+      el = el && el.nodeType === 3 ? el.parentNode : el;
+      return !!(el && el.closest && el.closest("input, textarea, select, .kb-nomor, .hak-cipta"));
+    }
+    document.addEventListener("contextmenu", function (e) {
+      if (!izin(e.target)) e.preventDefault();
+    });
+    document.addEventListener("dragstart", function (e) { e.preventDefault(); });
+    document.addEventListener("selectstart", function (e) {
+      if (!izin(e.target)) e.preventDefault();
+    });
+    function blokirSalin(e) {
+      const aktif = document.activeElement;
+      if (aktif && /^(INPUT|TEXTAREA)$/.test(aktif.tagName)) return;   // isian & salin rekening cadangan
+      const sel = window.getSelection ? window.getSelection() : null;
+      if (sel && sel.rangeCount && !sel.isCollapsed &&
+          izin(sel.anchorNode) && izin(sel.focusNode)) return;           // nomor rekening / hak cipta
+      e.preventDefault();
+      if (e.clipboardData) e.clipboardData.setData("text/plain", "");
+    }
+    document.addEventListener("copy", blokirSalin);
+    document.addEventListener("cut", blokirSalin);
+    document.querySelectorAll("img").forEach(function (im) { im.setAttribute("draggable", "false"); });
+  })();
 
   // Galeri: foto landscape otomatis melebar, foto potret berpasangan (tanpa perlu mengatur nomor foto)
   (function aturGaleri() {
