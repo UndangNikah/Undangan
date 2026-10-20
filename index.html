@@ -1313,6 +1313,11 @@
       color: var(--muted);
     }
 
+    .jebakan { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    #namaPengirim { width: 100%; }
+    #namaPengirim.salah { border-color: #d64545 !important; background: #fff4f4; box-shadow: 0 0 0 3px rgba(214, 69, 69, .18); }
+    .wajib { font-size: 11px; font-weight: 500; color: #d64545; margin-left: 6px; }
+
     /* ===== AKHIR TEMA BUNGA ===== */
 
   </style>
@@ -1571,6 +1576,14 @@
 
       <div class="rsvp-box">
 
+        <div class="form-group" id="grupNama" style="display:none;">
+          <label for="namaPengirim">Nama Anda <span class="wajib">* wajib diisi</span></label>
+          <input type="text" id="namaPengirim" maxlength="40" placeholder="Tulis nama lengkap Anda" autocomplete="name" required aria-required="true">
+        </div>
+
+        <!-- kotak jebakan bot: manusia tidak melihatnya -->
+        <div class="jebakan" aria-hidden="true"><input type="text" id="website" tabindex="-1" autocomplete="off"></div>
+
         <div class="form-group">
           <label for="kehadiran">Kehadiran</label>
           <select id="kehadiran">
@@ -1726,8 +1739,11 @@
   const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwB5JG6Xf0XUTBniDZg7rNBjMadQk5ETAaCZwfLmsAki0yJILSjhLm1a2fTxH2G0mziNg/exec";
 
   const paramsUndangan = new URLSearchParams(window.location.search);
-  const namaTamu = (paramsUndangan.get("to") || "Tamu Undangan").trim();
   const tamuId = paramsUndangan.get("id") || "";
+  // LINK GRUP: ?grup=Nama Grup (tanpa ID). Setiap anggota boleh menulis ucapan dengan namanya sendiri.
+  const namaGrup = (paramsUndangan.get("grup") || "").trim().slice(0, 60);
+  const modeGrup = !!namaGrup && !tamuId;
+  const namaTamu = modeGrup ? namaGrup : (paramsUndangan.get("to") || "Tamu Undangan").trim();
 
   document.getElementById("namaTamuCover").textContent = namaTamu || "Tamu Undangan";
   document.getElementById("namaTamuIsi").textContent = namaTamu || "Tamu Undangan";
@@ -1748,7 +1764,7 @@
      aksi: "open" atau "copy". Gagal kirim tidak mengganggu tampilan.
   ================================================== */
   function kirimKejadian(aksi) {
-    if (!APPS_SCRIPT_URL) return;
+    if (!APPS_SCRIPT_URL || modeGrup) return;
     try {
       const data = new URLSearchParams();
       data.set("action", aksi);
@@ -1981,9 +1997,19 @@
     const ucapan = document.getElementById("ucapan").value.trim();
     const message = document.getElementById("message");
 
-    if (!tamuId || tautanSah === false) {
+    if (!modeGrup && (!tamuId || tautanSah === false)) {
       message.style.display = "block";
       message.innerText = "Tulis ucapan hanya bisa melalui tautan undangan pribadi Anda.";
+      return;
+    }
+
+    const namaPengirim = modeGrup ? document.getElementById("namaPengirim").value.replace(/\s+/g, " ").trim() : "";
+    if (modeGrup && namaPengirim.length < 2) {
+      message.style.display = "block";
+      message.innerText = "Nama wajib diisi sebelum mengirim ucapan.";
+      const kolom = document.getElementById("namaPengirim");
+      kolom.classList.add("salah");
+      kolom.focus();
       return;
     }
 
@@ -2003,9 +2029,16 @@
     message.innerText = "Mengirim konfirmasi...";
 
     const data = new URLSearchParams();
-    data.set("action", "rsvp");
-    data.set("id", tamuId);
-    data.set("name", namaTamu || "Tamu Undangan");
+    if (modeGrup) {
+      data.set("action", "rsvp_grup");
+      data.set("name", namaPengirim);
+      data.set("grup", namaGrup);
+      data.set("website", document.getElementById("website").value);
+    } else {
+      data.set("action", "rsvp");
+      data.set("id", tamuId);
+      data.set("name", namaTamu || "Tamu Undangan");
+    }
     const jumlah = hadir === "HADIR" ? (document.getElementById("jumlahTamu").value || "1") : "0";
     data.set("count", jumlah);
     data.set("attendance", hadir === "HADIR" ? "Hadir" : "Tidak Hadir");
@@ -2016,7 +2049,7 @@
       // jadi status ini berarti "terkirim", bukan verifikasi penyimpanan.
       await fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", body: data });
       message.innerText = "Konfirmasi telah dikirim. Terima kasih atas ucapan dan doa Anda.";
-      if (ucapan) tambahUcapan({ nama: namaTamu, status: hadir === "HADIR" ? "Hadir" : "Tidak Hadir", pesan: ucapan }, true);
+      if (ucapan) tambahUcapan({ nama: modeGrup ? namaPengirim : namaTamu, status: hadir === "HADIR" ? "Hadir" : "Tidak Hadir", pesan: ucapan }, true);
       document.getElementById("kehadiran").value = "";
       document.getElementById("ucapan").value = "";
     } catch (error) {
@@ -2087,6 +2120,11 @@
   ================================================== */
 
 
+  if (modeGrup) {
+    document.getElementById("grupNama").style.display = "block";
+    document.getElementById("namaPengirim").addEventListener("input", function () { this.classList.remove("salah"); });
+  }
+
   document.getElementById("kehadiran").addEventListener("change", function () {
     document.getElementById("grupJumlah").style.display = this.value === "HADIR" ? "block" : "none";
   });
@@ -2130,7 +2168,7 @@
   }
 
   function cekTautan() {
-    if (!APPS_SCRIPT_URL) return;
+    if (!APPS_SCRIPT_URL || modeGrup) return;
     if (!tamuId) { blokirFormulir(); return; }
     fetch(APPS_SCRIPT_URL + "?action=cek&id=" + encodeURIComponent(tamuId) + "&name=" + encodeURIComponent(namaTamu))
       .then(function (r) { return r.json(); })
